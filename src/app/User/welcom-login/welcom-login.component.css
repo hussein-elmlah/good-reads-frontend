@@ -1,0 +1,9 @@
+.welcome-section {
+    align-items: center;
+  }
+  
+  .popular-books,
+  .popular-categories,
+  .popular-authors {
+    margin-top: 50px;
+  }
