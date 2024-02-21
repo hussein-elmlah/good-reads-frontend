@@ -10,6 +10,9 @@ import { AuthorsDetailsComponent } from './User/authors-details/authors-details.
 import { PageNotFoundComponent } from './User/page-not-found/page-not-found.component';
 import { LoginComponent } from './User/login/login.component';
 import { RegisterComponent } from './User/register/register.component';
+import { AdminloginComponent } from './Admin/admin-login/admin-login.component';
+import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.component';
+import { AuthGuard } from './Admin/guards/auth.guard';
 
 export const routes: Routes = [
     
@@ -50,6 +53,15 @@ export const routes: Routes = [
             component: AuthorsDetailsComponent
         }
         ,
+        {
+             path: 'admin',
+             component:AdminloginComponent
+        }
+        ,
+        {
+             path: 'adminProfile', component: AdminProfileComponent, canActivate: [AuthGuard] 
+
+        },
         {
             path: '**',
             component: PageNotFoundComponent

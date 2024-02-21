@@ -1,0 +1,33 @@
+
+<div class="login-container">
+    <div class="login-card">
+      <h2 class="login-title">Admin Login Panel</h2>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" formControlName="username" autocomplete="off">
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" formControlName="password" autocomplete="off">
+        </div>
+  
+        <!-- <div *ngIf="loginForm.controls['username'].hasError('required') || loginForm.controls['password'].hasError('required')" class="error-message">
+          Please enter both username and password.
+        </div> -->
+        <div *ngIf="(loginForm.controls['username'].hasError('required') || loginForm.controls['password'].hasError('required')) && loginForm.touched" class="error-message">
+            Please enter both username and password.
+          </div>
+        <button type="submit" [disabled]="loginForm.invalid" class="login-button">Login</button>
+      </form>
+    </div>
+    <div *ngIf="loginError" class="error-message">
+        {{ loginError }}
+      </div>
+        
+  </div>
+ 
+  
+  
