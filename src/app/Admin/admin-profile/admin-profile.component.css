@@ -1,0 +1,20 @@
+.adminprofilenavbar{
+    background-color:azure;
+    padding-top: 10px;
+}
+
+.section{
+    display: flex;
+    justify-content: space-between;
+}
+p,a{
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+.activenow{
+    color: green;
+}

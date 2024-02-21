@@ -59,7 +59,14 @@ export const routes: Routes = [
         }
         ,
         {
-             path: 'adminProfile', component: AdminProfileComponent, canActivate: [AuthGuard] 
+             path: 'adminProfile', component: AdminProfileComponent, canActivate: [AuthGuard] ,
+    
+    children: [
+      { path: 'books', component: BooksComponent },
+      { path: 'categories', component: CategoriesComponent },
+      { path: 'authors', component: AuthorsComponent },
+      { path: '', redirectTo: 'categories', pathMatch: 'full' }, 
+    ],
 
         },
         {

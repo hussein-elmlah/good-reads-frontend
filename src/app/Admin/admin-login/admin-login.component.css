@@ -1,64 +1,76 @@
-/* adminlogin.component.css */
+/* admin-login.component.css */
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
 
 .login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 100vh;
-  }
-  
-  .login-card {
+}
+
+.login-card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Center text within the card */
-  }
-  
-  .login-title {
-    color: #333;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
+}
+
+.login-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: bold;
-  }
-  
-  input {
+}
+
+input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
-  }
-  
-  .login-button-container {
-    margin-top: 20px; 
-  }
-  
-  .login-button {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.login-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-button {
+    padding: 12px 24px;
     background-color: #4caf50;
     color: #fff;
-    padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-  }
-  
-  .login-button:disabled {
+}
+
+.login-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
-  }
-  
-  .error-message {
-    color: #ff0000;
+}
+
+/* Center the error messages horizontally */
+.error-message-container {
     text-align: center;
-  }
-  
+}

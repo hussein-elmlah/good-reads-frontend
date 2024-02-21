@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AdminloginComponent implements OnInit {
   loginForm!: FormGroup;
-  loginError!: string | null ;
+  loginError: string | null = null;
   formSubmitted = false;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
@@ -27,8 +27,8 @@ export class AdminloginComponent implements OnInit {
 
   initForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required]],
     });
   }
 
@@ -36,24 +36,29 @@ export class AdminloginComponent implements OnInit {
     this.formSubmitted = true;
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      this.authService.login(username, password).subscribe((success) => {
-        if (success) {
-          this.router.navigate(['/adminProfile']);
-        } else {
-          
-          // console.log('Invalid login credentials');
-          this.loginError = 'Invalid username or password';
-
-        }
+      this.authService.login(username, password).subscribe(
+        (success) => {
+          if (success) {
+            this.router.navigate(['/adminProfile']);
+          } else {
+            this.loginError = 'Invalid username or password';
+          }
+        },
         (error: any) => {
           console.error(error);
           // Handle other errors if needed
         }
-        
-      });
-    }
-    else {
+      );
+    } else {
       this.loginError = null;
     }
   }
+
+hasError(controlName: string): boolean {
+  const control = this.loginForm.get(controlName);
+
+  return !!control?.hasError('invalid') && (control?.touched || this.formSubmitted);
+}
+
+
 }
