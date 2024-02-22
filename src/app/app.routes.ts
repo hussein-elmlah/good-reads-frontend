@@ -13,6 +13,9 @@ import { RegisterComponent } from './User/register/register.component';
 import { AdminloginComponent } from './Admin/admin-login/admin-login.component';
 import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.component';
 import { AuthGuard } from './Admin/guards/auth.guard';
+import { AdminBooksComponent } from './Admin/admin-books/admin-books.component';
+import { AdminCategoriesComponent } from './Admin/admin-categories/admin-categories.component';
+import { AdminAuthorsComponent } from './Admin/admin-authors/admin-authors.component';
 
 export const routes: Routes = [
     
@@ -62,9 +65,9 @@ export const routes: Routes = [
              path: 'adminProfile', component: AdminProfileComponent, canActivate: [AuthGuard] ,
     
     children: [
-      { path: 'books', component: BooksComponent },
-      { path: 'categories', component: CategoriesComponent },
-      { path: 'authors', component: AuthorsComponent },
+      { path: 'books', component: AdminBooksComponent },
+      { path: 'categories', component: AdminCategoriesComponent },
+      { path: 'authors', component: AdminAuthorsComponent },
       { path: '', redirectTo: 'categories', pathMatch: 'full' }, 
     ],
 
