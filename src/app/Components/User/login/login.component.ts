@@ -42,6 +42,8 @@ export class LoginComponent {
         next:(response)=>{
           console.log(response);
           if(response.message=="success"){
+            localStorage.setItem('token',response.token)
+            this._AuthService.decodeUser()
             this.isLoading=false
             this._Router.navigate(['/home'])
           }

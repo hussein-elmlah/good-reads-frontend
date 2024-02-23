@@ -30,7 +30,7 @@
 <button [disabled]="loginForm.invalid" class="btn main-btn text-white bg-success mt-2">Login
 <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
 </button>
-<p>Don't have account? <a routerLink="register" class="text-decoration-none text-success">register</a></p>
+<p>Don't have account? <a routerLink="register" class="text-decoration-none text-success">login</a></p>
         
 </form>
 <p *ngIf="errMsg" class="alert alert-danger p-1 mb-0">{{errMsg}}</p>
