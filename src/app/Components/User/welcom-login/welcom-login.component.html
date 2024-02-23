@@ -1,0 +1,131 @@
+<app-nav-bar></app-nav-bar>
+<div class="container mt-5">
+  <div class="row">
+    <!-- Welcome section -->
+    <div class="col-md-8  welcome-section">
+      <!-- Your welcome content here -->
+      <h2>Welcome to Good Reads</h2>
+       <!-- Show welcome section -->
+
+    <div class="popular-books mt-5">
+      <!-- Popular books section -->
+      <h3>Popular Books</h3>
+      <div class="row">
+        <div class="col-md-3 m-1">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-3 m-1">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+     
+
+    </div>
+    <div class="popular-categories mt-5">
+      <!-- Popular categories section -->
+      <h3>Popular Categories</h3>
+      <div class="row ">
+        <div class="col-md-3 m-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-3 m-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="popular-authors mt-5">
+      <!-- Popular authors section -->
+      <h3>Popular Authors</h3>
+      <div class="row">
+        <div class="col-md-3 m-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-3 m-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+    </div>
+  
+    </div>
+     <!-- Show login form -->
+     <app-login *ngIf="showLogin" class="col-md-4 d-flex  justify-content-end align-items-start">
+     
+     </app-login>
+    <!-- Show register form -->
+    <app-register *ngIf="showRegister"class="col-md-4 d-flex  justify-content-end align-items-start"></app-register>
+  
+    
+    <div class="col-md-4 d-flex  justify-content-end align-items-start   ">
+     
+      <button class="btn btn-primary mr-2 me-2 mt-0" (click)="showLogin = true; showRegister = false; ">Login</button>
+     
+  
+      <button class="btn btn-secondary" (click)="showRegister = true; showLogin = false;">Register</button>
+     
+    </div>
+    
+    
+   
+ 
+  
+  <!-- Show login and register links -->
+ <!-- <div class="container login-register-buttons mb-5">
+    <div class="row">
+      <div class="col-md-12 d-flex  justify-content-end ">
+        <button class="btn btn-primary mr-2 me-2 mt-0" (click)="showLogin = true; showRegister = false;">Login</button>
+        <button class="btn btn-secondary" (click)="showRegister = true; showLogin = false;">Register</button>
+      </div>
+    </div>
+  </div>-->
+  </div>
+  </div>
+ 
+  
+
+
+

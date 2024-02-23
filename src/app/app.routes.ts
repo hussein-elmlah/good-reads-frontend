@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
-import { WelcomLoginComponent } from './User/welcom-login/welcom-login.component';
-import { HomeComponent } from './User/home/home.component';
-import { CategoriesComponent } from './User/categories/categories.component';
-import { CategoryDetailsComponent } from './User/category-details/category-details.component';
-import { BooksComponent } from './User/books/books.component';
-import { BooksDetailsComponent } from './User/books-details/books-details.component';
-import { AuthorsComponent } from './User/authors/authors.component';
-import { AuthorsDetailsComponent } from './User/authors-details/authors-details.component';
-import { PageNotFoundComponent } from './User/page-not-found/page-not-found.component';
-import { LoginComponent } from './User/login/login.component';
-import { RegisterComponent } from './User/register/register.component';
+import { PageNotFoundComponent } from './Components/User/page-not-found/page-not-found.component';
+import { WelcomLoginComponent } from './Components/User/welcom-login/welcom-login.component';
+import { HomeComponent } from './Components/User/home/home.component';
+import { LoginComponent } from './Components/User/login/login.component';
+import { RegisterComponent } from './Components/User/register/register.component';
+import { CategoriesComponent } from './Components/User/categories/categories.component';
+import { CategoryDetailsComponent } from './Components/User/category-details/category-details.component';
+import { BooksComponent } from './Components/User/books/books.component';
+import { BooksDetailsComponent } from './Components/User/books-details/books-details.component';
+import { AuthorsComponent } from './Components/User/authors/authors.component';
+import { AuthorsDetailsComponent } from './Components/User/authors-details/authors-details.component';
+
 import { AdminloginComponent } from './Admin/admin-login/admin-login.component';
 import { AdminProfileComponent } from './Admin/admin-profile/admin-profile.component';
 import { AuthGuard } from './Admin/guards/auth.guard';
@@ -24,7 +25,7 @@ export const routes: Routes = [
             component: WelcomLoginComponent
         },
         {
-            path: '',
+            path: 'home',
             component: HomeComponent
         },
         { path: 'login', component: LoginComponent },
