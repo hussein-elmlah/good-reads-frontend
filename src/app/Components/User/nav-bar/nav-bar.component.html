@@ -1,0 +1,26 @@
+<nav class="navbar  navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand "  routerLink="" routerLinkActive="active-route text-success " [routerLinkActiveOptions]="{exact: true}">Good Reads</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        
+      
+      </ul>
+      <form class="d-flex">
+          
+          <a class="nav-link m-2 "  routerLink="/home" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}">Home</a>
+          
+          <a class="nav-link m-2 "  routerLink="/categories" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}">Categories</a>
+          <a class="nav-link m-2 "  routerLink="/books" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}">Books</a>
+          <a class="nav-link m-2 "  routerLink="/authors" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}">Authors</a>
+          <i class="fa-solid fa-circle-user fa-lg text-success mt-4 cursor-pointer" routerLink="" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}" ></i>
+          <i (click)="signOut()" style="cursor: pointer;" class="fa-solid fa-right-from-bracket fa-lg text-success mt-4 ms-2 cursor-pointer " routerLink="" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}" ></i>
+          
+      </form>
+    </div>
+  </div>
+</nav>
