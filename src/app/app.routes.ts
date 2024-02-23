@@ -17,46 +17,49 @@ import { AuthGuard } from './Admin/guards/auth.guard';
 import { AdminBooksComponent } from './Admin/admin-books/admin-books.component';
 import { AdminCategoriesComponent } from './Admin/admin-categories/admin-categories.component';
 import { AdminAuthorsComponent } from './Admin/admin-authors/admin-authors.component';
+import { authGuard } from './guard/auth.guard';
 
-export const routes: Routes = [
+export const routes:Routes = [
     
-        {
-            path: '',
-            component: WelcomLoginComponent
-        },
-        {
-            path: 'home',
-            component: HomeComponent
-        },
-        { path: 'login', component: LoginComponent },
-        { path: 'register', component: RegisterComponent},
-        {
-            path: 'categories',
-            component: CategoriesComponent
-        },
-        {
-            path: 'categories/:categoryId',
-            component: CategoryDetailsComponent
-        },
-        {
-            path: 'books',
-            component: BooksComponent
-        },
-        {
-            path: 'books/:bookId',
-            component: BooksDetailsComponent
-        }
-        ,
-        {
-            path: 'authors',
-            component: AuthorsComponent
-        }
-        ,
-        {
-            path: 'authors/:authorId',
-            component: AuthorsDetailsComponent
-        }
-        ,
+    {
+        path: '',
+        component: WelcomLoginComponent
+    },
+    {
+        path: 'home',canActivate:[authGuard],
+        component: HomeComponent
+    },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent},
+    {
+        path: 'categories',canActivate:[authGuard],
+        component: CategoriesComponent
+    },
+    {
+        path: 'categories/:categoryId',canActivate:[authGuard],
+        component: CategoryDetailsComponent
+    },
+    {
+        path: 'books',canActivate:[authGuard],
+        component: BooksComponent
+    },
+    {
+        path: 'books/:bookId',canActivate:[authGuard],
+        component: BooksDetailsComponent
+    }
+    ,
+    {
+        path: 'authors',canActivate:[authGuard],
+        component: AuthorsComponent
+    }
+    ,
+    {
+        path: 'authors/:authorId',canActivate:[authGuard],
+        component: AuthorsDetailsComponent
+    }
+    ,
+    
+    
         {
              path: 'admin',
              component:AdminloginComponent

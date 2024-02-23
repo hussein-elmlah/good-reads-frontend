@@ -1,5 +1,5 @@
 <app-nav-bar></app-nav-bar>
-<p>home works!</p>
+
 
 
 
@@ -23,8 +23,11 @@
       <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Read</button>
       <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Want to Read</button>
     </div>
-    <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><table class="table">
+    <div class="tab-content w-100 mx-2" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+        <fieldset class="border p-2 fw-bold">All
+        <table class="table ">
+       
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -52,8 +55,11 @@
             <td>twitter</td>
           </tr>
         </tbody>
-      </table></div>
-      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"><table class="table">
+      </table></fieldset>
+    </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <fieldset class="border p-2 fw-bold">Read
+        <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -81,8 +87,12 @@
             <td>twitter</td>
           </tr>
         </tbody>
-      </table></div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><table class="table">
+      </table>
+      </fieldset>
+    </div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+        <fieldset class="border p-2 fw-bold">Currently Reading
+        <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -110,8 +120,12 @@
             <td>twitter</td>
           </tr>
         </tbody>
-      </table></div>
-      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"><table class="table">
+      </table>
+    </fieldset>
+    </div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+        <fieldset class="border p-2 fw-bold">Want To Read
+        <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -139,10 +153,12 @@
             <td>twitter</td>
           </tr>
         </tbody>
-      </table></div>
+      </table>
+    </fieldset>
+    </div>
     </div>
   </div>
-  <nav class="m-auto" aria-label="Page navigation example">
+  <nav class="d-flex justify-content-center mt-3" aria-label="Page navigation example">
     <ul class="pagination ">
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
