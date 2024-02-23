@@ -10,7 +10,9 @@
       <div class="modal-body">
         <label for="categoryName">Category Name:</label>
         <input type="text" id="categoryName" [(ngModel)]="newCategoryName" class="form-control" />
-      </div>
+        <div *ngIf="newCategoryValidationMessage">{{ newCategoryValidationMessage }}</div>
+
+    </div>
   
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
@@ -47,6 +49,8 @@
       <div class="modal-body">
         <label for="updatedCategoryName">Updated Category Name:</label>
         <input type="text" id="updatedCategoryName" [(ngModel)]="selectedCategory.name" class="form-control" />
+        <div *ngIf="updateCategoryValidationMessage">{{ updateCategoryValidationMessage }}</div>
+
       </div>
   
       <div class="modal-footer">

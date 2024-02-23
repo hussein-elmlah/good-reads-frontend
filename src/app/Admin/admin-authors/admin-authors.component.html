@@ -1,1 +1,86 @@
-<p>admin-authors works!</p>
+<!-- author.component.html -->
+<div class="container mt-3">
+    <h2>Authors</h2>
+  
+    <!-- Add Author Button and Modal -->
+    <button class="btn btn-primary" (click)="openAddAuthorModal()">Add Author</button>
+  
+    <ng-template #addAuthorModal let-modal>
+      <!-- Add Author Modal Content -->
+      <div class="modal-body">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" [(ngModel)]="newAuthor.fullName" class="form-control" />
+  
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" [(ngModel)]="newAuthor.DOB" class="form-control" />
+  
+        <label for="image">Image:</label>
+        <input type="file" id="image" (change)="handleImageUpload($event)" class="form-control" />
+  
+        <label for="books">Books:</label>
+        <input type="text" id="books" [(ngModel)]="newAuthor.Books" class="form-control" />
+  
+        <div *ngIf="newAuthorValidationMessage">{{ newAuthorValidationMessage }}</div>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveAuthor()">Save Author</button>
+      </div>
+    </ng-template>
+  
+    <!-- Authors Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Image</th>
+          <th scope="col">Books</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let author of authors">
+            <td>{{ author.id }}</td>
+            <td>{{ author.fullName }}</td>
+            <td>{{ author.DOB | date }}</td>
+            <td>
+              <img *ngIf="author.image" [src]="author.image" alt="Author Image" class="author-image" />
+            </td>
+            <td>{{ author.Books }}</td>
+            <td>
+              <button class="btn btn-info" (click)="openUpdateAuthorModal(updateAuthorModal, author)">Update</button>
+              <button class="btn btn-outline-danger" (click)="deleteAuthor(author.id!)">Remove Author</button>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  
+    <!-- Update Author Modal -->
+    <ng-template #updateAuthorModal let-modal>
+      <!-- Update Author Modal Content -->
+      <div class="modal-body">
+        <label for="updatedFullName">Updated Full Name:</label>
+        <input type="text" id="updatedFullName" [(ngModel)]="selectedAuthor.fullName" class="form-control" />
+  
+        <label for="updatedDOB">Updated Date of Birth:</label>
+        <input type="date" id="updatedDOB" [(ngModel)]="selectedAuthor.DOB" class="form-control" />
+  
+        <label for="updatedImage">Updated Image:</label>
+        <input type="file" id="updatedImage" (change)="handleUpdatedImageUpload($event)" class="form-control" />
+  
+        <label for="updatedBooks">Updated Books:</label>
+        <input type="text" id="updatedBooks" [(ngModel)]="selectedAuthor.Books" class="form-control" />
+  
+        <div *ngIf="updateAuthorValidationMessage">{{ updateAuthorValidationMessage }}</div>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateAuthor()">Update Author</button>
+      </div>
+    </ng-template>
+  </div>
+  

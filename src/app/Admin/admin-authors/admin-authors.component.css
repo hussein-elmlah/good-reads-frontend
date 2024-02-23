@@ -1,0 +1,7 @@
+/* Add this to your styles.css or styles.scss file */
+.author-image {
+    max-width: 100px; /* Set the maximum width */
+    max-height: 100px; /* Set the maximum height */
+    /* Add any additional styling you need */
+  }
+  

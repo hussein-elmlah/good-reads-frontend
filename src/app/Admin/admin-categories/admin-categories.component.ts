@@ -19,12 +19,20 @@ import { Category } from '../interfaces/category';
 })
 export class AdminCategoriesComponent implements OnInit {
   categories: any[] = [];
-  newCategoryName: string = ''; // Added to store the new category name
-  selectedCategory: any = {}; // Added to store the selected category for update
+  newCategoryName: string = ''; 
+  selectedCategory: any = {};
+  newCategoryValidationMessage: string = '';
+  updateCategoryValidationMessage: string = '';
+
+   // Added to store the selected category for update
+
 
   @ViewChild('addCategoryModal') addCategoryModal: any;
+  @ViewChild('updateCategoryModal') updateCategoryModal: any;
 
-  constructor(private modalService: NgbModal, private categoriesService: CategoryService) {}
+  constructor(private modalService: NgbModal, private categoriesService: CategoryService ,    private formBuilder: FormBuilder
+    ) {
+    }
 
   ngOnInit(): void {
     this.loadCategories();
@@ -47,19 +55,37 @@ export class AdminCategoriesComponent implements OnInit {
   }
 
   // admin-categories.component.ts
+// saveCategory(): void {
+//   const newCategory = { name: this.newCategoryName };
+//   this.categoriesService.addCategory(newCategory).subscribe(
+//     response => {
+//       console.log('Category saved successfully:', response);
+//       this.loadCategories(); // Refresh the category list after adding
+//       this.modalService.dismissAll(); // Close the modal
+//     },
+//     error => {
+//       console.error('Error saving category:', error);
+//     }
+//   );
+// }
 saveCategory(): void {
-  const newCategory = { name: this.newCategoryName };
-  this.categoriesService.addCategory(newCategory).subscribe(
-    response => {
-      console.log('Category saved successfully:', response);
-      this.loadCategories(); // Refresh the category list after adding
-      this.modalService.dismissAll(); // Close the modal
-    },
-    error => {
-      console.error('Error saving category:', error);
-    }
-  );
+  if (this.newCategoryName.trim() !== '') {
+    const newCategory = { name: this.newCategoryName };
+    this.categoriesService.addCategory(newCategory).subscribe(
+      (response) => {
+        console.log('Category saved successfully:', response);
+        this.loadCategories();
+        this.modalService.dismissAll();
+      },
+      (error) => {
+        console.error('Error saving category:', error);
+      }
+    );
+  } else {
+    this.newCategoryValidationMessage = 'Category Name is required.';
+  }
 }
+
 
 
   openUpdateCategoryModal(content: any, category: any): void {
@@ -67,17 +93,33 @@ saveCategory(): void {
     this.modalService.open(content, { centered: true });
   }
 
+  // updateCategory(): void {
+  //   this.categoriesService.updateCategory(this.selectedCategory).subscribe(
+  //     (      response: any) => {
+  //       console.log('Category updated successfully:', response);
+  //       this.loadCategories(); // Refresh the category list after updating
+  //       this.modalService.dismissAll(); // Close the modal
+  //     },
+  //     (      error: any) => {
+  //       console.error('Error updating category:', error);
+  //     }
+  //   );
+  // }
   updateCategory(): void {
-    this.categoriesService.updateCategory(this.selectedCategory).subscribe(
-      (      response: any) => {
-        console.log('Category updated successfully:', response);
-        this.loadCategories(); // Refresh the category list after updating
-        this.modalService.dismissAll(); // Close the modal
-      },
-      (      error: any) => {
-        console.error('Error updating category:', error);
-      }
-    );
+    if (this.selectedCategory.name.trim() !== '') {
+      this.categoriesService.updateCategory(this.selectedCategory).subscribe(
+        (response: any) => {
+          console.log('Category updated successfully:', response);
+          this.loadCategories();
+          this.modalService.dismissAll();
+        },
+        (error: any) => {
+          console.error('Error updating category:', error);
+        }
+      );
+    } else {
+      this.updateCategoryValidationMessage = 'Updated Category Name is required.';
+    }
   }
 
   deleteCategory(categoryId: number): void {

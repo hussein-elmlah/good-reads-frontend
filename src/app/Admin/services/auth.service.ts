@@ -19,7 +19,7 @@ export class AuthService {
       map((user: any) => {
         const isValid = username === user.username && password === user.password;
         if (isValid) {
-          const token = 'simulated_jwt_token'; // Replace with the actual token from the server
+          const token = 'simulated_jwt_token'; 
           localStorage.setItem('token', token);
           this.isAuthenticatedSubject.next(true);
         }
@@ -27,7 +27,6 @@ export class AuthService {
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 404) {
-          // Handle 404 error (e.g., user not found)
           console.error('User not found.');
         } else {
           console.error('An error occurred:', error.message);
