@@ -1,1 +1,88 @@
-<p>admin-books works!</p>
+<div class="container mt-3">
+    <h2>Books</h2>
+  
+    <button class="btn btn-primary" (click)="openAddBookModal()">Add Book</button>
+  
+    <ng-template #addBookModal let-modal>
+      <div class="modal-body">
+        <label for="bookName">Book Name:</label>
+        <input type="text" id="bookName" [(ngModel)]="newBook.name" class="form-control" />
+  
+        <label for="category">Category:</label>
+        <select id="category" [(ngModel)]="newBook.category" class="form-control">
+          <option *ngFor="let category of categories">{{ category.name }}</option>
+        </select>
+  
+        <label for="authors">Authors:</label>
+        <select id="authors" [(ngModel)]="newBook.authors" class="form-control" >
+          <option *ngFor="let author of authors" [ngValue]="author">{{ author.fisrtname + ' ' + author.lastname }}</option>
+        </select>
+  
+        <label for="image">Image:</label>
+        <input type="file" id="image" (change)="handleImageUpload($event)" class="form-control" />
+  
+        <div *ngIf="newBookValidationMessage">{{ newBookValidationMessage }}</div>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveBook()">Save Book</button>
+      </div>
+    </ng-template>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Book Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Authors</th>
+          <th scope="col">Image</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.id }}</td>
+          <td>{{ book.name }}</td>
+          <td>{{ book.category }}</td>
+          <td>{{ book.authors.join(', ') }}</td>
+          <td>
+            <img *ngIf="book.image" [src]="book.image" alt="Book Image" class="book-image" />
+          </td>
+          <td>
+            <button class="btn btn-info" (click)="openUpdateBookModal(updateBookModal, book)">Update</button>
+            <button class="btn btn-outline-danger" (click)="deleteBook(book.id!)">Remove Book</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <ng-template #updateBookModal let-modal>
+      <div class="modal-body">
+        <label for="updateBookName">Updated Book Name:</label>
+        <input type="text" id="updatedBookName" [(ngModel)]="selectedBook.name" class="form-control" />
+  
+        <label for="updateCategory">Updated Category:</label>
+        <select id="updateCategory" [(ngModel)]="selectedBook.category" class="form-control">
+          <option *ngFor="let category of categories">{{ category.name }}</option>
+        </select>
+  
+        <label for="updateAuthors">Updated Authors:</label>
+        <select id="updateAuthors" [(ngModel)]="selectedBook.authors" class="form-control" >
+          <option *ngFor="let author of authors" [ngValue]="author">{{ author.fisrtname + ' ' + author.lastname }}</option>
+        </select>
+  
+        <label for="updateImage">Updated Image:</label>
+        <input type="file" id="updateImage" (change)="handleUpdatedImageUpload($event)" class="form-control" />
+  
+        <div *ngIf="updateBookValidationMessage">{{ updateBookValidationMessage }}</div>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateBook()">Update Book</button>
+      </div>
+    </ng-template>
+  </div>
+  

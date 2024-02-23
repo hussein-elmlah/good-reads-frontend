@@ -46,7 +46,6 @@ export class AdminloginComponent implements OnInit {
         },
         (error: any) => {
           console.error(error);
-          // Handle other errors if needed
         }
       );
     } else {

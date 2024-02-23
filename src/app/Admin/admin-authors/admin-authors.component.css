@@ -1,7 +1,5 @@
-/* Add this to your styles.css or styles.scss file */
 .author-image {
     max-width: 150px; /* Set the maximum width */
-    max-height: 150px; /* Set the maximum height */
-    /* Add any additional styling you need */
+    max-height: 150px; 
   }
   
