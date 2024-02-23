@@ -6,10 +6,12 @@
     <button class="btn btn-primary" (click)="openAddAuthorModal()">Add Author</button>
   
     <ng-template #addAuthorModal let-modal>
-      <!-- Add Author Modal Content -->
       <div class="modal-body">
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" [(ngModel)]="newAuthor.fullName" class="form-control" />
+        <label for="firstName">First Name:</label>
+        <input type="text" id="fullName" [(ngModel)]="newAuthor.fisrtname" class="form-control" />
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" [(ngModel)]="newAuthor.lastname" class="form-control" />
+  
   
         <label for="dob">Date of Birth:</label>
         <input type="date" id="dob" [(ngModel)]="newAuthor.DOB" class="form-control" />
@@ -34,7 +36,8 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Full Name</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
           <th scope="col">Date of Birth</th>
           <th scope="col">Image</th>
           <th scope="col">Books</th>
@@ -44,7 +47,8 @@
       <tbody>
         <tr *ngFor="let author of authors">
             <td>{{ author.id }}</td>
-            <td>{{ author.fullName }}</td>
+            <td>{{ author.fisrtname }}</td>
+            <td>{{ author.lastname }}</td>
             <td>{{ author.DOB | date }}</td>
             <td>
               <img *ngIf="author.image" [src]="author.image" alt="Author Image" class="author-image" />
@@ -58,12 +62,13 @@
       </tbody>
     </table>
   
-    <!-- Update Author Modal -->
     <ng-template #updateAuthorModal let-modal>
-      <!-- Update Author Modal Content -->
       <div class="modal-body">
-        <label for="updatedFullName">Updated Full Name:</label>
-        <input type="text" id="updatedFullName" [(ngModel)]="selectedAuthor.fullName" class="form-control" />
+        <label for="updateFirstNameName">Updated First Name:</label>
+        <input type="text" id="updatedFirstName" [(ngModel)]="selectedAuthor.fisrtname" class="form-control" />
+
+        <label for="updateLastName">Updated Last Name:</label>
+        <input type="text" id="updatedLastName" [(ngModel)]="selectedAuthor.lastname" class="form-control" />
   
         <label for="updatedDOB">Updated Date of Birth:</label>
         <input type="date" id="updatedDOB" [(ngModel)]="selectedAuthor.DOB" class="form-control" />

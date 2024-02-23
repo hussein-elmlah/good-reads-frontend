@@ -16,11 +16,12 @@ import { AuthorService } from '../services/author.service';
 })
 export class AdminAuthorsComponent implements OnInit {
   authors: Author[] = [];
-  newAuthor: Author = { fullName: '', DOB: new Date(), Books: '' };
+  newAuthor: Author = { fisrtname: '', lastname:"",DOB: new Date(), Books: '' };
   selectedAuthor: Author = {
-    fullName: '',
+    fisrtname: '',
     DOB: new Date(),
-    Books: ''
+    Books: '',
+    lastname:''
   };
   newAuthorValidationMessage: string = '';
   updateAuthorValidationMessage: string = '';
@@ -45,7 +46,7 @@ export class AdminAuthorsComponent implements OnInit {
   }
 
   openAddAuthorModal(): void {
-    this.newAuthor = { fullName: '', DOB: new Date(), Books: '' };
+    this.newAuthor = { fisrtname: '', DOB: new Date(), Books: '' ,lastname:''};
     this.modalService.open(this.addAuthorModal, { centered: true });
   }
 
@@ -69,7 +70,7 @@ export class AdminAuthorsComponent implements OnInit {
   }
 
   updateAuthor(): void {
-    if (this.selectedAuthor.fullName.trim() !== '' && this.selectedAuthor.DOB !== null) {
+    if (this.selectedAuthor.fisrtname.trim() !== ''&&this.selectedAuthor.lastname.trim() !== '' && this.selectedAuthor.DOB !== null) {
       this.authorService.updateAuthor(this.selectedAuthor).subscribe(
         (response: any) => {
           console.log('Author updated successfully:', response);
@@ -85,13 +86,12 @@ export class AdminAuthorsComponent implements OnInit {
     }
   }
   
-  // admin-authors.component.ts
 
 deleteAuthor(authorId: number): void {
   this.authorService.deleteAuthor(authorId).subscribe(
     (response: any) => {
       console.log('Author deleted successfully:', response);
-      this.loadAuthors(); // Refresh the author list after deleting
+      this.loadAuthors(); 
     },
     (error: any) => {
       console.error('Error deleting author:', error);
@@ -104,7 +104,6 @@ deleteAuthor(authorId: number): void {
   
   
 
-  // Handle image upload for adding author
   handleImageUpload(event: any): void {
     const file = event.target.files[0];
     this.uploadImage(file, (url: string) => {
@@ -112,7 +111,6 @@ deleteAuthor(authorId: number): void {
     });
   }
 
-  // Handle image upload for updating author
   handleUpdatedImageUpload(event: any): void {
     const file = event.target.files[0];
     this.uploadImage(file, (url: string) => {
@@ -120,14 +118,11 @@ deleteAuthor(authorId: number): void {
     });
   }
 
-  // Simulate image upload to a server and get the image URL
   private uploadImage(file: File, callback: (url: string) => void): void {
-    // Simulate upload logic here, for example, using FileReader to read the file
     const reader = new FileReader();
     reader.onload = (e: any) => {
       const imageUrl = e.target.result;
-      // In a real-world scenario, you would send the file to the server and get the URL
-      // Here, we'll just simulate it by providing a base64 representation of the image
+    
       callback(imageUrl);
     };
     reader.readAsDataURL(file);
