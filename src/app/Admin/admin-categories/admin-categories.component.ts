@@ -95,24 +95,46 @@ export class AdminCategoriesComponent implements OnInit {
 //     }
 //   );
 // }
+// saveCategory(): void {
+//   if (this.newCategoryName.trim() !== '') {
+//     const newCategory = { name: this.newCategoryName };
+//     this.categoriesService.addCategory(newCategory).subscribe(
+//       (response) => {
+//         console.log('Category saved successfully:', response);
+//         this.loadCategories();
+//         this.modalService.dismissAll();
+//       },
+//       (error) => {
+//         console.error('Error saving category:', error);
+//       }
+//     );
+//   } else {
+//     this.newCategoryValidationMessage = 'Category Name is required.';
+//   }
+// }
+
 saveCategory(): void {
   if (this.newCategoryName.trim() !== '') {
-    const newCategory = { name: this.newCategoryName };
-    this.categoriesService.addCategory(newCategory).subscribe(
-      (response) => {
-        console.log('Category saved successfully:', response);
-        this.loadCategories();
-        this.modalService.dismissAll();
-      },
-      (error) => {
-        console.error('Error saving category:', error);
-      }
-    );
+    // Check if the category name contains only letters
+    if (/^[a-zA-Z]+$/.test(this.newCategoryName)) {
+      const newCategory = { name: this.newCategoryName };
+      this.categoriesService.addCategory(newCategory).subscribe(
+        (response) => {
+          console.log('Category saved successfully:', response);
+          this.loadCategories();
+          this.modalService.dismissAll();
+        },
+        (error) => {
+          console.error('Error saving category:', error);
+        }
+      );
+    } else {
+      this.newCategoryValidationMessage = 'Category Name should only contain letters.';
+    }
   } else {
     this.newCategoryValidationMessage = 'Category Name is required.';
   }
 }
-
 
 
   openUpdateCategoryModal(content: any, category: any): void {
