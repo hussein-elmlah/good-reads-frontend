@@ -101,24 +101,26 @@ export class AdminBooksComponent {
 
     updateBook(): void {
         if (
-            this.selectedBook.name.trim() !== ""
-      && this.selectedBook.category.trim() !== ""
-      && this.selectedBook.authors.length > 0
-        ) {
-            this.bookService.updateBook(this.selectedBook).subscribe(
-                (response: any) => {
-                    console.log("Book updated successfully:", response);
-                    this.loadBooks();
-                    this.modalService.dismissAll();
-                },
-                (error: any) => {
-                    console.error("Error updating book:", error);
-                }
-            );
+          this.selectedBook.name.trim() !== '' &&
+          this.selectedBook.category.trim() !== '' )
+        //   this.selectedBook.authors.length > 0
+         {
+          this.bookService.updateBook(this.selectedBook).subscribe(
+            (response: any) => {
+              console.log('Book updated successfully:', response);
+              this.loadBooks();
+              this.modalService.dismissAll();
+            },
+            (error: any) => {
+              console.error('Error updating book:', error);
+            }
+          );
         } else {
-            this.updateBookValidationMessage = "Updated Book Name, Category, and Authors are required.";
+          this.updateBookValidationMessage =
+            'Updated Book Name, Category, and Authors are required.';
         }
-    }
+      }
+    
 
     deleteBook(bookId: number): void {
         this.bookService.deleteBook(bookId).subscribe(
