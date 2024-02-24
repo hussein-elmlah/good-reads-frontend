@@ -3,12 +3,28 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FrontEndProject": {
+    "GoodReads": {
       "projectType": "application",
-      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "spec": false
+        },
+        "@schematics/angular:directive": {
+          "spec": false
+        },
+        "@schematics/angular:pipe": {
+          "spec": false
+        },
+        "@schematics/angular:service": {
+          "spec": false
+        },
+        "@schematics/angular:class": {
+          "spec": false
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -64,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "FrontEndProject:build:production"
+              "buildTarget": "GoodReads:build:production"
             },
             "development": {
-              "buildTarget": "FrontEndProject:build:development"
+              "buildTarget": "GoodReads:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "FrontEndProject:build"
+            "buildTarget": "GoodReads:build"
           }
         },
         "test": {
