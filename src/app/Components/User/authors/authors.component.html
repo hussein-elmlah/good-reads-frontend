@@ -1,21 +1,2 @@
-<app-nav-bar></app-nav-bar>
 
-<div class="container row m-auto">
-    <div class="col-md-3 mb-2" *ngFor="let author of getPaginatedAuthors()" (click)="redirectToAuthor(author.id)">
-        <div class="card h-100">
-        <img class="card-img-top" [src]="author.photo" alt="Author Photo">
-        <div class="card-body">
-          <h5 class="card-title">{{ author.firstName }} {{ author.lastName }}</h5>
-          <p class="card-text">Date of Birth: {{ author.dob }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <app-pagination
-    [currentPage]="currentPage"
-    [itemsPerPage]="itemsPerPage"
-    [totalItems]="authors.length"
-    (pageChange)="onPageChange($event)">
-  </app-pagination>
-  
+<app-nav-bar></app-nav-bar>
