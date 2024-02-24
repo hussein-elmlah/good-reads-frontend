@@ -44,8 +44,7 @@
     </table>
   
     <!-- Update Category Modal -->
-    <ng-template #updateCategoryModal let-modal>
-      <!-- Update Category Modal Content -->
+    <!-- <ng-template #updateCategoryModal let-modal>
       <div class="modal-body">
         <label for="updatedCategoryName">Updated Category Name:</label>
         <input type="text" id="updatedCategoryName" [(ngModel)]="selectedCategory.name" class="form-control" />
@@ -58,7 +57,21 @@
         <button type="button" class="btn btn-primary" (click)="updateCategory()">Update Category</button>
       </div>
     </ng-template>
+  </div> -->
+  <!-- Update Category Modal Content -->
+<ng-template #updateCategoryModal let-modal>
+  <div class="modal-body">
+    <label for="updatedCategoryName">Updated Category Name:</label>
+    <input type="text" id="updatedCategoryName" [(ngModel)]="selectedCategory.name" class="form-control" />
+    <div *ngIf="updateCategoryValidationMessage" class="text-danger">{{ updateCategoryValidationMessage }}</div>
   </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="updateCategory()">Update Category</button>
+  </div>
+</ng-template>
+
   <!-- admin-categories.component.html -->
 <!-- ... existing code ... -->
 

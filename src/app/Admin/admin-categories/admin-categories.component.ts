@@ -154,23 +154,46 @@ saveCategory(): void {
   //     }
   //   );
   // }
+  // updateCategory(): void {
+  //   if (this.selectedCategory.name.trim() !== '') {
+  //     if (/^[a-zA-Z]+$/.test(this.selectedCategory)) {
+
+  //     this.categoriesService.updateCategory(this.selectedCategory).subscribe(
+  //       (response: any) => {
+  //         console.log('Category updated successfully:', response);
+  //         this.loadCategories();
+  //         this.modalService.dismissAll();
+  //       },
+  //       (error: any) => {
+  //         console.error('Error updating category:', error);
+  //       }
+  //     );
+  //   } else {
+  //     this.updateCategoryValidationMessage = 'Updated Category Name is required.';
+  //   }
+  // }}
   updateCategory(): void {
-    if (this.selectedCategory.name.trim() !== '') {
-      this.categoriesService.updateCategory(this.selectedCategory).subscribe(
-        (response: any) => {
-          console.log('Category updated successfully:', response);
-          this.loadCategories();
-          this.modalService.dismissAll();
-        },
-        (error: any) => {
-          console.error('Error updating category:', error);
-        }
-      );
+    if (this.selectedCategory.name.trim() !== '' ) {
+      // Check if the updated category name contains only letters
+      if (/^[a-zA-Z]+$/.test(this.selectedCategory.name)) {
+        this.categoriesService.updateCategory(this.selectedCategory).subscribe(
+          (response: any) => {
+            console.log('Category updated successfully:', response);
+            this.loadCategories();
+            this.modalService.dismissAll();
+          },
+          (error: any) => {
+            console.error('Error updating category:', error);
+          }
+        );
+      } else {
+        this.updateCategoryValidationMessage = 'Updated Category Name should only contain letters.';
+      }
     } else {
       this.updateCategoryValidationMessage = 'Updated Category Name is required.';
     }
   }
-
+  
   deleteCategory(categoryId: number): void {
     this.categoriesService.deleteCategory(categoryId).subscribe(
       (      response: any) => {
