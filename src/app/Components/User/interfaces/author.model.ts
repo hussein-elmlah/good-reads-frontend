@@ -4,5 +4,4 @@ export interface Author {
     lastName: string;
     dob: string;
     photo: string;
-  }
-  
+}

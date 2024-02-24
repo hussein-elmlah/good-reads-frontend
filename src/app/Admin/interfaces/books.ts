@@ -6,4 +6,4 @@ export interface Book {
     category: string;
     authors: Author[];
     image?: string;
-  }
+}

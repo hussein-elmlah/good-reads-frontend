@@ -7,10 +7,10 @@
 //   Books: string;
 // }
 export interface Author {
-  id?: number;
-  fisrtname: string;
-  lastname: string;
-  DOB: string | null; // Change the type to string
-  image?: File | string;
-  Books: string;
+    id?: number;
+    fisrtname: string;
+    lastname: string;
+    DOB: string | null; // Change the type to string
+    image?: File | string;
+    Books: string;
 }
