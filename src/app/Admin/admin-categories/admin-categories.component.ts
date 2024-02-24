@@ -48,6 +48,33 @@ export class AdminCategoriesComponent implements OnInit {
       }
     );
   }
+  // totalItems: number = 0;
+  // totalCategories: number = 0;
+  // currentPage = 1;
+  // pageSize = 10;
+  // loadCategories(): void {
+  //   this.categoriesService.getCategories().subscribe(
+  //     (categories: any[]) => {
+  //       this.totalCategories = categories.length; // Update the total number of categories
+  //       this.categories = categories;
+  //     },
+  //     (error: any) => {
+  //       console.error('Error loading categories:', error);
+  //     }
+  //   );
+  // }
+
+  // changePage(newPage: number): void {
+  //   if (newPage >= 1 && newPage <= this.totalCategories) {
+  //     this.currentPage = newPage;
+  //     this.loadCategories();
+  //   }
+  // }
+
+  // getPages(): number[] {
+  //   const totalPages = Math.ceil(this.categories.length / this.pageSize);
+  //   return Array.from({ length: totalPages }, (_, i) => i + 1);
+  // }
 
   openAddCategoryModal(): void {
     this.newCategoryName = ''; // Reset the new category name

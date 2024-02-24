@@ -1,13 +1,11 @@
-<!-- author.component.html -->
 <div class="container mt-3">
     <h2>Authors</h2>
   
-    <!-- Add Author Button and Modal -->
     <button class="btn btn-primary" (click)="openAddAuthorModal()">Add Author</button>
   
     <ng-template #addAuthorModal let-modal>
       <div class="modal-body">
-        <label for="firstName">First Name:</label>
+        <!-- <label for="firstName">First Name:</label>
         <input type="text" id="fullName" [(ngModel)]="newAuthor.fisrtname" class="form-control" />
         <label for="lastName">Last Name:</label>
         <input type="text" id="lastName" [(ngModel)]="newAuthor.lastname" class="form-control" />
@@ -22,7 +20,23 @@
         <label for="books">Books:</label>
         <input type="text" id="books" [(ngModel)]="newAuthor.Books" class="form-control" />
   
-        <div *ngIf="newAuthorValidationMessage">{{ newAuthorValidationMessage }}</div>
+        <div *ngIf="newAuthorValidationMessage">{{ newAuthorValidationMessage }}</div> -->
+        <label for="fullName">First Name: <span class="required-field">*</span></label>
+<input type="text" id="fullName" [(ngModel)]="newAuthor.fisrtname" class="form-control" required />
+
+<label for="lastName">Last Name: <span class="required-field">*</span></label>
+<input type="text" id="lastName" [(ngModel)]="newAuthor.lastname" class="form-control" required />
+<label for="dob">Date of Birth: <span class="required-field">*</span></label>
+<input type="date" id="dob" [(ngModel)]="newAuthor.DOB" class="form-control" required />
+
+
+<label for="image">Image:</label>
+<input type="file" id="image" (change)="handleImageUpload($event)" class="form-control" />
+
+<label for="books">Books: <span class="required-field">*</span></label>
+<input type="text" id="books" [(ngModel)]="newAuthor.Books" class="form-control" required />
+
+<div *ngIf="newAuthorValidationMessage" class="validation-message">{{ newAuthorValidationMessage }}</div>
       </div>
   
       <div class="modal-footer">
@@ -31,7 +45,6 @@
       </div>
     </ng-template>
   
-    <!-- Authors Table -->
     <table class="table">
       <thead>
         <tr>
@@ -63,29 +76,27 @@
     </table>
   
     <ng-template #updateAuthorModal let-modal>
-      <div class="modal-body">
-        <label for="updateFirstNameName">Updated First Name:</label>
-        <input type="text" id="updatedFirstName" [(ngModel)]="selectedAuthor.fisrtname" class="form-control" />
-
-        <label for="updateLastName">Updated Last Name:</label>
-        <input type="text" id="updatedLastName" [(ngModel)]="selectedAuthor.lastname" class="form-control" />
-  
-        <label for="updatedDOB">Updated Date of Birth:</label>
-        <input type="date" id="updatedDOB" [(ngModel)]="selectedAuthor.DOB" class="form-control" />
-  
-        <label for="updatedImage">Updated Image:</label>
-        <input type="file" id="updatedImage" (change)="handleUpdatedImageUpload($event)" class="form-control" />
-  
-        <label for="updatedBooks">Updated Books:</label>
-        <input type="text" id="updatedBooks" [(ngModel)]="selectedAuthor.Books" class="form-control" />
-  
-        <div *ngIf="updateAuthorValidationMessage">{{ updateAuthorValidationMessage }}</div>
-      </div>
-  
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
-        <button type="button" class="btn btn-primary" (click)="updateAuthor()">Update Author</button>
-      </div>
-    </ng-template>
-  </div>
-  
+        <div class="modal-body">
+          <label for="updatedFirstName">Updated First Name: <span class="required-field">*</span></label>
+          <input type="text" id="updatedFirstName" [(ngModel)]="selectedAuthor.fisrtname" class="form-control" required />
+      
+          <label for="updatedLastName">Updated Last Name: <span class="required-field">*</span></label>
+          <input type="text" id="updatedLastName" [(ngModel)]="selectedAuthor.lastname" class="form-control" required />
+      
+          <label for="updatedDOB">Updated Date of Birth: <span class="required-field">*</span></label>
+          <input type="date" id="updatedDOB" [(ngModel)]="formattedDOB" class="form-control" required />
+      
+          <label for="updatedImage">Updated Image:</label>
+          <input type="file" id="updatedImage" (change)="handleUpdatedImageUpload($event)" class="form-control" />
+      
+          <label for="updatedBooks">Updated Books: <span class="required-field">*</span></label>
+          <input type="text" id="updatedBooks" [(ngModel)]="selectedAuthor.Books" class="form-control" required />
+      
+          <div *ngIf="updateAuthorValidationMessage" class="validation-message">{{ updateAuthorValidationMessage }}</div>
+        </div>
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="updateAuthor()">Update Author</button>
+        </div>
+      </ng-template>

@@ -2,4 +2,13 @@
     max-width: 150px; /* Set the maximum width */
     max-height: 150px; 
   }
+.required-field {
+    color: red;
+    margin-left: 5px;
+  }
+  
+  .validation-message {
+    color: red;
+    margin-top: 5px;
+  }
   
