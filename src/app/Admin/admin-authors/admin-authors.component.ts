@@ -16,10 +16,10 @@ import { AuthorService } from '../services/author.service';
 })
 export class AdminAuthorsComponent implements OnInit {
   authors: Author[] = [];
-  newAuthor: Author = { fisrtname: '', lastname:"",DOB: new Date(), Books: '' };
+  newAuthor: Author = { fisrtname: '', lastname:"",DOB: null, Books: '' };
   selectedAuthor: Author = {
     fisrtname: '',
-    DOB: new Date(),
+    DOB: '' ,
     Books: '',
     lastname:''
   };
@@ -46,46 +46,148 @@ export class AdminAuthorsComponent implements OnInit {
   }
 
   openAddAuthorModal(): void {
-    this.newAuthor = { fisrtname: '', DOB: new Date(), Books: '' ,lastname:''};
+    this.newAuthor = { fisrtname: '', DOB: '', Books: '' ,lastname:''};
     this.modalService.open(this.addAuthorModal, { centered: true });
   }
+  // saveAuthor(): void {
+  //   if (
+  //     this.newAuthor.fisrtname.trim() !== '' &&
+  //     this.newAuthor.lastname.trim() !== '' &&
+  //     this.newAuthor.Books.trim() !== '' &&
+  //     // this.newAuthor.DOB !== null 
+  //     (this.newAuthor.DOB?.toString().trim() !== null && this.newAuthor.DOB?.toString().trim() !== '')
 
+  //   ) {
+  //     this.authorService.addAuthor(this.newAuthor).subscribe(
+  //       response => {
+  //         console.log('Author saved successfully:', response);
+  //         this.loadAuthors();
+  //         this.modalService.dismissAll();
+  //       },
+  //       error => {
+  //         console.error('Error saving author:', error);
+  //         this.newAuthorValidationMessage = 'Error saving author. Please try again.';
+  //       }
+  //     );
+  //   } else {
+  //     // Set validation message if any of the required fields are empty
+  //     this.newAuthorValidationMessage = 'Please fill in all the required fields.';
+  //   }
+  // }
+  
   saveAuthor(): void {
-    this.authorService.addAuthor(this.newAuthor).subscribe(
-      response => {
-        console.log('Author saved successfully:', response);
-        this.loadAuthors();
-        this.modalService.dismissAll();
-      },
-      error => {
-        console.error('Error saving author:', error);
-        this.newAuthorValidationMessage = 'Error saving author. Please try again.';
-      }
-    );
-  }
-
-  openUpdateAuthorModal(content: any, author: Author): void {
-    this.selectedAuthor = { ...author };
-    this.modalService.open(content, { centered: true });
-  }
-
-  updateAuthor(): void {
-    if (this.selectedAuthor.fisrtname.trim() !== ''&&this.selectedAuthor.lastname.trim() !== '' && this.selectedAuthor.DOB !== null) {
-      this.authorService.updateAuthor(this.selectedAuthor).subscribe(
-        (response: any) => {
-          console.log('Author updated successfully:', response);
+    if (
+      this.newAuthor.fisrtname.trim() !== '' &&
+      this.newAuthor.lastname.trim() !== '' &&
+      this.newAuthor.Books.trim() !== '' &&
+      this.newAuthor.DOB !== null && this.newAuthor.DOB.trim() !== ''
+    ) {
+      this.authorService.addAuthor(this.newAuthor).subscribe(
+        response => {
+          console.log('Author saved successfully:', response);
           this.loadAuthors();
           this.modalService.dismissAll();
         },
-        (error: any) => {
-          console.error('Error updating author:', error);
+        error => {
+          console.error('Error saving author:', error);
+          this.newAuthorValidationMessage = 'Error saving author. Please try again.';
         }
       );
     } else {
-      this.updateAuthorValidationMessage = 'Updated Full Name and Date of Birth are required.';
+      // Handle the case where the date is not a valid Date object
+      this.newAuthorValidationMessage = 'Please select a valid Date of Birth.';
     }
   }
   
+  public formattedDOB: string = '';
+  
+  
+    // openUpdateAuthorModal(content: any, author: Author): void {
+    //   this.selectedAuthor = { ...author };
+    //   this.formattedDOB = this.selectedAuthor.DOB ? new Date(this.selectedAuthor.DOB).toISOString().split('T')[0] : '';
+    //   this.modalService.open(content, { centered: true });
+    // }
+  
+    updateAuthor(): void {
+      // this.selectedAuthor.DOB = this.formattedDOB ? new Date(this.formattedDOB) : new Date();
+  
+      // if (this.selectedAuthor.fisrtname.trim() !== ''&&this.selectedAuthor.lastname.trim() !== '' && this.selectedAuthor.DOB !== null) 
+      if (
+        this.selectedAuthor.fisrtname.trim() !== '' &&
+        this.selectedAuthor.lastname.trim() !== '' &&
+        this.selectedAuthor.Books != null && // Check for null or undefined
+        this.selectedAuthor.Books.trim() !== '' &&
+        this.selectedAuthor.DOB !== null && this.selectedAuthor.DOB.trim() !== ''
+      ) {
+        this.authorService.updateAuthor(this.selectedAuthor).subscribe(
+          (response: any) => {
+            console.log('Author updated successfully:', response);
+            this.loadAuthors();
+            this.modalService.dismissAll();
+          },
+          (error: any) => {
+            console.error('Error updating author:', error);
+          }
+        );
+      } else {
+        this.updateAuthorValidationMessage = 'Updated Full Name, Books, and Date of Birth are required.';
+      }
+    }
+    
+  
+  
+
+  // saveAuthor(): void {
+  //   this.authorService.addAuthor(this.newAuthor).subscribe(
+  //     response => {
+  //       console.log('Author saved successfully:', response);
+  //       this.loadAuthors();
+  //       this.modalService.dismissAll();
+  //     },
+  //     error => {
+  //       console.error('Error saving author:', error);
+  //       this.newAuthorValidationMessage = 'Error saving author. Please try again.';
+  //     }
+  //   );
+  // }
+
+
+
+// saveAuthor(): void {
+//   if (
+//     this.newAuthor.fisrtname.trim() !== '' &&
+//     this.newAuthor.lastname.trim() !== '' &&
+//     this.newAuthor.Books.trim() !== '' &&
+//     this.newAuthor.DOB !== null 
+//   ) {
+//     this.authorService.addAuthor(this.newAuthor).subscribe(
+//       response => {
+//         console.log('Author saved successfully:', response);
+//         this.loadAuthors();
+//         this.modalService.dismissAll();
+//       },
+//       error => {
+//         console.error('Error saving author:', error);
+//         this.newAuthorValidationMessage = 'Error saving author. Please try again.';
+//       }
+//     );
+//   } else {
+//     // Set validation message if any of the required fields are empty
+//     this.newAuthorValidationMessage = 'Please fill in all the required fields.';
+//   }
+// }
+
+// public formattedDOB: string = '';
+
+
+  openUpdateAuthorModal(content: any, author: Author): void {
+    this.selectedAuthor = { ...author };
+    this.formattedDOB = this.selectedAuthor.DOB ? new Date(this.selectedAuthor.DOB).toISOString().split('T')[0] : '';
+    this.modalService.open(content, { centered: true });
+  }
+
+
+ 
 
 deleteAuthor(authorId: number): void {
   this.authorService.deleteAuthor(authorId).subscribe(
@@ -127,4 +229,4 @@ deleteAuthor(authorId: number): void {
     };
     reader.readAsDataURL(file);
   }
-}
+}    

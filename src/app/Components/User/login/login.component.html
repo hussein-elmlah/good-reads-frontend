@@ -9,7 +9,7 @@
 </div>
 
 <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert alert-danger p-1">
-  <p class="mb-0" *ngIf="loginForm.get('email')?.getError('required')">Name is required</p>
+  <p class="mb-0" *ngIf="loginForm.get('email')?.getError('required')">Email is required</p>
   <p class="mb-0" *ngIf="loginForm.get('email')?.getError('email')">Email Invalid</p>
 
 </div>

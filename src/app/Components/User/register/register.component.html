@@ -18,7 +18,7 @@
 </div>
 
 <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="alert alert-danger p-1">
-  <p class="mb-0" *ngIf="registerForm.get('email')?.getError('required')">Name is required</p>
+  <p class="mb-0" *ngIf="registerForm.get('email')?.getError('required')">Email is required</p>
   <p class="mb-0" *ngIf="registerForm.get('email')?.getError('email')">Email Invalid</p>
 
 </div>
