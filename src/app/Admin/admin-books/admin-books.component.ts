@@ -22,10 +22,10 @@ export class AdminBooksComponent {
     categories: Category[] = []; // Use Category interface
 
     newBook: Book = {
-        name: "", category: "", authors: [], image: ""
+        name: "", category: "", authors: "", image: ""
     };
     selectedBook: Book = {
-        name: "", category: "", authors: [], image: ""
+        name: "", category: "", authors: "", image: ""
     };
     newBookValidationMessage: string = "";
     updateBookValidationMessage: string = "";
@@ -75,12 +75,16 @@ export class AdminBooksComponent {
 
     openAddBookModal(): void {
         this.newBook = {
-            name: "", category: "", authors: [], image: ""
+            name: "", category: "", authors: "", image: ""
         };
         this.modalService.open(this.addBookModal, { centered: true });
     }
 
     saveBook(): void {
+        if (
+            this.newBook.name.trim() !== '' &&
+            this.newBook.category.trim() !== '' &&
+            this.newBook.authors.length > 0){
         this.bookService.addBook(this.newBook).subscribe(
             (response) => {
                 console.log("Book saved successfully:", response);
@@ -92,6 +96,12 @@ export class AdminBooksComponent {
                 this.newBookValidationMessage = "Error saving book. Please try again.";
             }
         );
+       
+        }
+        else {
+            this.newBookValidationMessage =
+              ' Book Name, Category, and Authors are required.';
+          }
     }
 
     openUpdateBookModal(content: any, book: Book): void {
@@ -102,8 +112,8 @@ export class AdminBooksComponent {
     updateBook(): void {
         if (
           this.selectedBook.name.trim() !== '' &&
-          this.selectedBook.category.trim() !== '' )
-        //   this.selectedBook.authors.length > 0
+          this.selectedBook.category.trim() !== '' &&
+          this.selectedBook.authors.length > 0)
          {
           this.bookService.updateBook(this.selectedBook).subscribe(
             (response: any) => {

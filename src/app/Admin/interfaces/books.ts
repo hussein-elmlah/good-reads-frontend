@@ -4,6 +4,6 @@ export interface Book {
     id?: number;
     name: string;
     category: string;
-    authors: Author[];
+    authors: string;
     image?: string;
 }
