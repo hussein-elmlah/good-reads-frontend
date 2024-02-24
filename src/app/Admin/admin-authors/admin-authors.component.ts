@@ -76,12 +76,18 @@ export class AdminAuthorsComponent implements OnInit {
   // }
   
   saveAuthor(): void {
+    // if (
+    //   this.newAuthor.fisrtname.trim() !== '' &&
+    //   this.newAuthor.lastname.trim() !== '' &&
+    //   this.newAuthor.Books.trim() !== '' &&
+    //   this.newAuthor.DOB !== null && this.newAuthor.DOB.trim() !== ''
+    // )
     if (
-      this.newAuthor.fisrtname.trim() !== '' &&
-      this.newAuthor.lastname.trim() !== '' &&
+      this.isNameValid(this.newAuthor.fisrtname) &&
+      this.isNameValid(this.newAuthor.lastname) &&
       this.newAuthor.Books.trim() !== '' &&
       this.newAuthor.DOB !== null && this.newAuthor.DOB.trim() !== ''
-    ) {
+    )  {
       this.authorService.addAuthor(this.newAuthor).subscribe(
         response => {
           console.log('Author saved successfully:', response);
@@ -95,7 +101,9 @@ export class AdminAuthorsComponent implements OnInit {
       );
     } else {
       // Handle the case where the date is not a valid Date object
-      this.newAuthorValidationMessage = 'Please select a valid Date of Birth.';
+      // this.newAuthorValidationMessage = 'Please select a valid Date of Birth.';
+      this.newAuthorValidationMessage = 'Please fill in all the required fields with valid names.';
+
     }
   }
   
@@ -112,10 +120,17 @@ export class AdminAuthorsComponent implements OnInit {
       // this.selectedAuthor.DOB = this.formattedDOB ? new Date(this.formattedDOB) : new Date();
   
       // if (this.selectedAuthor.fisrtname.trim() !== ''&&this.selectedAuthor.lastname.trim() !== '' && this.selectedAuthor.DOB !== null) 
+      // if (
+      //   this.selectedAuthor.fisrtname.trim() !== '' &&
+      //   this.selectedAuthor.lastname.trim() !== '' &&
+      //   this.selectedAuthor.Books != null && // Check for null or undefined
+      //   this.selectedAuthor.Books.trim() !== '' &&
+      //   this.selectedAuthor.DOB !== null && this.selectedAuthor.DOB.trim() !== ''
+      // )
       if (
-        this.selectedAuthor.fisrtname.trim() !== '' &&
-        this.selectedAuthor.lastname.trim() !== '' &&
-        this.selectedAuthor.Books != null && // Check for null or undefined
+        this.isNameValid(this.selectedAuthor.fisrtname) &&
+        this.isNameValid(this.selectedAuthor.lastname) &&
+        this.selectedAuthor.Books != null &&
         this.selectedAuthor.Books.trim() !== '' &&
         this.selectedAuthor.DOB !== null && this.selectedAuthor.DOB.trim() !== ''
       ) {
@@ -130,7 +145,9 @@ export class AdminAuthorsComponent implements OnInit {
           }
         );
       } else {
-        this.updateAuthorValidationMessage = 'Updated Full Name, Books, and Date of Birth are required.';
+        // this.updateAuthorValidationMessage = 'Updated Full Name, Books, and Date of Birth are required.';
+        this.updateAuthorValidationMessage = 'Updated First Name, Last Name, Books, and Date of Birth are required with no speacial characters .';
+
       }
     }
     
@@ -229,4 +246,13 @@ deleteAuthor(authorId: number): void {
     };
     reader.readAsDataURL(file);
   }
+  
+
+  
+  private isNameValid(name: string): boolean {
+    // Check if the name contains only letters
+    return /^[a-zA-Z]+$/.test(name);
+  }
+
+  
 }    
