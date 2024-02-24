@@ -154,4 +154,14 @@ export class AdminBooksComponent {
         };
         reader.readAsDataURL(file);
     }
+    getAuthorNames(authors: Author[] | Author): string {
+        if (Array.isArray(authors)) {
+          return authors.map(author => `${author.fisrtname} ${author.lastname}`).join(', ');
+        } else if (authors) {
+          return `${authors.fisrtname} ${authors.lastname}`;
+        } else {
+          return '';
+        }
+      }
+      
 }

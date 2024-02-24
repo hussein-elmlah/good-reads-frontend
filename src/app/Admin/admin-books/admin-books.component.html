@@ -46,7 +46,10 @@
           <td>{{ book.id }}</td>
           <td>{{ book.name }}</td>
           <td>{{ book.category }}</td>
-          <td>{{ book.authors.join(', ') }}</td>
+          <!-- In your HTML template -->
+<!-- Assuming each author object has properties fisrtname and lastname -->
+<td>{{ getAuthorNames(book.authors) }}</td>
+
           <td>
             <img *ngIf="book.image" [src]="book.image" alt="Book Image" class="book-image" />
           </td>

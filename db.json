@@ -1,25 +1,75 @@
 {
   "categories": [
     {
-      "id": "eb87",
+      "id": "261c",
       "name": "cat"
+    },
+    {
+      "id": "6292",
+      "name": "jk"
     }
   ],
   "authors": [
     {
-      "id": "c6ed",
+      "id": "0e1d",
       "fisrtname": "omnia",
-      "DOB": "0022-02-22",
-      "Books": "nn",
+      "DOB": "2001-11-10",
+      "Books": "heelo",
+      "lastname": "mohamed"
+    },
+    {
+      "id": "b386",
+      "fisrtname": "omnia",
+      "DOB": "2201-11-10",
+      "Books": "heelo",
+      "lastname": "mohamed"
+    },
+    {
+      "id": "84c6",
+      "fisrtname": "esraa",
+      "DOB": "2001-01-10",
+      "Books": "heelo",
       "lastname": "mohamed"
     }
   ],
   "books": [
     {
-      "id": "fb2e",
-      "name": "",
-      "category": "",
-      "authors": [],
+      "id": "ecea",
+      "name": "mm",
+      "category": "cat",
+      "authors": {
+        "id": "0e1d",
+        "fisrtname": "omnia",
+        "DOB": "2001-11-10",
+        "Books": "heelo",
+        "lastname": "mohamed"
+      },
+      "image": ""
+    },
+    {
+      "id": "b5b5",
+      "name": "mm",
+      "category": "cat",
+      "authors": {
+        "id": "0e1d",
+        "fisrtname": "omnia",
+        "DOB": "2001-11-10",
+        "Books": "heelo",
+        "lastname": "mohamed"
+      },
+      "image": ""
+    },
+    {
+      "id": "5a0c",
+      "name": "mm",
+      "category": "jk",
+      "authors": {
+        "id": "84c6",
+        "fisrtname": "esraa",
+        "DOB": "2001-01-10",
+        "Books": "heelo",
+        "lastname": "mohamed"
+      },
       "image": ""
     }
   ]
