@@ -16,4 +16,5 @@ signOut():void{
   localStorage.removeItem('token')
   this._Router.navigate(['/'])
 }
+
 }
