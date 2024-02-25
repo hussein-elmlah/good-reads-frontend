@@ -1,17 +1,37 @@
-<section class="w-100 mx-auto shadow rounded p-4 my-3 bg-light ">
+<app-nav-bar></app-nav-bar>
+<section class="w-75 mx-auto shadow rounded p-4 my-5 bg-light ">
   <h1 class="my-3">Register</h1>
   <form [formGroup]="registerForm" (ngSubmit)="handleForm()">
 <div class="form-item">
-  <label for="name">name</label>
-  <input type="text" formControlName="name" name=""  class="form-control" id="name">
+  <label for="firstName">firstName</label>
+  <input type="text" formControlName="firstName" name=""  class="form-control" id="firstName">
 </div>
 
-<div *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched" class="alert alert-danger p-1">
-  <p class="mb-0" *ngIf="registerForm.get('name')?.getError('required')">Name is required</p>
-  <p class="mb-0" *ngIf="registerForm.get('name')?.getError('minlength')">Name minLength 3</p>
-  <p class="mb-0" *ngIf="registerForm.get('name')?.getError('maxlength')">Name maxLength 20</p>
+<div *ngIf="registerForm.get('firstName')?.errors && registerForm.get('firstName')?.touched" class="alert alert-danger p-1">
+  <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('required')">firstName is required</p>
+  <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('minlength')">firstName minLength 3</p>
+  <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('maxlength')">firstName maxLength 20</p>
+</div>
+<div class="form-item">
+  <label for="lastName">lastName</label>
+  <input type="text" formControlName="lastName" name=""  class="form-control" id="lastName">
 </div>
 
+<div *ngIf="registerForm.get('lastName')?.errors && registerForm.get('lastName')?.touched" class="alert alert-danger p-1">
+  <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('required')">lastName is required</p>
+  <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('minlength')">lastName minLength 3</p>
+  <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('maxlength')">lastName maxLength 20</p>
+</div>
+<div class="form-item">
+  <label for="username">username</label>
+  <input type="text" formControlName="username" name=""  class="form-control" id="username">
+</div>
+
+<div *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched" class="alert alert-danger p-1">
+  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('required')">username is required</p>
+  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('minlength')">username minLength 3</p>
+  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('maxlength')">username maxLength 20</p>
+</div>
 <div class="form-item">
   <label for="email">email</label>
   <input type="email" formControlName="email" name="" id="email" class="form-control" >
@@ -30,7 +50,7 @@
 
 <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="alert alert-danger p-1">
   <p class="mb-0" *ngIf="registerForm.get('password')?.getError('required')">Password is required</p>
-  <p class="mb-0" *ngIf="registerForm.get('password')?.getError('pattern')">must be at least 6 char</p>
+  <p class="mb-0" *ngIf="registerForm.get('password')?.getError('pattern')">must be at least 8 char</p>
 
 </div>
 
@@ -46,10 +66,10 @@
 
 </div>
 
-<button [disabled]="registerForm.invalid" class="btn main-btn text-white bg-success mt-2">SignUp
+<button [disabled]="registerForm.invalid" style="background-color: brown;" class="btn main-btn text-white  mt-2">SignUp
 <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
 </button>
-<p>Do you have account? <a routerLink="/login" class="text-decoration-none text-success">login</a></p>
+<p>Do you have account? <a routerLink="/login" class="text-decoration-none " style="color: brown;">login</a></p>
         
 </form>
 <p *ngIf="errMsg" class="alert alert-danger p-1 mb-0">{{errMsg}}</p>

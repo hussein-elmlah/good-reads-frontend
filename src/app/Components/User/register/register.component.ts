@@ -1,82 +1,70 @@
-import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
-import { Component } from "@angular/core";
-import {
-    FormBuilder, FormControlOptions, FormGroup, ReactiveFormsModule, Validators
-} from "@angular/forms";
-import { Router, RouterLink, RouterLinkActive } from "@angular/router";
-
-import { AuthService } from "../../../Services/auth.service";
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ReactiveFormsModule ,AbstractControl, FormBuilder, FormControl, FormGroup,  Validators, FormControlOptions } from '@angular/forms';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../../Services/auth.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
-    selector: "app-register",
-    standalone: true,
-    imports: [RouterLink, ReactiveFormsModule, RouterLinkActive, CommonModule, HttpClientModule],
-    templateUrl: "./register.component.html",
-    styleUrl: "./register.component.css"
+  selector: 'app-register',
+  standalone: true,
+  imports: [NavBarComponent, RouterLink,ReactiveFormsModule,RouterLinkActive,CommonModule,HttpClientModule],
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-    FormBuilder: any;
-    constructor(private _AuthService:AuthService, private _Router:Router, private _FormBuilder:FormBuilder) {}
-    errMsg:string = "";
-    isLoading:boolean = false;
+  FormBuilder: any;
+  constructor(private _AuthService:AuthService , private _Router:Router ,private _FormBuilder:FormBuilder){}
+  errMsg:string=''
+  isLoading:boolean=false
 
-    registerForm:FormGroup = this._FormBuilder.group({
-        name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
-        email: ["", [Validators.required, Validators.email]],
-        password: ["", [Validators.required, Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/)]],
-        rePassword: [""]
-    }, { validators: [this.confirmPassword] } as FormControlOptions);
-    /*
-  registerForm:FormGroup = new FormGroup({
-    name:new FormControl('',[
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(15)]),
-    email:new FormControl('',[
-      Validators.required,
-      Validators.email]),
-    password:new FormControl('',[
-      Validators.required,
-      Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/)]),
-    rePassword:new FormControl(''),
+  registerForm:FormGroup=this._FormBuilder.group({
+    firstName:['',[ Validators.required,Validators.minLength(3),Validators.maxLength(15)]]
+   , lastName:['',[ Validators.required,Validators.minLength(3),Validators.maxLength(15)]]
+   ,username:['',[ Validators.required,Validators.minLength(3),Validators.maxLength(15)]]
+   
+   ,email:['',[Validators.required,Validators.email]]
+   , password:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9_@]{8,30}$/)]]
+  ,rePassword:['']
+  },{validators:[this.confirmPassword]} as FormControlOptions)
 
-    image:new FormControl('')
-  },{validators:[this.confirmPassword]} as FormControlOptions )
-*/
-    confirmPassword(group:FormGroup):void {
-        const password = group.get("password");
-        const repassword = group.get("rePassword");
+confirmPassword(group:FormGroup):void{
+const password=group.get('password')
+const repassword=group.get('rePassword')
 
-        if (repassword?.value == "") {
-            repassword?.setErrors({ required: true });
-        } else if (password?.value != repassword?.value) {
-            repassword?.setErrors({ mismatch: true });
+if(repassword?.value==''){
+  repassword?.setErrors({required:true})
+}
+else if (password?.value != repassword?.value){
+  repassword?.setErrors({mismatch:true})
+}
+  }
+
+  handleForm():void {
+    this.isLoading=true
+    const userData=this.registerForm.value;
+    if (this.registerForm.valid === true){
+      this._AuthService.register(userData).subscribe({
+        next:(response)=>{
+          console.log(response);
+          if(response.token){
+            this.isLoading=false
+            this._Router.navigate(['/login'])
+          }
+          
+        },
+        error:(err)=>{
+          console.log(err);
+          this.errMsg=err.error.message
+          this.isLoading=false
+          
         }
+      })
     }
+  }
 
-    handleForm():void {
-        this.isLoading = true;
-        const userData = this.registerForm.value;
-        if (this.registerForm.valid === true) {
-            this._AuthService.register(userData).subscribe({
-                next: (response) => {
-                    console.log(response);
-                    if (response.message == "success") {
-                        this.isLoading = false;
-                        this._Router.navigate(["/login"]);
-                    }
-                },
-                error: (err) => {
-                    console.log(err);
-                    this.errMsg = err.error.message;
-                    this.isLoading = false;
-                }
-            });
-        }
-    }
-
-    /* registerForm!: FormGroup;
+  /*registerForm!: FormGroup;
   selectedFile: File | null = null;
 
   onFileSelected(event: any): void {
@@ -103,6 +91,7 @@ export class RegisterComponent {
     ],
     }, { validators: this.passwordMatchValidator });
   }
+  
 
   onSubmit(): void {
     if (this.selectedFile) {
@@ -158,6 +147,6 @@ export class RegisterComponent {
       }
     });
   }
-
-   */
+  
+   */ 
 }
