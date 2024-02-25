@@ -14,6 +14,6 @@ export class BookService {
     return this._HttpClient.get(`http://localhost:5000/books/${id}`);
   }
   getAllUserBooks(id:string): Observable<any> {
-    return this._HttpClient.get(`http://localhost:5000/user/userbooks/${id}`);
+    return this._HttpClient.get(`http://localhost:5000/user/${id}/books`);
   }
 }
