@@ -31,38 +31,39 @@
       </thead>
       <tbody>
         <tr *ngFor="let category of categories">
-          <td>{{ category.id }}</td>
+          <td>{{ category._id}}</td>
           <!-- <td>{{ getDisplayedId(category) }}</td> -->
 
-          <td>{{ category.name }}</td>
+          <td>{{ category.categoryName }}</td>
           <td>
-            <button class="btn btn-info" (click)="openUpdateCategoryModal(updateCategoryModal, category)">Update</button>
-            <button class="btn btn-danger" (click)="deleteCategory(category.id)">Delete</button>
+            <button class="btn btn-info" (click)="openUpdateCategoryModal(updateCategoryModal, category._id)">Update</button>
+            <button class="btn btn-danger" (click)="deleteCategory(category._id)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
   
-    <!-- Update Category Modal -->
-    <!-- <ng-template #updateCategoryModal let-modal>
-      <div class="modal-body">
-        <label for="updatedCategoryName">Updated Category Name:</label>
-        <input type="text" id="updatedCategoryName" [(ngModel)]="selectedCategory.name" class="form-control" />
-        <div *ngIf="updateCategoryValidationMessage">{{ updateCategoryValidationMessage }}</div>
-
-      </div>
+    
+  <ng-template #updateCategoryModal let-modal>
+    <div class="modal-body">
+      <label for="updatedCategoryName">Updated Category Name:</label>
+      <input type="text" id="updatedCategoryName" [(ngModel)]="selectedCategory.name" class="form-control" />
+      <div *ngIf="updateCategoryValidationMessage" class="text-danger">{{ updateCategoryValidationMessage }}</div>
+    </div>
   
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
-        <button type="button" class="btn btn-primary" (click)="updateCategory()">Update Category</button>
-      </div>
-    </ng-template>
-  </div> -->
-  <!-- Update Category Modal Content -->
-<ng-template #updateCategoryModal let-modal>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+      <button type="button" class="btn btn-primary" (click)="updateCategory()">Update Category</button>
+    </div>
+  </ng-template>
+<!-- ////////////////////////////////////////////////// -->
+
+<!-- Assuming you have an *ngIf to conditionally render the modal when a category is selected -->
+<!-- <ng-template #updateCategoryModal let-modal>
   <div class="modal-body">
     <label for="updatedCategoryName">Updated Category Name:</label>
     <input type="text" id="updatedCategoryName" [(ngModel)]="selectedCategory.name" class="form-control" />
+    <input type="hidden" [(ngModel)]="selectedCategory.id" /> 
     <div *ngIf="updateCategoryValidationMessage" class="text-danger">{{ updateCategoryValidationMessage }}</div>
   </div>
 
@@ -70,7 +71,7 @@
     <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
     <button type="button" class="btn btn-primary" (click)="updateCategory()">Update Category</button>
   </div>
-</ng-template>
+</ng-template> -->
 
   <!-- admin-categories.component.html -->
 <!-- ... existing code ... -->

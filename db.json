@@ -1,8 +1,16 @@
 {
   "categories": [
     {
-      "id": "b1df",
-      "name": "cat"
+      "id": "49fe",
+      "categoryName": "Advantures"
+    },
+    {
+      "id": "7a5d",
+      "categoryName": ""
+    },
+    {
+      "id": "1d3c",
+      "categoryName": ""
     }
   ],
   "authors": [

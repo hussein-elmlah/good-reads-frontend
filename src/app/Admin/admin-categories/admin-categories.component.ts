@@ -24,8 +24,12 @@ export class AdminCategoriesComponent implements OnInit {
     categories: any[] = [];
     newCategoryName: string = "";
     selectedCategory: any = {};
+    
     newCategoryValidationMessage: string = "";
     updateCategoryValidationMessage: string = "";
+
+
+    
 
     // Added to store the selected category for update
 
@@ -39,144 +43,80 @@ export class AdminCategoriesComponent implements OnInit {
         this.loadCategories();
     }
 
+   
+
     loadCategories(): void {
         this.categoriesService.getCategories().subscribe(
-            (categories: any[]) => {
-                this.categories = categories;
-            },
-            (error: any) => {
-                console.error("Error loading categories:", error);
-            }
+          (categories: any[]) => {
+            this.categories = categories;
+          },
+          (error: any) => {
+            console.error("Error loading categories:", error);
+          }
         );
-    }
-    // totalItems: number = 0;
-    // totalCategories: number = 0;
-    // currentPage = 1;
-    // pageSize = 10;
-    // loadCategories(): void {
-    //   this.categoriesService.getCategories().subscribe(
-    //     (categories: any[]) => {
-    //       this.totalCategories = categories.length; // Update the total number of categories
-    //       this.categories = categories;
-    //     },
-    //     (error: any) => {
-    //       console.error('Error loading categories:', error);
-    //     }
-    //   );
-    // }
-
-    // changePage(newPage: number): void {
-    //   if (newPage >= 1 && newPage <= this.totalCategories) {
-    //     this.currentPage = newPage;
-    //     this.loadCategories();
-    //   }
-    // }
-
-    // getPages(): number[] {
-    //   const totalPages = Math.ceil(this.categories.length / this.pageSize);
-    //   return Array.from({ length: totalPages }, (_, i) => i + 1);
-    // }
-
+      }
+    
     openAddCategoryModal(): void {
         this.newCategoryName = ""; // Reset the new category name
         this.modalService.open(this.addCategoryModal, { centered: true });
     }
 
-    // admin-categories.component.ts
-    // saveCategory(): void {
-    //   const newCategory = { name: this.newCategoryName };
-    //   this.categoriesService.addCategory(newCategory).subscribe(
-    //     response => {
-    //       console.log('Category saved successfully:', response);
-    //       this.loadCategories(); // Refresh the category list after adding
-    //       this.modalService.dismissAll(); // Close the modal
-    //     },
-    //     error => {
-    //       console.error('Error saving category:', error);
-    //     }
-    //   );
-    // }
-    // saveCategory(): void {
-    //   if (this.newCategoryName.trim() !== '') {
-    //     const newCategory = { name: this.newCategoryName };
-    //     this.categoriesService.addCategory(newCategory).subscribe(
-    //       (response) => {
-    //         console.log('Category saved successfully:', response);
-    //         this.loadCategories();
-    //         this.modalService.dismissAll();
-    //       },
-    //       (error) => {
-    //         console.error('Error saving category:', error);
-    //       }
-    //     );
-    //   } else {
-    //     this.newCategoryValidationMessage = 'Category Name is required.';
-    //   }
-    // }
+   
 
+   
+      
     saveCategory(): void {
         if (this.newCategoryName.trim() !== "") {
-            // Check if the category name contains only letters
-            if (/^[a-zA-Z]+$/.test(this.newCategoryName)) {
-                const newCategory = { name: this.newCategoryName };
-                this.categoriesService.addCategory(newCategory).subscribe(
-                    (response) => {
-                        console.log("Category saved successfully:", response);
-                        this.loadCategories();
-                        this.modalService.dismissAll();
-                    },
-                    (error) => {
-                        console.error("Error saving category:", error);
-                    }
-                );
-            } else {
-                this.newCategoryValidationMessage = "Category Name should only contain letters.";
-            }
+          // Check if the category name contains only letters
+          if (/^[a-zA-Z]+$/.test(this.newCategoryName)) {
+            const newCategory = { categoryName: this.newCategoryName };
+      
+            this.categoriesService.addCategory(newCategory).subscribe(
+              (response) => {
+                console.log("Category saved successfully:", response);
+                this.loadCategories();
+                this.modalService.dismissAll();
+              },
+              (error) => {
+                if (error.status === 409) {
+                  // Category name already exists
+                  this.newCategoryValidationMessage = "Category Name already exists.";
+                } else {
+                  console.error("Error saving category:", error);
+                  this.newCategoryValidationMessage = "Internal Server Error";
+                }
+              }
+            );
+          } else {
+            this.newCategoryValidationMessage = "Category Name should only contain letters.";
+          }
         } else {
-            this.newCategoryValidationMessage = "Category Name is required.";
+          this.newCategoryValidationMessage = "Category Name is required.";
         }
-    }
+      }
 
-    openUpdateCategoryModal(content: any, category: any): void {
-        this.selectedCategory = { ...category }; // Clone the selected category to avoid modifying the original
+   
+   
+    
+
+
+   
+
+    
+    openUpdateCategoryModal(content: any, categoryId: number): void {
+        console.log("Category ID:", categoryId); // Log to check the value
+        this.selectedCategory = { id: categoryId }; 
         this.modalService.open(content, { centered: true });
     }
-
-    // updateCategory(): void {
-    //   this.categoriesService.updateCategory(this.selectedCategory).subscribe(
-    //     (      response: any) => {
-    //       console.log('Category updated successfully:', response);
-    //       this.loadCategories(); // Refresh the category list after updating
-    //       this.modalService.dismissAll(); // Close the modal
-    //     },
-    //     (      error: any) => {
-    //       console.error('Error updating category:', error);
-    //     }
-    //   );
-    // }
-    // updateCategory(): void {
-    //   if (this.selectedCategory.name.trim() !== '') {
-    //     if (/^[a-zA-Z]+$/.test(this.selectedCategory)) {
-
-    //     this.categoriesService.updateCategory(this.selectedCategory).subscribe(
-    //       (response: any) => {
-    //         console.log('Category updated successfully:', response);
-    //         this.loadCategories();
-    //         this.modalService.dismissAll();
-    //       },
-    //       (error: any) => {
-    //         console.error('Error updating category:', error);
-    //       }
-    //     );
-    //   } else {
-    //     this.updateCategoryValidationMessage = 'Updated Category Name is required.';
-    //   }
-    // }}
+    
+    
     updateCategory(): void {
+        console.log('Updating category with ID:', this.selectedCategory.id);
+    
         if (this.selectedCategory.name.trim() !== "") {
             // Check if the updated category name contains only letters
             if (/^[a-zA-Z]+$/.test(this.selectedCategory.name)) {
-                this.categoriesService.updateCategory(this.selectedCategory).subscribe(
+                this.categoriesService.updateCategory(this.selectedCategory.id, this.selectedCategory.name).subscribe(
                     (response: any) => {
                         console.log("Category updated successfully:", response);
                         this.loadCategories();
@@ -193,16 +133,21 @@ export class AdminCategoriesComponent implements OnInit {
             this.updateCategoryValidationMessage = "Updated Category Name is required.";
         }
     }
+    
 
+      
     deleteCategory(categoryId: number): void {
         this.categoriesService.deleteCategory(categoryId).subscribe(
-            (response: any) => {
-                console.log("Category deleted successfully:", response);
-                this.loadCategories(); // Refresh the category list after deleting
-            },
-            (error: any) => {
-                console.error("Error deleting category:", error);
-            }
+          (response: any) => {
+            console.log("Category deleted successfully:", response);
+            this.loadCategories(); // Refresh the category list after deleting
+            this.modalService.dismissAll(); // Close the modal
+          },
+          (error: any) => {
+            console.error("Error deleting category:", error);
+          }
         );
-    }
+      }
+  
+      
 }

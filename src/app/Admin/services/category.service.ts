@@ -36,9 +36,10 @@
 
 // category.service.ts
 // category.service.ts
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, catchError, throwError } from "rxjs";
+import { Category } from "../interfaces/category";
 
 @Injectable({
     providedIn: "root"
@@ -68,13 +69,37 @@ export class CategoryService {
         return this.http.post<any>(this.apiUrl, category);
     }
 
-    updateCategory(updatedCategory: any): Observable<any> {
-        const url = `${this.apiUrl}/${updatedCategory.id}`;
-        return this.http.put<any>(url, updatedCategory);
+    // updateCategory(updateCategorynumber:number ,updatedCategory: any): Observable<any> {
+    //     const url = `${this.apiUrl}/${updateCategorynumber}`;
+    //     return this.http.put<any>(url, updatedCategory);
+    // }
+    updateCategory(updatedNumber: number, updatedCategory: string): Observable<any> {
+        console.log('Updating category:', updatedCategory);
+        const url = `${this.apiUrl}/${updatedNumber}`;
+        return this.http.put<any>(url, { categoryName: updatedCategory });
     }
-
+    
+   
     deleteCategory(categoryId: number): Observable<any> {
         const url = `${this.apiUrl}/${categoryId}`;
         return this.http.delete<any>(url);
     }
+
+    // updateCategory(categoryId: number, updatedCategory: any): Observable<any> {
+    //     console.log('Updating category with ID:', categoryId);
+    //     console.log('Updated category:', updatedCategory);
+      
+    //     const url = `${this.apiUrl}/${categoryId}`;
+    //     return this.http.put<any>(url, updatedCategory);
+    //   }
+      
+
+    ////////////////////////////////////////////////////////
+
+
+    // updateCategory(categoryId: number , updatedCategory:any): Observable<any> {
+    //     const url = `${this.apiUrl}/${categoryId}`;
+    //     return this.http.put<any>(url, updatedCategory);
+    // }
+
 }
