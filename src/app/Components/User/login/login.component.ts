@@ -33,9 +33,11 @@ export class LoginComponent {
       this._AuthService.login(userData).subscribe({
         next:(response)=>{
           console.log(response);
+          console.log(response.token);
+          
           if(response.token){
-           // localStorage.setItem('token',response.token)
-           // this._AuthService.decodeUser()
+           localStorage.setItem('token',response.token)
+           this._AuthService.decodeUser()
             this.isLoading=false
             this._Router.navigate(['/home'])
           }

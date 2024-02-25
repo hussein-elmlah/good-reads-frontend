@@ -8,11 +8,11 @@ import { HttpClient } from '@angular/common/http';
 export class CategoriesService {
   constructor(private _HttpClient:HttpClient) { }
   getAllCateogries():Observable<any>{
-    return this._HttpClient.get("http://localhost:5000/categories");
+    return this._HttpClient.get("http://localhost:3000/categories");
     
 
   }
   getCateogryDetails(id:String):Observable<any>{
-    return this._HttpClient.get(`http://localhost:5000/categories/${id}`);
+    return this._HttpClient.get(`http://localhost:3000/categories/${id}`);
   }
 }

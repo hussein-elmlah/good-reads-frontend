@@ -12,7 +12,7 @@ export class AuthService  {
   constructor(private _HttpClient: HttpClient) {}
 
   userInfo:any;
-  baseUrl:string=`http://localhost:5000/user/`
+  baseUrl:string=`http://localhost:3000/user/`
   //baseUrl:string =`https://route-ecommerce.onrender.com/api/v1/auth/`;
 
     register(userData:Object):Observable<any>{
