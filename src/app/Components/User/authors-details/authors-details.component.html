@@ -1,27 +1,76 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="container mt-5" *ngIf="author">
-  <div class="row">
-    <!-- Author Image Column -->
-    <div class="col-md-2">
-      <img class="img-fluid rounded" [src]="author.photo" alt="Author Photo">
-    </div>
-    <!-- Author Details Column -->
-    <div class="col-md-10">
-      <h2>Author Details</h2>
-      <div class="row">
-        <div class="col-sm-6">
-          <p><strong>Author ID:</strong> {{ author.id }}</p>
-          <p><strong>Name:</strong> {{ author.firstName }} {{ author.lastName }}</p>
-          <p><strong>Date of Birth:</strong> {{ author.dob }}</p>
-        </div>
+<div class="container">
+  <div class="profile">
+      <div class="profile-header">
+          <div class="profile-header-cover"></div>
+          <div class="profile-header-content">
+              <div *ngIf="author" class="profile-header-img">
+                  <img [src]=[author.image] alt="" />
+              </div>
+              <ul class="profile-header-tab nav nav-tabs nav-tabs-v2">
+                  <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab">
+                          <div class="nav-field">Books</div>
+                      </a>
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <h2>Author's Books</h2>
-    <div class="row book">
-        <!-- implement displaying author's books hear -->
-    </div>
+
+      <div class="profile-container">
+          <div class="profile-sidebar">
+              <div *ngIf="author" class="desktop-sticky-top">
+                  <h4>{{author.fullName}}</h4>
+                  <div class="font-weight-600 mb-3 text-muted mt-n2">{{author.DOB.substring(0, 10)}}</div>
+                  <p>
+                      People know authors for their insight and wisdom, and whether they're writing now or centuries ago, we can gain valuable life skills by reviewing these writings. Albeit wise, funny or insightful, many of these authors have made a huge difference to people's lives. 
+                  </p>
+                  <div class="mb-1"><i class="fa fa-map-marker-alt fa-fw text-muted"></i> New York, NY</div>
+                  <div class="mb-3"><i class="fa fa-link fa-fw text-muted"></i> seantheme.com/studio</div>
+                  <hr class="mt-4 mb-4" />
+              </div>
+          </div>
+
+          <div class="profile-content">
+              <div class="row">
+                  <div class="col-xl-12">
+                      <div class="tab-content p-0">
+                          <div *ngIf="author" class="tab-pane fade active show" id="profile-books">
+
+                              <div *ngFor="let book of author.Books">
+                              <section class="list-group">
+                                  <div class="list-group-item d-flex align-items-center">
+                                      <img [src]=[book.image] alt="" width="50px" class="rounded-sm ml-n2" />
+                                      <div class="flex-fill pl-3 pr-3 content">
+                                         
+                                          <div style="margin-bottom: .5em;"> Name:  <a href="#" class="text-dark font-weight-600">{{book.title}}</a></div>
+                                              <div style="margin-bottom: .5em;" class="starrating risingstar d-flex justify-content-end flex-row-reverse">
+                                                  <span>{{book.avgRating}}</span>
+                                                  <input type="radio" id="star3" name="rating" class="checked" value="3" /><label for="star3" title="3 star"></label>        
+                                              </div>
+                                              Description:
+                                              <span> {{book.description}}</span>
+                                          
+                                      </div>
+                                      <!-- <div class="dropdown" data-bs-toggle="dropdown">
+                                          <button data-bs-toggle="dropdown" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropdown button
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">To read</a>
+                                            <a class="dropdown-item" href="#">Read</a>
+                                            <a class="dropdown-item" href="#">Reading</a>
+                                          </div>
+                                        </div> -->
+                                  </div>
+                              </section>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>

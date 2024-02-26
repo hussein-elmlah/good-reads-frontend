@@ -12,17 +12,15 @@ export class AuthService  {
   constructor(private _HttpClient: HttpClient) {}
 
   userInfo:any;
-  baseUrl:string=`http://localhost:3000/user/`
-  //baseUrl:string =`https://route-ecommerce.onrender.com/api/v1/auth/`;
+  
+  baseUrl:string =`https://route-ecommerce.onrender.com/api/v1/auth/`;
 
     register(userData:Object):Observable<any>{
-      return this._HttpClient.post(this.baseUrl + 'register',userData)
-     // return this._HttpClient.post(this.baseUrl + '/register',userData)
+      return this._HttpClient.post(this.baseUrl + 'signup',userData)
     }
 
     login(userData:Object):Observable<any>{
-      return this._HttpClient.post(this.baseUrl + 'login',userData)
-      //return this._HttpClient.post(this.baseUrl + '/login',userData)
+      return this._HttpClient.post(this.baseUrl + 'signin',userData)
     }
 
     decodeUser():void{

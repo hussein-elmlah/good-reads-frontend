@@ -1,38 +1,38 @@
-import { CommonModule } from "@angular/common";
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-
-import { Author } from "../interfaces/author.model";
-import { NavBarComponent } from "../nav-bar/nav-bar.component";
+import { Component } from '@angular/core';
+import { AuthorsComponent } from '../authors/authors.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthorsService } from '../../../Services/authors.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: "app-authors-details",
-    standalone: true,
-    imports: [CommonModule, NavBarComponent],
-    templateUrl: "./authors-details.component.html",
-    styleUrl: "./authors-details.component.css"
+  selector: 'app-author-details',
+  standalone: true,
+  imports: [CommonModule, NavBarComponent],
+  templateUrl: './authors-details.component.html',
+  styleUrls: ['./authors-details.component.css']
 })
+export class AuthorsDetailsComponent {
+  id:any ;
+  author:any ;
+  constructor(private authorsServ:AuthorsService, private _activateRoute:ActivatedRoute, private _router:Router){
+    this.id = this._activateRoute.snapshot.params['id']
+    this.fetchData()
+  }
 
-export class AuthorsDetailsComponent implements OnInit {
-    author!: Author;
-    authorId!: number;
+  fetchData(){
+    this.authorsServ.getAuthorById(this.id).subscribe(
+      data => {
 
-    constructor(private http: HttpClient, private route: ActivatedRoute) { }
+        this.author = data
+      },
+      error => {
+        if (error instanceof HttpErrorResponse) {
+          this._router.navigate(['/not-found'])
+        }
+      }
+      )
 
-    ngOnInit(): void {
-        this.route.params.subscribe((params) => {
-            this.authorId = +params["authorId"];
-            this.fetchAuthorDetails(this.authorId);
-        });
-    }
-
-    fetchAuthorDetails(authorId: number): void {
-        //   this.http.get<Author>(`http://localhost:3000/authors/${authorId}`)
-        //     .subscribe(author => this.author = author);
-        // Replace HTTP request with static data
-        this.author = {
-            id: 1, firstName: "Ahmed", lastName: "Ali", dob: "1987-03-15", photo: "https://randomuser.me/api/portraits/men/1.jpg"
-        };
-    }
+  }
 }
