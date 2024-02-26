@@ -66,6 +66,12 @@
 
 </div>
 
+<div class="form-item">
+  <label for="image-upload">Image</label>
+  <input type="file" formControlName="image" id="image-upload" class="form-control" (change)="handleFileInput($event)">
+</div>
+
+
 <button [disabled]="registerForm.invalid" style="background-color: brown;" class="btn main-btn text-white  mt-2">SignUp
 <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
 </button>

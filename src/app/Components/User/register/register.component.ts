@@ -15,6 +15,7 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 })
 export class RegisterComponent {
   FormBuilder: any;
+  selectedImage: File | null = null;
   constructor(private _AuthService:AuthService , private _Router:Router ,private _FormBuilder:FormBuilder){}
   errMsg:string=''
   isLoading:boolean=false
@@ -23,12 +24,13 @@ export class RegisterComponent {
     firstName:['',[ Validators.required,Validators.minLength(3),Validators.maxLength(15)]]
    , lastName:['',[ Validators.required,Validators.minLength(3),Validators.maxLength(15)]]
    ,username:['',[ Validators.required,Validators.minLength(3),Validators.maxLength(15)]]
-   
+   ,image: ['',[Validators.required]]
    ,email:['',[Validators.required,Validators.email]]
    , password:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9_@]{8,30}$/)]]
   ,rePassword:['']
   },{validators:[this.confirmPassword]} as FormControlOptions)
 
+  
 confirmPassword(group:FormGroup):void{
 const password=group.get('password')
 const repassword=group.get('rePassword')
@@ -41,6 +43,16 @@ else if (password?.value != repassword?.value){
 }
   }
 
+  
+  handleFileInput(event: any): void {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      this.selectedImage = files[0];
+    }
+  }
+  
+  
+  
   handleForm():void {
     this.isLoading=true
     const userData=this.registerForm.value;
