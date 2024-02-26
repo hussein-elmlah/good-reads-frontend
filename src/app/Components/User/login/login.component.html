@@ -1,18 +1,18 @@
-
-<section class="w-100 mx-auto shadow rounded p-4 my-3 bg-light ">
+<app-nav-bar></app-nav-bar>
+<section class="w-75 mx-auto shadow rounded p-4 my-5 bg-light ">
   <h1 class="my-3">Login</h1>
   <form [formGroup]="loginForm" (ngSubmit)="handleForm()">
 
-<div class="form-item">
-  <label for="email">email</label>
-  <input type="email" formControlName="email" name="" id="email" class="form-control" >
-</div>
-
-<div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert alert-danger p-1">
-  <p class="mb-0" *ngIf="loginForm.get('email')?.getError('required')">Email is required</p>
-  <p class="mb-0" *ngIf="loginForm.get('email')?.getError('email')">Email Invalid</p>
-
-</div>
+    <div class="form-item">
+      <label for="username">username</label>
+      <input type="text" formControlName="username" name=""  class="form-control" id="username">
+    </div>
+    
+    <div *ngIf="loginForm.get('username')?.errors && loginForm.get('username')?.touched" class="alert alert-danger p-1">
+      <p class="mb-0" *ngIf="loginForm.get('username')?.getError('required')">username is required</p>
+      <p class="mb-0" *ngIf="loginForm.get('username')?.getError('minlength')">username minLength 3</p>
+      <p class="mb-0" *ngIf="loginForm.get('username')?.getError('maxlength')">username maxLength 20</p>
+    </div>
 
 <div class="form-item">
   <label for="password">password</label>
@@ -21,16 +21,16 @@
 
 <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="alert alert-danger p-1">
   <p class="mb-0" *ngIf="loginForm.get('password')?.getError('required')">Password is required</p>
-  <p class="mb-0" *ngIf="loginForm.get('password')?.getError('pattern')">must be at least 6 char</p>
+  <p class="mb-0" *ngIf="loginForm.get('password')?.getError('pattern')">must be at least 8 char</p>
 
 </div>
 
 
 
-<button [disabled]="loginForm.invalid" class="btn main-btn text-white bg-success mt-2">Login
+<button [disabled]="loginForm.invalid" style="background-color: brown;" class="btn main-btn text-white  mt-2">Login
 <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
 </button>
-<p>Don't have account? <a routerLink="/register" class="text-decoration-none text-success">register</a></p>
+<p>Don't have account? <a routerLink="/register" class="text-decoration-none "style="color: brown;">register</a></p>
         
 </form>
 <p *ngIf="errMsg" class="alert alert-danger p-1 mb-0">{{errMsg}}</p>

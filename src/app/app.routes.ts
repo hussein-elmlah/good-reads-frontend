@@ -22,44 +22,39 @@ import { authGuard } from "./guard/auth.guard";
 export const routes:Routes = [
 
     {
-        path: "",
+        path: '',
         component: WelcomLoginComponent
     },
     {
-        path: "home",
-        canActivate: [authGuard],
+        path: 'home',canActivate:[authGuard],
         component: HomeComponent
     },
-    { path: "login", component: LoginComponent },
-    { path: "register", component: RegisterComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent},
     {
-        path: "categories",
-        canActivate: [authGuard],
+        path: 'categories',canActivate:[authGuard],
         component: CategoriesComponent
     },
     {
-        path: "categories/:categoryId",
-        canActivate: [authGuard],
+        path: 'categories/:categoryId',canActivate:[authGuard],
         component: CategoryDetailsComponent
     },
     {
-        path: "books",
-        canActivate: [authGuard],
+        path: 'books',canActivate:[authGuard],
         component: BooksComponent
     },
     {
-        path: "books/:bookId",
-        canActivate: [authGuard],
+        path: 'books/:bookId',canActivate:[authGuard],
         component: BooksDetailsComponent
-    },
+    }
+    ,
     {
-        path: "authors",
-        canActivate: [authGuard],
+        path: 'authors',canActivate:[authGuard],
         component: AuthorsComponent
-    },
+    }
+    ,
     {
-        path: "authors/:authorId",
-        canActivate: [authGuard],
+        path: 'authors/:authorId',canActivate:[authGuard],
         component: AuthorsDetailsComponent
     },
 
