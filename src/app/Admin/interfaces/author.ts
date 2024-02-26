@@ -1,16 +1,11 @@
-// export interface Author {
-//   id?: number; // Change this line to use 'number' type
-//   fisrtname: string;
-//   lastname: string;
-//   DOB: Date|null;
-//   image?: File | string;
-//   Books: string;
-// }
+// author.ts
+
 export interface Author {
-    id?: number;
-    fisrtname: string;
-    lastname: string;
-    DOB: string | null; // Change the type to string
-    image?: File | string;
-    Books: string;
-}
+    _id?: number;
+    firstName: string;
+    lastName: string;
+    dob: string | null;
+    photo?: File | string;
+    books: string;
+  }
+  

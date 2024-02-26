@@ -20,13 +20,13 @@ import { AuthorService } from "../services/author.service";
 export class AdminAuthorsComponent implements OnInit {
     authors: Author[] = [];
     newAuthor: Author = {
-        fisrtname: "", lastname: "", DOB: null, Books: ""
+        firstName: "", lastName: "", dob: null, books: ""
     };
     selectedAuthor: Author = {
-        fisrtname: "",
-        DOB: "",
-        Books: "",
-        lastname: ""
+        firstName: "",
+        dob: "",
+        books: "",
+        lastName: ""
     };
     newAuthorValidationMessage: string = "";
     updateAuthorValidationMessage: string = "";
@@ -52,7 +52,7 @@ export class AdminAuthorsComponent implements OnInit {
 
     openAddAuthorModal(): void {
         this.newAuthor = {
-            fisrtname: "", DOB: "", Books: "", lastname: ""
+            firstName: "", dob: "", books: "", lastName: ""
         };
         this.modalService.open(this.addAuthorModal, { centered: true });
     }
@@ -90,10 +90,10 @@ export class AdminAuthorsComponent implements OnInit {
     //   this.newAuthor.DOB !== null && this.newAuthor.DOB.trim() !== ''
     // )
         if (
-            this.isNameValid(this.newAuthor.fisrtname)
-      && this.isNameValid(this.newAuthor.lastname)
-      && this.newAuthor.Books.trim() !== ""
-      && this.newAuthor.DOB !== null && this.newAuthor.DOB.trim() !== ""
+            this.isNameValid(this.newAuthor.firstName)
+      && this.isNameValid(this.newAuthor.lastName)
+      && this.newAuthor.books.trim() !== ""
+      && this.newAuthor.dob !== null && this.newAuthor.dob.trim() !== ""
         ) {
             this.authorService.addAuthor(this.newAuthor).subscribe(
                 (response) => {
@@ -133,11 +133,11 @@ export class AdminAuthorsComponent implements OnInit {
         //   this.selectedAuthor.DOB !== null && this.selectedAuthor.DOB.trim() !== ''
         // )
         if (
-            this.isNameValid(this.selectedAuthor.fisrtname)
-        && this.isNameValid(this.selectedAuthor.lastname)
-        && this.selectedAuthor.Books != null
-        && this.selectedAuthor.Books.trim() !== ""
-        && this.selectedAuthor.DOB !== null && this.selectedAuthor.DOB.trim() !== ""
+            this.isNameValid(this.selectedAuthor.firstName)
+        && this.isNameValid(this.selectedAuthor.lastName)
+        && this.selectedAuthor.books != null
+        && this.selectedAuthor.books.trim() !== ""
+        && this.selectedAuthor.dob !== null && this.selectedAuthor.dob.trim() !== ""
         ) {
             this.authorService.updateAuthor(this.selectedAuthor).subscribe(
                 (response: any) => {
@@ -197,7 +197,7 @@ export class AdminAuthorsComponent implements OnInit {
 
     openUpdateAuthorModal(content: any, author: Author): void {
         this.selectedAuthor = { ...author };
-        this.formattedDOB = this.selectedAuthor.DOB ? new Date(this.selectedAuthor.DOB).toISOString().split("T")[0] : "";
+        this.formattedDOB = this.selectedAuthor.dob ? new Date(this.selectedAuthor.dob).toISOString().split("T")[0] : "";
         this.modalService.open(content, { centered: true });
     }
 
@@ -216,14 +216,14 @@ export class AdminAuthorsComponent implements OnInit {
     handleImageUpload(event: any): void {
         const file = event.target.files[0];
         this.uploadImage(file, (url: string) => {
-            this.newAuthor.image = url;
+            this.newAuthor.photo = url;
         });
     }
 
     handleUpdatedImageUpload(event: any): void {
         const file = event.target.files[0];
         this.uploadImage(file, (url: string) => {
-            this.selectedAuthor.image = url;
+            this.selectedAuthor.photo = url;
         });
     }
 

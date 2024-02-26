@@ -168,9 +168,9 @@ export class AdminBooksComponent {
     }
     getAuthorNames(authors: Author[] | Author): string {
         if (Array.isArray(authors)) {
-          return authors.map(author => `${author.fisrtname} ${author.lastname}`).join(', ');
+          return authors.map(author => `${author.firstName} ${author.lastName}`).join(', ');
         } else if (authors) {
-          return `${authors.fisrtname} ${authors.lastname}`;
+          return `${authors.firstName} ${authors.lastName}`;
         } else {
           return '';
         }

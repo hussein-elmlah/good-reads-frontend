@@ -20,9 +20,9 @@ export class AuthorService {
         return this.http.post<any>(this.apiUrl, author);
     }
     updateAuthor(updatedAuthor: Author): Observable<any> {
-        const url = `${this.apiUrl}/${updatedAuthor.id}`;
+        const url = `${this.apiUrl}/${updatedAuthor._id}`;
         // Omit the id from the payload to avoid redundant data in the request body
-        const { id, ...authorWithoutId } = updatedAuthor;
+        const { _id, ...authorWithoutId } = updatedAuthor;
 
         return this.http.put<any>(url, authorWithoutId);
     }
