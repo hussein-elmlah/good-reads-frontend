@@ -10,7 +10,7 @@ import { NgbModal, NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 // import { AppComponent } from '../../app.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CategoryService } from "../services/category.service";
+import { CategoryService } from "../../services/category.service";
 
 @Component({
     selector: "app-admin-categories",

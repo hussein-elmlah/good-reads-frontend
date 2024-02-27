@@ -4,10 +4,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
 import { NgbModal, NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
-import { Author } from "../interfaces/author";
-import { Book } from "../interfaces/books";
-import { Category } from "../interfaces/category"; // Import Category interface
-import { BokksService } from "../services/books.service";
+import { Author } from "../../../interfaces/author";
+import { Book } from "../../../interfaces/books";
+import { Category } from "../../../interfaces/category"; // Import Category interface
+import { BokksService } from "../../services/books.service";
 
 @Component({
     selector: "app-admin-books",

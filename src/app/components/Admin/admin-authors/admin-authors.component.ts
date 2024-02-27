@@ -6,8 +6,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
 import { NgbModal, NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
-import { Author } from "../interfaces/author";
-import { AuthorService } from "../services/author.service";
+import { Author } from "../../../interfaces/author";
+import { AuthorService } from "../../services/author.service";
 
 @Component({
     selector: "app-admin-authors",

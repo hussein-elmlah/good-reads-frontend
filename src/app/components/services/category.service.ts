@@ -39,7 +39,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, throwError } from "rxjs";
-import { Category } from "../interfaces/category";
+import { Category } from "../../interfaces/category";
 
 @Injectable({
     providedIn: "root"

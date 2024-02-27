@@ -3,8 +3,8 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { AuthorsService } from "../../../services/authors.service";
-import { NavBarComponent } from "../../User/nav-bar/nav-bar.component";
+import { AuthorsService } from "../../services/authors.service";
+import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
 
 @Component({
     selector: "app-author-details",

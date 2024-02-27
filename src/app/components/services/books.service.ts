@@ -2,9 +2,9 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { Author } from "../interfaces/author";
-import { Book } from "../interfaces/books";
-import { Category } from "../interfaces/category";
+import { Author } from "../../interfaces/author";
+import { Book } from "../../interfaces/books";
+import { Category } from "../../interfaces/category";
 
 @Injectable({
     providedIn: "root"

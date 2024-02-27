@@ -8,7 +8,7 @@ import {
 } from "@angular/forms";
 import { Router, RouterLink } from "@angular/router";
 
-import { AuthService } from "../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
     selector: "app-admin-login",
@@ -40,7 +40,7 @@ export class AdminloginComponent implements OnInit {
         if (this.loginForm.valid) {
             const { username, password } = this.loginForm.value;
             this.authService.login(username, password).subscribe(
-                (success) => {
+                (success: any) => {
                     if (success) {
                         this.router.navigate(["/adminProfile"]);
                     } else {
