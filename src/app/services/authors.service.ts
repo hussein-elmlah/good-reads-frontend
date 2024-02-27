@@ -2,31 +2,43 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, of } from 'rxjs';
 import { Author } from '../interfaces/author.model';
+import { Book } from '../interfaces/books';
 
 @Injectable({
   providedIn: 'any'
 })
 export class AuthorsService {
 
+  baseURL = `http://localhost:3000/authors`;
 
-  URL = `http://localhost:3000/authors`;
   constructor(private _HttpClient:HttpClient) { }
+    
+  getAuthorBooks(authorId: any): Observable<Book[]> {
+    authorId = Number(authorId);
+    const url = `http://localhost:3000/books`;
+    return this._HttpClient.get<Book[]>(url).pipe(
+      map((books: any[]) => books.filter(book => {
+        return book.author_id == authorId}
+        ))
+    );
+  }
+  
 
   limit = 8
   currentPage = 1
   getAuthors():Observable<any> {
-    return this._HttpClient.get(`${this.URL}/?page=${this.currentPage}&limit=${this.limit}`);
+    return this._HttpClient.get(`${this.baseURL}/?page=${this.currentPage}&limit=${this.limit}`);
     // return this.dummyData();
   }
 
   getAuthorById(id:number):Observable<any> {
-    return this._HttpClient.get(`${this.URL}/${id}`);
+    return this._HttpClient.get(`${this.baseURL}/${id}`);
     // const dummyAuthors = this.dummyData();
     // return dummyAuthors.pipe( map((authors: any[]) => authors[1]) );
   }
 
   // getPopularAuthors(options:any): Observable<any>{
-  //   return this._HttpClient.get(`${this.URL}/all/popular`, options)
+  //   return this._HttpClient.get(`${this.baseURL}/all/popular`, options)
   // }
 
   // dummyData(): Observable<Author[]> {

@@ -1,21 +1,20 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="container row m-auto isDarkMode">
-    <div class="col-md-3 mb-2" *ngFor="let author of getPaginatedAuthors()" (click)="redirectToAuthor(author._id)">
+<div class="container row m-auto w-75">
+    <div class="col-md-3 px-5 mt-4" *ngFor="let author of getPaginatedAuthors()" (click)="redirectToAuthor(author._id)">
       <div class="card h-100">
-        <img class="card-img-top" [src]="author.photo" alt="Author Photo">
+        <img class="card-img-top" [src]="author.photo" alt="Author Photo" style="height: 250px; width: 100%; object-fit: cover;">
         <div class="card-body">
           <h5 class="card-title">{{ author.firstName }} {{ author.lastName }}</h5>
           <p class="card-text">{{author.dob.substring(0, 10)}}</p>
         </div>
       </div>
     </div>
-  </div>
-  
-  <app-pagination
+</div>
+
+<app-pagination
     [currentPage]="currentPage"
     [itemsPerPage]="itemsPerPage"
     [totalItems]="authors.length"
     (pageChange)="onPageChange($event)">
-  </app-pagination>
-  
+</app-pagination>
