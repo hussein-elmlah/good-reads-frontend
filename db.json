@@ -2,19 +2,19 @@
   "categories": [
     {
       "id": "49fe",
-      "categoryName": "Advantures"
+      "name": "Adventures"
     },
     {
       "id": "7a5d",
-      "categoryName": ""
+      "name": "Action"
     },
     {
       "id": "1d3c",
-      "categoryName": ""
+      "name": "Sci-fi"
     },
     {
       "id": "3008",
-      "categoryName": "category"
+      "name": "category"
     }
   ],
   "authors": [
