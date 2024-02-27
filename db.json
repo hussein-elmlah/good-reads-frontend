@@ -2,15 +2,51 @@
   "categories": [
     {
       "id": "49fe",
-      "categoryName": "Advantures"
+      "name": "Adventure"
     },
     {
       "id": "7a5d",
-      "categoryName": ""
+      "name": "Sci-Fi"
     },
     {
       "id": "1d3c",
-      "categoryName": ""
+      "name": "Thriller"
+    },
+    {
+      "id": "49fe",
+      "name": "Adventure"
+    },
+    {
+      "id": "7a5d",
+      "name": "Sci-Fi"
+    },
+    {
+      "id": "1d3c",
+      "name": "Thriller"
+    },
+    {
+      "id": "49fe",
+      "name": "Adventure"
+    },
+    {
+      "id": "7a5d",
+      "name": "Sci-Fi"
+    },
+    {
+      "id": "1d3c",
+      "name": "Thriller"
+    },
+    {
+      "id": "49fe",
+      "name": "Adventure"
+    },
+    {
+      "id": "7a5d",
+      "name": "Sci-Fi"
+    },
+    {
+      "id": "1d3c",
+      "name": "Thriller"
     }
   ],
   "authors": [

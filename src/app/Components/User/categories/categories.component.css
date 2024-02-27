@@ -1,0 +1,9 @@
+.container {
+    margin-top: 50px;
+}
+
+span {
+    display: inline-block;
+    cursor: pointer;
+    min-width: 250px;
+}
