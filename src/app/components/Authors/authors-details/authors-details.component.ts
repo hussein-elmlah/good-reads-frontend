@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { AuthorsService } from "../../../services/authors.service";
-import { NavBarComponent } from "../nav-bar/nav-bar.component";
+import { NavBarComponent } from "../../User/nav-bar/nav-bar.component";
 
 @Component({
     selector: "app-author-details",

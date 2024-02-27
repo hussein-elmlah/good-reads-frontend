@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 
-import { CategoriesDataService } from "../../../services/categories.service";
-import { Category } from "../interfaces/category.model";
-import { NavBarComponent } from "../nav-bar/nav-bar.component";
+import { Category } from "../../interfaces/category.model";
+import { CategoriesDataService } from "../../services/categories.service";
+import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
 
 @Component({
     selector: "app-categories",

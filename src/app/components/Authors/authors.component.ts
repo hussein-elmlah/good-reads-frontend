@@ -4,9 +4,9 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, of } from "rxjs";
 
-import { PaginationComponent } from "../../../pagination/pagination.component";
-import { Author } from "../interfaces/author.model";
-import { NavBarComponent } from "../nav-bar/nav-bar.component";
+import { PaginationComponent } from "../../pagination/pagination.component";
+import { Author } from "../../interfaces/author.model";
+import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
 
 @Component({
     selector: "app-authors",

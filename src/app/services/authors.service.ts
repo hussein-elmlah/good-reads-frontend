@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, of } from 'rxjs';
-import { Author } from '../Components/User/interfaces/author.model';
+import { Author } from '../interfaces/author.model';
 
 @Injectable({
   providedIn: 'any'

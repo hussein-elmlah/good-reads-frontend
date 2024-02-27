@@ -1,22 +1,22 @@
 import { Routes } from "@angular/router";
 
-import { AdminAuthorsComponent } from "./Components/Admin/admin-authors/admin-authors.component";
-import { AdminBooksComponent } from "./Components/Admin/admin-books/admin-books.component";
-import { AdminCategoriesComponent } from "./Components/Admin/admin-categories/admin-categories.component";
-import { AdminloginComponent } from "./Components/Admin/admin-login/admin-login.component";
-import { AdminProfileComponent } from "./Components/Admin/admin-profile/admin-profile.component";
-import { AuthGuard } from "./Components/Admin/guards/auth.guard";
-import { AuthorsComponent } from "./Components/User/authors/authors.component";
-import { AuthorsDetailsComponent } from "./Components/User/authors-details/authors-details.component";
-import { BooksComponent } from "./Components/User/books/books.component";
-import { BooksDetailsComponent } from "./Components/User/books-details/books-details.component";
-import { CategoriesComponent } from "./Components/User/categories/categories.component";
-import { CategoryDetailsComponent } from "./Components/User/category-details/category-details.component";
-import { HomeComponent } from "./Components/User/home/home.component";
-import { LoginComponent } from "./Components/User/login/login.component";
-import { PageNotFoundComponent } from "./Components/User/page-not-found/page-not-found.component";
-import { RegisterComponent } from "./Components/User/register/register.component";
-import { WelcomLoginComponent } from "./Components/User/welcom-login/welcom-login.component";
+import { AdminAuthorsComponent } from "./components/Admin/admin-authors/admin-authors.component";
+import { AdminBooksComponent } from "./components/Admin/admin-books/admin-books.component";
+import { AdminCategoriesComponent } from "./components/Admin/admin-categories/admin-categories.component";
+import { AdminloginComponent } from "./components/Admin/admin-login/admin-login.component";
+import { AdminProfileComponent } from "./components/Admin/admin-profile/admin-profile.component";
+import { AuthGuard } from "./components/Admin/guards/auth.guard";
+import { AuthorsComponent } from "./components/Authors/authors.component";
+import { AuthorsDetailsComponent } from "./components/Authors/authors-details/authors-details.component";
+import { BooksComponent } from "./components/Books/books.component";
+import { BooksDetailsComponent } from "./components/Books/books-details/books-details.component";
+import { CategoriesComponent } from "./components/Categories/categories.component";
+import { CategoryDetailsComponent } from "./components/Categories/category-details/category-details.component";
+import { HomeComponent } from "./components/User/home/home.component";
+import { LoginComponent } from "./components/User/login/login.component";
+import { PageNotFoundComponent } from "./components/User/page-not-found/page-not-found.component";
+import { RegisterComponent } from "./components/User/register/register.component";
+import { WelcomLoginComponent } from "./components/User/welcom-login/welcom-login.component";
 import { authGuard } from "./guard/auth.guard";
 
 export const routes:Routes = [
