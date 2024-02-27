@@ -1,4 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    /* --nav-color: #0B5ED7;
+    --primary-color: #F4F1EA;
+    --secondary-color: #6c757d;
+    --accent-color: #28a745; */
+
+  }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    /* background: linear-gradient(135deg, #1e2a3f, #3b1c50); */
+    /* background-color: #252525; */
+    /* background: linear-gradient(135deg, #dbdad6, #F4F1EA); */
+    /* background-color: #f8f9fa; */
+    background-color: white;
+
+    /* background-image: url('./assets/images/undraw1.png');
+    background-size: cover;
+    background-repeat: no-repeat; */
+}
+
+*{
+}

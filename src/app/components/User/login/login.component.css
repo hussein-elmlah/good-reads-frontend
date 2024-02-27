@@ -1,3 +1,5 @@
 section{
-    background-image: url(https://i.pinimg.com/564x/48/8a/18/488a18b39a7b9801517a056f76641b72.jpg);
+    /* background-color: var(--nav-color) !important;
+    color: black; */
+    background-image: url(../../../../assets/images/tan-bg-texture.jpg);
 }

@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="container row m-auto">
+<div class="container row m-auto isDarkMode">
     <div class="col-md-3 mb-2" *ngFor="let author of getPaginatedAuthors()" (click)="redirectToAuthor(author._id)">
       <div class="card h-100">
         <img class="card-img-top" [src]="author.photo" alt="Author Photo">
