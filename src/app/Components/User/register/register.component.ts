@@ -6,7 +6,7 @@ import {
 } from "@angular/forms";
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 
-import { AuthService } from "../../../Services/auth.service";
+import { AuthService } from "../../../services/auth.service";
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 
 @Component({
