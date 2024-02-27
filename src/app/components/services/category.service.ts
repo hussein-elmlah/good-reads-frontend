@@ -76,7 +76,7 @@ export class CategoryService {
     updateCategory(updatedNumber: number, updatedCategory: string): Observable<any> {
         console.log('Updating category:', updatedCategory);
         const url = `${this.apiUrl}/${updatedNumber}`;
-        return this.http.put<any>(url, { categoryName: updatedCategory });
+        return this.http.put<any>(url, { name: updatedCategory });
     }
     
    

@@ -69,7 +69,7 @@ export class AdminCategoriesComponent implements OnInit {
         if (this.newCategoryName.trim() !== "") {
           // Check if the category name contains only letters
           if (/^[a-zA-Z]+$/.test(this.newCategoryName)) {
-            const newCategory = { categoryName: this.newCategoryName };
+            const newCategory = { name: this.newCategoryName };
       
             this.categoriesService.addCategory(newCategory).subscribe(
               (response) => {
@@ -105,18 +105,18 @@ export class AdminCategoriesComponent implements OnInit {
     
     openUpdateCategoryModal(content: any, categoryId: number): void {
         console.log("Category ID:", categoryId); // Log to check the value
-        this.selectedCategory = { id: categoryId }; 
+        this.selectedCategory = { _id: categoryId }; 
         this.modalService.open(content, { centered: true });
     }
     
     
     updateCategory(): void {
-        console.log('Updating category with ID:', this.selectedCategory.id);
+        console.log('Updating category with ID:', this.selectedCategory._id);
     
         if (this.selectedCategory.name.trim() !== "") {
             // Check if the updated category name contains only letters
             if (/^[a-zA-Z]+$/.test(this.selectedCategory.name)) {
-                this.categoriesService.updateCategory(this.selectedCategory.id, this.selectedCategory.name).subscribe(
+                this.categoriesService.updateCategory(this.selectedCategory._id, this.selectedCategory.name).subscribe(
                     (response: any) => {
                         console.log("Category updated successfully:", response);
                         this.loadCategories();
