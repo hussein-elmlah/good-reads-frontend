@@ -67,6 +67,20 @@ export class AuthorsDetailsComponent {
                 console.error('Error fetching author books:', error);
             }
         );
-    }    
+    }
+
+    onStatusChange(status: string, bookId: string) {
+        // Call the service function to update the book status
+        this.authorsServ.updateBookStatus(status, bookId).subscribe(
+            (response: any) => {
+            // Handle success response
+            console.log('Book status updated successfully:', response);
+          },
+          (error: any) => {
+            // Handle error response
+            console.error('Error updating book status:', error);
+          }
+        );
+      }
 
 }
