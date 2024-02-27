@@ -6,44 +6,33 @@ import {
 } from "@angular/forms";
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 
-import { AuthService } from "../../../services/auth.service";
+import { AuthService } from "../../../Services/auth.service";
+import { NavBarComponent } from "../nav-bar/nav-bar.component";
 
 @Component({
     selector: "app-register",
     standalone: true,
-    imports: [RouterLink, ReactiveFormsModule, RouterLinkActive, CommonModule, HttpClientModule],
+    imports: [NavBarComponent, RouterLink, ReactiveFormsModule, RouterLinkActive, CommonModule, HttpClientModule],
     templateUrl: "./register.component.html",
     styleUrl: "./register.component.css"
 })
 export class RegisterComponent {
     FormBuilder: any;
+    selectedImage: File | null = null;
     constructor(private _AuthService:AuthService, private _Router:Router, private _FormBuilder:FormBuilder) {}
     errMsg:string = "";
     isLoading:boolean = false;
 
     registerForm:FormGroup = this._FormBuilder.group({
-        name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+        firstName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+        lastName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+        username: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+        image: ["", []],
         email: ["", [Validators.required, Validators.email]],
-        password: ["", [Validators.required, Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/)]],
+        password: ["", [Validators.required, Validators.pattern(/^[a-zA-Z0-9_@]{8,30}$/)]],
         rePassword: [""]
     }, { validators: [this.confirmPassword] } as FormControlOptions);
-    /*
-  registerForm:FormGroup = new FormGroup({
-    name:new FormControl('',[
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(15)]),
-    email:new FormControl('',[
-      Validators.required,
-      Validators.email]),
-    password:new FormControl('',[
-      Validators.required,
-      Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/)]),
-    rePassword:new FormControl(''),
 
-    image:new FormControl('')
-  },{validators:[this.confirmPassword]} as FormControlOptions )
-*/
     confirmPassword(group:FormGroup):void {
         const password = group.get("password");
         const repassword = group.get("rePassword");
@@ -55,6 +44,13 @@ export class RegisterComponent {
         }
     }
 
+    handleFileInput(event: any): void {
+        const { files } = event.target;
+        if (files && files.length > 0) {
+            this.selectedImage = files[0];
+        }
+    }
+
     handleForm():void {
         this.isLoading = true;
         const userData = this.registerForm.value;
@@ -62,7 +58,7 @@ export class RegisterComponent {
             this._AuthService.register(userData).subscribe({
                 next: (response) => {
                     console.log(response);
-                    if (response.message == "success") {
+                    if (response.token) {
                         this.isLoading = false;
                         this._Router.navigate(["/login"]);
                     }
