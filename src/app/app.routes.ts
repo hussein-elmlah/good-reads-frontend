@@ -1,11 +1,11 @@
 import { Routes } from "@angular/router";
 
-import { AdminAuthorsComponent } from "./Admin/admin-authors/admin-authors.component";
-import { AdminBooksComponent } from "./Admin/admin-books/admin-books.component";
-import { AdminCategoriesComponent } from "./Admin/admin-categories/admin-categories.component";
-import { AdminloginComponent } from "./Admin/admin-login/admin-login.component";
-import { AdminProfileComponent } from "./Admin/admin-profile/admin-profile.component";
-import { AuthGuard } from "./Admin/guards/auth.guard";
+import { AdminAuthorsComponent } from "./Components/Admin/admin-authors/admin-authors.component";
+import { AdminBooksComponent } from "./Components/Admin/admin-books/admin-books.component";
+import { AdminCategoriesComponent } from "./Components/Admin/admin-categories/admin-categories.component";
+import { AdminloginComponent } from "./Components/Admin/admin-login/admin-login.component";
+import { AdminProfileComponent } from "./Components/Admin/admin-profile/admin-profile.component";
+import { AuthGuard } from "./Components/Admin/guards/auth.guard";
 import { AuthorsComponent } from "./Components/User/authors/authors.component";
 import { AuthorsDetailsComponent } from "./Components/User/authors-details/authors-details.component";
 import { BooksComponent } from "./Components/User/books/books.component";
