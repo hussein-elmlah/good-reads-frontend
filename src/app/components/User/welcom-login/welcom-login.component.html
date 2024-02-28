@@ -2,83 +2,91 @@
 <div class="welcome container mt-5">
   <div class="row">
     <!-- Welcome section -->
-    <div class="col-md-12   welcome-section">
+    <div class="col-md-12   ">
       <!-- Your welcome content here -->
-      <h2 >Welcome to Good Reads</h2>
-       <!-- Show welcome section -->
-
-    <div class="popular-books mt-5">
-      <!-- Popular books section -->
-      <h3 style="color: brown;">Popular Books</h3>
-      <div  class="row">
-        <div *ngFor="let book of books| slice:0:5" class="col-md-3 m-3">
-            <div class="card" style="width: 18rem;">
-                <img src="books.img" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Book Name</h5>
-                  <h5 class="card-title">Author Name</h5>
-                  
-                </div>
-              </div>
-        </div>
-       
+      <div class="welcome-section">
+        <h1 class="welcome-title">Welcome to Our Bookstore!</h1>
         
       </div>
-     
+    <!--
+      <h3 style="color: brown;" class="mt-4">Popular Books</h3>
+       <div class="popular-books mt-5">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner" >
+            <div *ngFor="let book of books; " class="carousel-item active">
+              <img  [src]="book.cover_image" class="d-block w-100" alt="{{ book.title }}">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{ book.title }}</h5>
+               <h6>{{ book.author }}</h6>
+              </div>
 
-    </div>
+            </div>
+            
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>-->
+       
+        <h3 style="color: brown;" class="mt-4 text-center mb-3">Popular Books</h3>
+        <div class="row">
+         
+          <div *ngFor="let book of books; " class="col-md-3 mb-3 flex-nowrap" >
+            <div class="card" style="width: 15rem;">
+              <img [src]="book.img" class="card-img-top" alt="{{ book.name }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ book.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      
+      
     <div class="popular-categories mt-5">
       <!-- Popular categories section -->
-      <h3 style="color: brown;">Popular Categories</h3>
-      <div class="row ">
-        <div class="col-md-3 m-3">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
+      <h3 style="color: brown;" class="mt-4 text-center mb-3">Popular categories</h3>
+      <div class="row">
+       
+        <div *ngFor="let book of books; " class="col-md-3 mb-3 flex-nowrap" >
+          <div class="card" style="width: 15rem;">
+            <img [src]="book.cover_image" class="card-img-top" alt="{{ book.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ book.title }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
+              
+            </div>
+          </div>
         </div>
-        <div class="col-md-3 m-3">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-        </div>
-        
       </div>
     </div>
     <div class="popular-authors mt-5">
       <!-- Popular authors section -->
-      <h3 style="color: brown;">Popular Authors</h3>
+      <h3 style="color: brown;" class="mt-4 text-center mb-3">Popular Authors</h3>
       <div class="row">
-        <div class="col-md-3 m-3">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
+       
+        <div *ngFor="let book of books; " class="col-md-3 mb-3 flex-nowrap" >
+          <div class="card" style="width: 15rem;">
+            <img [src]="book.cover_image" class="card-img-top" alt="{{ book.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ book.title }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
+              
+            </div>
+          </div>
         </div>
-        <div class="col-md-3 m-3">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-        </div>
-        
       </div>
     </div>
   
