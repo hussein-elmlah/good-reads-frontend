@@ -28,7 +28,7 @@ export class AuthorsDetailsComponent {
         this.authorsServ.getAuthorById(this._id).subscribe(
             (data) => {
                 this.author = data;
-                const authorBooks = this.fetchAuthorBooks();
+                this.fetchAuthorBooks();
             },
             (error) => {
                 if (error instanceof HttpErrorResponse) {
@@ -42,11 +42,31 @@ export class AuthorsDetailsComponent {
         this.authorsServ.getAuthorBooks(this._id).subscribe(
             (data) => {
                 this.authorBooks = data;
+                for(let i = 0; i < this.authorBooks.length; i++)
+                {
+                    this.authorBooks[i].avgRating = 0;
+                    this.authorBooks[i].starsArray = [];
+                    this.authorBooks[i].emptyStarsArray = [];
+                    let j=0,k=0;
+                    for(j; j < this.authorBooks[i].reviews.length; j++)
+                    {
+                        this.authorBooks[i].avgRating += this.authorBooks[i].reviews[j].rate;
+                    }
+                    this.authorBooks[i].avgRating /= j;
+                    for( k = 0; k < this.authorBooks[i].avgRating; k++)
+                    {
+                        this.authorBooks[i].starsArray.push({});
+                    }
+                    for( k ; k < 5; k++)
+                    {
+                        this.authorBooks[i].emptyStarsArray.push({});
+                    }
+                }
             },
             (error) => {
                 console.error('Error fetching author books:', error);
             }
         );
-    }
+    }    
 
 }
