@@ -21,4 +21,7 @@ export class BookService {
         return this._HttpClient.get(`http://localhost:3000/books?status=${status}`);
     
     }
+    SearchBooks(query: string) {
+        return this._HttpClient.get<any[]>(`http://localhost:3000/books/search?query=${query}`);
+      }
 }
