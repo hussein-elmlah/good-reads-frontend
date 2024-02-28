@@ -2,6 +2,7 @@
 
 <div class="container">
   <div class="row mt-4">
+    
     <div class="col-lg-3 mb-4">
       <div class="card">
         <div class="card-body text-center">
@@ -9,9 +10,8 @@
           <h4 class="card-title">{{ author?.firstName }} {{ author?.lastName }}</h4>
           <p class="card-text">{{ author?.dob?.substring(0, 10) }}</p>
           <p>
-                      
             Authors infuse stories with their distinctive viewpoints and imaginative storytelling, crafting narratives that captivate and educate readers. They shape vivid worlds and compelling characters, resonating with audiences on profound levels. Authors' dedication and creativity enrich the literary sphere, leaving a lasting impact on readers' hearts and minds.
-                              </p>
+          </p>
         </div>
       </div>
     </div>
@@ -32,28 +32,37 @@
                 <div class="col-sm-2">
                   <img [src]="book.img" alt="Book Cover" class="img-fluid">
                 </div>
-                <div class="col-sm-10">
+                <div class="col-sm-7">
                   <h5 class="card-title"><a href="#" class="text-dark font-weight-bold">{{ book.name }}</a></h5>
                   <div class="starrating risingstar d-flex justify-content-end flex-row-reverse">
                     <span class="rating">                   
                       <div class="starrating d-flex ali">
-                        <ng-container *ngFor="let star of book.emptyStarsArray">
-                          <input type="radio" [id]="'star' + star" name="rating{{ star }}" class="" [value]="star" />
-                          <label [for]="'star' + star" [title]="star + ' star'"></label>
-                        </ng-container>
                         <ng-container *ngFor="let star of book.starsArray">
                           <input type="radio" [id]="'star' + star" name="rating{{ star }}" class="checked" [value]="star" />
                           <label class="" [for]="'star' + star" [title]="star + ' star'"></label>
+                        </ng-container>
+                        <ng-container *ngFor="let star of book.emptyStarsArray">
+                          <input type="radio" [id]="'star' + star" name="rating{{ star }}" class="unchecked" [value]="star" />
+                          <label [for]="'star' + star" [title]="star + ' star'"></label>
                         </ng-container>
                         <span class="ms-2 pt-1">{{ book.avgRating }} stars</span>
                         <span class="ms-2 pt-1">-</span>
                         <span class="ms-2 pt-1">{{ book.reviews.length }} ratings</span>
                       </div>
                     </span>                    
-                    <!-- <span>{{ book.avgRating }}</span> -->
                   </div>
                   <p class="card-text text-info"><span class="text-black">last review: </span>{{ book.reviews[0].comment[0] }}</p>
                 </div>
+
+                <div class="col-sm-3">
+                  <select class="form-select" #statusSelect (change)="onStatusChange(statusSelect.value, book._id)">
+                    <option value="none">No Status</option>
+                    <option value="currently-read">Currently Read</option>
+                    <option value="want-to-read">Want to Read</option>
+                    <option value="read">Read</option>
+                  </select>
+                </div>
+
               </div>
             </div>
           </div>
@@ -62,3 +71,4 @@
     </div>
   </div>
 </div>
+`

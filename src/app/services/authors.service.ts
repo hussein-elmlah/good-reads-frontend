@@ -9,13 +9,13 @@ import { Book } from '../interfaces/books';
 })
 export class AuthorsService {
 
-  baseURL = `http://localhost:3000/authors`;
+  baseURL = `http://localhost:3000`;
 
   constructor(private _HttpClient:HttpClient) { }
     
   getAuthorBooks(authorId: any): Observable<Book[]> {
     authorId = Number(authorId);
-    const url = `http://localhost:3000/books`;
+    const url = `${this.baseURL}/books`;
     return this._HttpClient.get<Book[]>(url).pipe(
       map((books: any[]) => books.filter(book => {
         return book.author_id == authorId}
@@ -27,19 +27,26 @@ export class AuthorsService {
   limit = 8
   currentPage = 1
   getAuthors():Observable<any> {
-    return this._HttpClient.get(`${this.baseURL}/?page=${this.currentPage}&limit=${this.limit}`);
+    return this._HttpClient.get(`${this.baseURL}/authors/?page=${this.currentPage}&limit=${this.limit}`);
     // return this.dummyData();
   }
 
   getAuthorById(id:number):Observable<any> {
-    return this._HttpClient.get(`${this.baseURL}/${id}`);
+    return this._HttpClient.get(`${this.baseURL}/authors/${id}`);
     // const dummyAuthors = this.dummyData();
     // return dummyAuthors.pipe( map((authors: any[]) => authors[1]) );
   }
 
   // getPopularAuthors(options:any): Observable<any>{
-  //   return this._HttpClient.get(`${this.baseURL}/all/popular`, options)
+  //   return this._HttpClient.get(`${this.baseURL}/authors/all/popular`, options)
   // }
+
+  updateBookStatus(status: string, bookId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const params = { status, token };
+  console.log(`update book status ${status}`);
+    return this._HttpClient.put(`${this.baseURL}/user/${bookId}`, { params });
+  }
 
   // dummyData(): Observable<Author[]> {
   //   return of([

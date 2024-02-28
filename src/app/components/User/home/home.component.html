@@ -1,180 +1,45 @@
 <app-nav-bar></app-nav-bar>
+<div style="
+background-image: url(https://i.pinimg.com/564x/37/9d/b9/379db9aa1c987642bc89a8ce898e2fae.jpg);">
+    <br><br><br><br>
+</div>
 
 
-
-
-<!--<div class="container my-4">
-    <div class="row">
-        <div class="col">
-            <select  class="form-select">
-                <option value="all" selected>All Books</option>
-                <option value="Read">Read</option>
-                <option value="Want to Read">Want to Read</option>
-                <option value="currently Read">currently Read</option>
-            </select>
+<select #state (change)="selectBooks(state.value)" class="form-select">
+  <option value="all" selected>All Books</option>
+  <option value="Read">Read</option>
+  <option value="Want to Read">Want to Read</option>
+  <option value="currently Read">currently Read</option>
+</select>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-3" *ngFor="let book of displayedBooks">
+      <div class="card mb-3">
+        <img [src]="book.cover_image" class="card-img-top " alt="Book Cover">
+        <div class="card-body">
+          <h5 class="card-title" style="cursor: pointer;"  (click)="redirectToBook(book.id)">{{ book.name }}</h5>
+          <p class="card-text" style="cursor: pointer;" (click)="redirectToBook(book.id)">Author: {{ book.author }}</p>
+          
+          <!-- Add other book information as needed -->
         </div>
+      </div>
     </div>
-</div>-->
-<div class="col-md-12">
-<div class="d-flex align-items-start mt-4">
-    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-      <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">All Book</button>
-      <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Book</button>
-      <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Read</button>
-      <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Want to Read</button>
-    </div>
-    <div class="tab-content w-100 mx-2" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-        <fieldset class="border p-2 fw-bold">All
-        <table class="table ">
-       
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>twitter</td>
-          </tr>
-        </tbody>
-      </table></fieldset>
-    </div>
-      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-        <fieldset class="border p-2 fw-bold">Read
-        <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>twitter</td>
-          </tr>
-        </tbody>
-      </table>
-      </fieldset>
-    </div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-        <fieldset class="border p-2 fw-bold">Currently Reading
-        <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>twitter</td>
-          </tr>
-        </tbody>
-      </table>
-    </fieldset>
-    </div>
-      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-        <fieldset class="border p-2 fw-bold">Want To Read
-        <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>twitter</td>
-          </tr>
-        </tbody>
-      </table>
-    </fieldset>
-    </div>
+    <div *ngIf="books.length === 0" class="col-md-12">
+      <p class="text-center">No books available.</p>
     </div>
   </div>
-  <nav class="d-flex justify-content-center mt-3" aria-label="Page navigation example">
-    <ul class="pagination ">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link active" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+      <!-- Pagination Component -->
+      <app-pagination class="mt-5"
+        [currentPage]="currentPage"
+        [itemsPerPage]="itemsPerPage"
+        [totalItems]="books.length"
+        (pageChange)="onPageChange($event)">
+      </app-pagination>
+    </div>
   </div>
+</div>
 
 
