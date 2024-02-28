@@ -30,11 +30,20 @@ export class AuthorService {
         return this.http.post<any>(this.apiUrl, author , {headers});
     }
     updateAuthor(updatedAuthor: Author): Observable<any> {
+        const token = localStorage.getItem('token');
+        console.log("Token:", token);
+    
+        if (!token) {
+            console.error('Token not found in local storage.');
+            return throwError('Token not found in local storage.');
+        }
+        const headers = new HttpHeaders({
+            'authorization': token,
+        });
         const url = `${this.apiUrl}/${updatedAuthor._id}`;
-        // Omit the id from the payload to avoid redundant data in the request body
         const { _id, ...authorWithoutId } = updatedAuthor;
 
-        return this.http.put<any>(url, authorWithoutId);
+        return this.http.put<any>(url, authorWithoutId,{headers});
     }
 
     deleteAuthor(authorId: number): Observable<any> {
