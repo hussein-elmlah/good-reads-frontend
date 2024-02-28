@@ -1,6 +1,6 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 
 import { Author } from "../../interfaces/author";
 
@@ -17,7 +17,17 @@ export class AuthorService {
     }
 
     addAuthor(author: Author): Observable<any> {
-        return this.http.post<any>(this.apiUrl, author);
+        const token = localStorage.getItem('token');
+        console.log("Token:", token);
+    
+        if (!token) {
+            console.error('Token not found in local storage.');
+            return throwError('Token not found in local storage.');
+        }
+        const headers = new HttpHeaders({
+            'authorization': token,
+        });
+        return this.http.post<any>(this.apiUrl, author , {headers});
     }
     updateAuthor(updatedAuthor: Author): Observable<any> {
         const url = `${this.apiUrl}/${updatedAuthor._id}`;
@@ -28,7 +38,17 @@ export class AuthorService {
     }
 
     deleteAuthor(authorId: number): Observable<any> {
+        const token = localStorage.getItem('token');
+        console.log("Token:", token);
+    
+        if (!token) {
+            console.error('Token not found in local storage.');
+            return throwError('Token not found in local storage.');
+        }
+        const headers = new HttpHeaders({
+            'authorization': token,
+        });
         const url = `${this.apiUrl}/${authorId}`;
-        return this.http.delete<any>(url);
+        return this.http.delete<any>(url,{headers});
     }
 }
