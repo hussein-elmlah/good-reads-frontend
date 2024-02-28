@@ -8,8 +8,8 @@ import { Observable } from "rxjs";
 export class BookService {
     constructor(private _HttpClient: HttpClient) { }
     getAllBooks(): Observable<any> {
-        //  return this._HttpClient.get("http://localhost:3000/books");
-          return this._HttpClient.get("https://freetestapi.com/api/v1/books");
+          return this._HttpClient.get("http://localhost:3000/books");
+         // return this._HttpClient.get("https://freetestapi.com/api/v1/books");
       }
     getDetailsBook(id: string): Observable<any> {
         return this._HttpClient.get(`http://localhost:3000/books/${id}`);

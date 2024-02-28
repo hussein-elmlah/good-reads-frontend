@@ -59,16 +59,10 @@
       <!-- Popular categories section -->
       <h3 style="color: brown;" class="mt-4 text-center mb-3">Popular categories</h3>
       <div class="row">
-       
-        <div *ngFor="let book of books; " class="col-md-3 mb-3 flex-nowrap" >
-          <div class="card" style="width: 15rem;">
-            <img [src]="book.cover_image" class="card-img-top" alt="{{ book.title }}">
-            <div class="card-body">
-              <h5 class="card-title">{{ book.title }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
-              
-            </div>
-          </div>
+        <div *ngFor="let category of categories; " class="col-md-4 mb-3 flex-nowrap" >
+          <div class="col-lg-3 my-4 text-center">
+            <span class="border border-success-subtle border-3 rounded-4 p-3  fs-1">{{ category.name }}</span>
+        </div>
         </div>
       </div>
     </div>
@@ -77,13 +71,11 @@
       <h3 style="color: brown;" class="mt-4 text-center mb-3">Popular Authors</h3>
       <div class="row">
        
-        <div *ngFor="let book of books; " class="col-md-3 mb-3 flex-nowrap" >
+        <div *ngFor="let author of authors; " class="col-md-3 mb-3 flex-nowrap" >
           <div class="card" style="width: 15rem;">
-            <img [src]="book.cover_image" class="card-img-top" alt="{{ book.title }}">
+            <img [src]="author.photo" class="card-img-top" alt="{{ author.name }}">
             <div class="card-body">
-              <h5 class="card-title">{{ book.title }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
-              
+              <h5 class="card-title">{{ author.firstName }} {{author.lastName}}</h5>
             </div>
           </div>
         </div>

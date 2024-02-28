@@ -7,6 +7,10 @@ import { BookService } from "../../../Services/book.service";;
 import { LoginComponent } from "../login/login.component";
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { RegisterComponent } from "../register/register.component";
+import { CategoryService } from "../../services/category.service";
+import { CategoriesDataService } from "../../../services/categories.service";
+import { AuthorsService } from "../../../services/authors.service";
+import { AuthorService } from "../../services/author.service";
 
 @Component({
     selector: "app-welcom-login",
@@ -16,9 +20,10 @@ import { RegisterComponent } from "../register/register.component";
     styleUrl: "./welcom-login.component.css"
 })
 export class WelcomLoginComponent implements OnInit {
-    constructor(private _BookService:BookService) {}
+    constructor(private _BookService:BookService, private _category:CategoriesDataService, private _author:AuthorService) {}
     books:any[] = [];
 authors: any[] = []; 
+categories:any[]=[];
 
     ngOnInit(): void {
       this._BookService.getAllBooks().subscribe({
@@ -55,7 +60,20 @@ authors: any[] = [];
         error: (error) => {
           console.error('Error fetching books:', error);
         }
-      });   
+      });  
+      
+      
+      this._category.getCategories().subscribe((data: any) => {
+        this.categories = data; // Assign to this.categories
+        console.log(data);
+        this.categories = this.categories.slice(0, 6);
+    });
+
+    this._author.getAuthors().subscribe((data: any) => {
+      this.authors = data; // Assign to this.categories
+      console.log(data);
+      this.authors = this.authors.slice(0, 6);
+  });
         };
     
     showLogin: boolean = false;

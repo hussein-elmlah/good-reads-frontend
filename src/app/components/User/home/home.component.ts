@@ -28,10 +28,10 @@ export class HomeComponent {
   
     ngOnInit(): void {
       const token: any = localStorage.getItem("userToken");
-      let decode: any = jwtDecode(token);
+      const decode: any = jwtDecode(token); // Correct usage
       this.userID = decode.user_id;
       this.selectBooks("all");
-    }
+  }
   
     selectBooks(selectOption: any) {
       this._BookService.getBooksByStatus(selectOption).subscribe((data: any) => {
@@ -54,10 +54,10 @@ export class HomeComponent {
   }
 
   redirectToBook(bookId: string): void {
-    this._Router.navigate(["/:bookId", bookId]);
+    this._Router.navigate(["/books", bookId]);
 }
 
 redirectToAuthor(authorId: number): void {
-  this._Router.navigate(["/:authorId", authorId]);
+  this._Router.navigate(["/authors", authorId]);
 }
   }

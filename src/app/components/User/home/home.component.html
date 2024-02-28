@@ -15,10 +15,10 @@ background-image: url(https://i.pinimg.com/564x/37/9d/b9/379db9aa1c987642bc89a8c
   <div class="row mt-3">
     <div class="col-md-3" *ngFor="let book of displayedBooks">
       <div class="card mb-3">
-        <img [src]="book.cover_image" class="card-img-top " alt="Book Cover">
+        <img [src]="book.img" class="card-img-top " alt="Book Cover">
         <div class="card-body">
           <h5 class="card-title" style="cursor: pointer;"  (click)="redirectToBook(book.id)">{{ book.name }}</h5>
-          <p class="card-text" style="cursor: pointer;" (click)="redirectToBook(book.id)">Author: {{ book.author }}</p>
+          <p class="card-text" style="cursor: pointer;" (click)="redirectToAuthor(book.id)">Author: {{ book.author }}</p>
           
           <!-- Add other book information as needed -->
         </div>
