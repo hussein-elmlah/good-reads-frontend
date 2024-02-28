@@ -6,7 +6,7 @@
           <div class="profile-header-cover"></div>
           <div class="profile-header-content">
               <div *ngIf="author" class="profile-header-img">
-                  <img [src]=[author.image] alt="" />
+                  <img [src]=[author.photo] alt="" />
               </div>
               <ul class="profile-header-tab nav nav-tabs nav-tabs-v2">
                   <li class="nav-item">
@@ -21,13 +21,11 @@
       <div class="profile-container">
           <div class="profile-sidebar">
               <div *ngIf="author" class="desktop-sticky-top">
-                  <h4>{{author.fullName}}</h4>
-                  <div class="font-weight-600 mb-3 text-muted mt-n2">{{author.DOB.substring(0, 10)}}</div>
+                  <h4>{{author.firstName}} {{author.lastName}}</h4>
+                  <div class="font-weight-600 mb-3 text-muted mt-n2">{{author.dob.substring(0, 10)}}</div>
                   <p>
                       People know authors for their insight and wisdom, and whether they're writing now or centuries ago, we can gain valuable life skills by reviewing these writings. Albeit wise, funny or insightful, many of these authors have made a huge difference to people's lives. 
                   </p>
-                  <div class="mb-1"><i class="fa fa-map-marker-alt fa-fw text-muted"></i> New York, NY</div>
-                  <div class="mb-3"><i class="fa fa-link fa-fw text-muted"></i> seantheme.com/studio</div>
                   <hr class="mt-4 mb-4" />
               </div>
           </div>
@@ -38,11 +36,12 @@
                       <div class="tab-content p-0">
                           <div *ngIf="author" class="tab-pane fade active show" id="profile-books">
 
+                            <h4>Author books</h4>
                               <div *ngFor="let book of author.Books">
-                              <section class="list-group">
-                                  <div class="list-group-item d-flex align-items-center">
-                                      <img [src]=[book.image] alt="" width="50px" class="rounded-sm ml-n2" />
-                                      <div class="flex-fill pl-3 pr-3 content">
+                                <section class="list-group">
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <img [src]=[book.image] alt="" width="50px" class="rounded-sm ml-n2" />
+                                        <div class="flex-fill pl-3 pr-3 content">
                                          
                                           <div style="margin-bottom: .5em;"> Name:  <a href="#" class="text-dark font-weight-600">{{book.title}}</a></div>
                                               <div style="margin-bottom: .5em;" class="starrating risingstar d-flex justify-content-end flex-row-reverse">

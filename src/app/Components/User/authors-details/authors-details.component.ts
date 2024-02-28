@@ -17,7 +17,7 @@ export class AuthorsDetailsComponent {
   id:any ;
   author:any ;
   constructor(private authorsServ:AuthorsService, private _activateRoute:ActivatedRoute, private _router:Router){
-    this.id = this._activateRoute.snapshot.params['id']
+    this.id = this._activateRoute.snapshot.params['authorId']
     this.fetchData()
   }
 
