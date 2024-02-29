@@ -30,18 +30,36 @@ export class HomeComponent {
 
   ngOnInit(): void {
     const token: any = localStorage.getItem("userToken");
-    const decode: any = jwtDecode(token); // Correct usage
-    this.userID = decode.user_id;
-    this.selectBooks(this.userID, "all");
+  
+    // Check if token is present and it's a string
+    if (token && typeof token === "string") {
+      const decode: any = jwtDecode(token);
+      this.userID = decode.user_id;
+      this.selectBooks(this.userID, "all");
+    } else {
+      // Handle the case when token is not present or not a string
+      console.error("Invalid or missing token");
+      // You can handle this case by redirecting the user to login or any other appropriate action
+    }
+  }
+  
 
+selectBooks(userId: string, status: string ): void {
+  if (status === "all") {
+    // If status is "all", fetch all books for the user
+    this._BookService.getAllUserBooks(userId).subscribe((data: any) => {
+      this.books = data;
+      this.updateDisplayedBooks();
+    });
+  } else {
+    // If status is other than "all", fetch books based on the selected status
+    this._BookService.getUserBooksByStatus(userId, status).subscribe((data: any) => {
+      this.books = data;
+      this.updateDisplayedBooks();
+    });
+  }
 }
 
-selectBooks(userId: string, status: string = "all"): void {
-  this._BookService.getUserBooksByStatus(userId, status).subscribe((data: any) => {
-    this.books = data;
-    this.updateDisplayedBooks();
-  });
-}
 
 onPageChange(page: number): void {
   this.currentPage = page;
