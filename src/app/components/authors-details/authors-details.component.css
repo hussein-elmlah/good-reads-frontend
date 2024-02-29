@@ -1,5 +1,3 @@
-
-
 .starrating > input {display: none;}
 
 .starrating > label:before { 
@@ -12,7 +10,7 @@
 
 .starrating > label
 {
-  color: #222222; /* Start color when not clicked */
+  color: #222222;
 }
 
 .starrating .checked ~ label{
@@ -22,8 +20,3 @@
 .starrating .unchecked ~ label{
     color: #222222 ;
 }
-/* .starrating > input:checked ~ label
-{ color: #ffca08 ; }
-.starrating > input:hover ~ label
-{ color: #ffca08 ;  }  */
-

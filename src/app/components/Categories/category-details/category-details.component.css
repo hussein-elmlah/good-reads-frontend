@@ -1,0 +1,17 @@
+.card-img-top {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card-title:hover {
+    color: green;
+}
+
+.card-text:hover {
+    color: #a52a2a;
+}

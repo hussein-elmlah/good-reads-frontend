@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from "@angular/forms";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 
 import { Author } from "../../interfaces/author";
@@ -65,7 +65,7 @@ export class AuthorsDetailsComponent {
         );
     }
 
-    onStatusChange( bookId: string, status: string) {
+    onStatusChange(bookId: string, status: string) {
         // Call the service function to update the book status
         this.authorsServ.updateBookStatus(bookId, status).subscribe(
             (response: any) => {

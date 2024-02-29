@@ -23,7 +23,7 @@ export class BokksService {
         return this.http.get<Author[]>(this.authorsUrl);
     }
 
-    getCategories(): Observable<Category[]> { 
+    getCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(this.categoriesUrl);
     }
     // addBook(book: Book): Observable<any> {
@@ -42,47 +42,44 @@ export class BokksService {
     //     return this.http.delete<any>(url);
     // }
     addBook(book: Book): Observable<any> {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         console.log("Token:", token);
-    
-        if (!token) {
-            console.error('Token not found in local storage.');
-            return throwError('Token not found in local storage.');
-        }
-        const headers = new HttpHeaders({
-            'authorization': token,
-        });
-        return this.http.post(`${this.apiUrl}`, book , {headers})
-      }
-    
-      updateBook(book: Book): Observable<any> {
-        const token = localStorage.getItem('token');
-        console.log("Token:", token);
-    
-        if (!token) {
-            console.error('Token not found in local storage.');
-            return throwError('Token not found in local storage.');
-        }
-        const headers = new HttpHeaders({
-            'authorization': token,
-        });
-        return this.http.put(`${this.apiUrl}/${book._id}`, book , {headers});
-      }
-    
-     
-    
-      deleteBook(bookId: string): Observable<any> {
-        const token = localStorage.getItem('token');
-        console.log("Token:", token);
-    
-        if (!token) {
-            console.error('Token not found in local storage.');
-            return throwError('Token not found in local storage.');
-        }
-        const headers = new HttpHeaders({
-            'authorization': token,
-        });
-        return this.http.delete(`${this.apiUrl}/${bookId}`,{headers});
 
-        
-}}
+        if (!token) {
+            console.error("Token not found in local storage.");
+            return throwError("Token not found in local storage.");
+        }
+        const headers = new HttpHeaders({
+            authorization: token,
+        });
+        return this.http.post(`${this.apiUrl}`, book, { headers });
+    }
+
+    updateBook(book: Book): Observable<any> {
+        const token = localStorage.getItem("token");
+        console.log("Token:", token);
+
+        if (!token) {
+            console.error("Token not found in local storage.");
+            return throwError("Token not found in local storage.");
+        }
+        const headers = new HttpHeaders({
+            authorization: token,
+        });
+        return this.http.put(`${this.apiUrl}/${book._id}`, book, { headers });
+    }
+
+    deleteBook(bookId: number): Observable<any> {
+        const token = localStorage.getItem("token");
+        console.log("Token:", token);
+
+        if (!token) {
+            console.error("Token not found in local storage.");
+            return throwError("Token not found in local storage.");
+        }
+        const headers = new HttpHeaders({
+            authorization: token,
+        });
+        return this.http.delete(`${this.apiUrl}/${bookId}`, { headers });
+    }
+}
