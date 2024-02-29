@@ -42,7 +42,7 @@ export class AdminloginComponent implements OnInit {
             this.authService.login(username, password).subscribe(
                 (success: any) => {
                     if (success) {
-                        this.router.navigate(["/adminProfile"]);
+                        this.router.navigate(["/profile"]);
                     } else {
                         this.loginError = "Invalid username or password";
                     }
@@ -66,7 +66,6 @@ export class AdminloginComponent implements OnInit {
     }
     onLogout() {
         this.authService.logout();
-        // Redirect to the login page or any other page after logout if needed
         this.router.navigate(['/login']);
     }
 }

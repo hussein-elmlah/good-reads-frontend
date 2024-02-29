@@ -64,7 +64,7 @@ export const routes:Routes = [
         component: AdminloginComponent
     },
     {
-        path: "adminProfile",
+        path: "profile",
         component: AdminProfileComponent,
         canActivate: [AuthGuard],
 

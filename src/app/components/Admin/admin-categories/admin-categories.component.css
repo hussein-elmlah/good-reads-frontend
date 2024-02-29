@@ -17,4 +17,107 @@
     border-radius: 5px;
     z-index: 1000; 
   }
-  
+  /* admin-categories.component.css */
+
+.container {
+  /* max-width: 800px; /* Adjust as per your design */
+  /* margin: 0 auto; */ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px; /* Adjust as per your design */
+  margin: 0 auto;
+
+}
+
+h2 {
+  color: #333;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: 1px solid #6c757d;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+  border-color: #545b62;
+}
+
+
+.table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  text-align: left;
+}
+
+.modal-body {
+  padding: 15px;
+}
+
+.form-control {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.page-item {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.page-link {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+}
+
+.page-link:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.page-item.disabled .page-link {
+  pointer-events: none;
+  background-color: #ddd;
+  border-color: #ddd;
+  color: #6c757d;
+}
+
+.page-item.active .page-link {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
