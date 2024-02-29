@@ -70,7 +70,6 @@ input {
     cursor: not-allowed;
 }
 
-/* Center the error messages horizontally */
 .error-message-container {
     text-align: center;
 }
