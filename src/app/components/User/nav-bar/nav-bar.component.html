@@ -23,7 +23,7 @@
         <input type="text" (ngModel)="searchQuery" (input)="SearchBooks()">
       </div>-->
       
-      <div *ngIf="searchResults.length > 0; else noResults">
+      <div *ngIf="searchResults.length > 0">
         <div *ngFor="let book of searchResults">
           <h2>{{ book.title }}</h2>
           <p>Author: {{ book.author }}</p>

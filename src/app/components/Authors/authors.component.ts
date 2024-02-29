@@ -2,10 +2,9 @@ import { CommonModule } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable, of } from "rxjs";
 
-import { PaginationComponent } from "../pagination/pagination.component";
 import { Author } from "../../interfaces/author.model";
+import { PaginationComponent } from "../pagination/pagination.component";
 import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
 
 @Component({
@@ -34,7 +33,7 @@ export class AuthorsComponent {
     }
 
     getAuthors() {
-    return this.http.get<Author[]>('http://localhost:3000/authors/');
+        return this.http.get<Author[]>("http://localhost:3000/authors/");
         // return this.dummyData();
     }
 
