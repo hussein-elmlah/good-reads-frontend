@@ -5,21 +5,22 @@ background-image: url(https://i.pinimg.com/564x/37/9d/b9/379db9aa1c987642bc89a8c
 </div>
 
 
-<select (ngModel)="selectedStatus" (change)="selectBooks(userid, selectedStatus)" class="form-select" >
+
+<select ngModel="selectedStatus" (change)="selectBooks(userid, selectedStatus)" class="form-select">
   <option value="all" selected>All Books</option>
   <option value="Read">Read</option>
   <option value="Want to Read">Want to Read</option>
-  <option value="currently Read">currently Read</option>
+  <option value="currently Read">Currently Read</option>
 </select>
+
 <div class="container">
   <div class="row mt-3">
     <div class="col-md-3" *ngFor="let book of displayedBooks">
       <div class="card mb-3">
-        <img [src]="book.img" class="card-img-top " alt="Book Cover">
+        <img [src]="book.img" class="card-img-top" alt="Book Cover">
         <div class="card-body">
-          <h5 class="card-title" style="cursor: pointer;"  (click)="redirectToBook(book.id)">{{ book.name }}</h5>
-          <p class="card-text" style="cursor: pointer;" (click)="redirectToAuthor(book.id)">Author: {{ book.author }}</p>
-          
+          <h5 class="card-title" style="cursor: pointer;" (click)="redirectToBook(book.id)">{{ book.name }}</h5>
+          <p class="card-text" style="cursor: pointer;" (click)="redirectToAuthor(book.authorId)">Author: {{ book.author }}</p>
           <!-- Add other book information as needed -->
         </div>
       </div>
@@ -41,5 +42,6 @@ background-image: url(https://i.pinimg.com/564x/37/9d/b9/379db9aa1c987642bc89a8c
     </div>
   </div>
 </div>
+
 
 
