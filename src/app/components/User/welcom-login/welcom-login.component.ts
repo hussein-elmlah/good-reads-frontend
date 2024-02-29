@@ -6,7 +6,7 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 
 import { BookService } from "../../../services/book.service";
 import { CategoriesDataService } from "../../../services/categories.service";
-import { AuthorService } from "../../services/author.service";
+import { AuthorService } from "../../../services/author.service";
 import { LoginComponent } from "../login/login.component";
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { RegisterComponent } from "../register/register.component";
@@ -62,7 +62,7 @@ export class WelcomLoginComponent implements OnInit {
             }
         });
 
-        this._category.getCategories().subscribe((data: any) => {
+        this._category.getPopularCategories().subscribe((data: any) => {
             this.categories = data; // Assign to this.categories
             console.log(data);
             this.categories = this.categories.slice(0, 6);

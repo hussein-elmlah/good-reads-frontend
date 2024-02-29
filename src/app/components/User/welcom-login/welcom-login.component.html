@@ -38,7 +38,7 @@
           </button>
         </div>-->
        
-        <h3 style="color: brown;" class="mt-4 text-center mb-3">Popular Books</h3>
+        <h3 style="color: brown;" class="mt-4 text-center mb-3 fs-2">Popular Books</h3>
         <div class="row">
          
           <div *ngFor="let book of books; " class="col-md-3 mb-3 flex-nowrap" >
@@ -57,25 +57,25 @@
       
     <div class="popular-categories mt-5">
       <!-- Popular categories section -->
-      <h3 style="color: brown;" class="mt-4 text-center mb-3">Popular categories</h3>
+      <h3 style="color: brown;" class="mt-4 text-center mb-3 fs-2">Popular categories</h3>
       <div class="row">
         <div *ngFor="let category of categories; " class="col-md-4 mb-3 flex-nowrap" >
           <div class="col-lg-3 my-4 text-center">
-            <span class="border border-success-subtle border-3 rounded-4 p-1 fs-1">{{ category.name }}</span>
+            <span class="border border-success-subtle border-3 rounded-4 p-1 fs-1">{{ category }}</span>
         </div>
         </div>
       </div>
     </div>
     <div class="popular-authors mt-5">
       <!-- Popular authors section -->
-      <h3 style="color: brown;" class="mt-4 text-center mb-3">Popular Authors</h3>
+      <h3 style="color: brown;" class="mt-4 text-center mb-3 fs-2">Popular Authors</h3>
       <div class="row">
        
         <div *ngFor="let author of authors; " class="col-md-3 mb-3 flex-nowrap" >
           <div class="card" style="width: 15rem;">
             <img [src]="author.photo" class="card-img-top" alt="{{ author.name }}">
             <div class="card-body">
-              <h5 class="card-title">{{ author.firstName }} {{author.lastName}}</h5>
+              <h5 class="card-title">{{ author }} </h5>
             </div>
           </div>
         </div>
