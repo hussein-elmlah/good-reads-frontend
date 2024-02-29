@@ -9,7 +9,7 @@
       <input type="text" id="bookName" [(ngModel)]="newBook.name" class="form-control" />
 
       <label for="category">Category:</label>
-      <select id="category" [(ngModel)]="newBook.category_id" class="form-control">
+      <select id="category" [(ngModel)]="newBook.category" class="form-control">
         <option *ngFor="let category of categories">{{ category.name }}</option>
       </select>
 
@@ -46,13 +46,9 @@
       <tr *ngFor="let book of books">
         <td>{{ book._id }}</td>
         <td>{{ book.name }}</td>
-        <!-- <td>{{ book.category_id }}</td> -->
         <td>{{ book.category }}</td>
 
-        <!-- In your HTML template -->
-<!-- Assuming each author object has properties fisrtname and lastname -->
 <td>{{book.author}}</td>
-<!-- <td>{{ getAuthorNames(book.authors) }}</td> -->
 
         <td>
           <img *ngIf="book.img" [src]="book.img" alt="Book Image" class="book-image" />
@@ -71,15 +67,14 @@
       <input type="text" id="updatedBookName" [(ngModel)]="selectedBook.name" class="form-control" />
 
       <label for="updateCategory">Updated Category:</label>
-      <select id="updateCategory" [(ngModel)]="selectedBook.category_id" class="form-control">
+      <select id="updateCategory" [(ngModel)]="selectedBook.category" class="form-control">
         <option *ngFor="let category of categories">{{ category.name }}</option>
       </select>
 
       <label for="updateAuthors">Updated Authors:</label>
 <input type="text" id="updateAuthors" [(ngModel)]="selectedBook.author" class="form-control">
 
-        <!-- <option *ngFor="let author of authors" [ngValue]="author">{{ author.fisrtname + ' ' + author.lastname }}</option> -->
-      <!-- </select> -->
+       
 
       <label for="updateImage">Updated Image:</label>
       <input type="file" id="updateImage" (change)="handleUpdatedImageUpload($event)" class="form-control" />

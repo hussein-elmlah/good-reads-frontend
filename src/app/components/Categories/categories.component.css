@@ -6,4 +6,13 @@ span {
     display: inline-block;
     cursor: pointer;
     min-width: 250px;
+
+    &:hover {
+        background-color: #ebe9dd;
+    }
+
+    &:active {
+        background-color: rgb(235, 233, 221, 0.5);
+        transform: scale(0.9);
+    }
 }

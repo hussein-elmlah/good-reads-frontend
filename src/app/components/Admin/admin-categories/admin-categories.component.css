@@ -1,6 +1,4 @@
-/* admincategory.component.css */
 
-/* Style for the overlay */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -13,11 +11,10 @@
     align-items: center;
   }
   
-  /* Style for the modal */
   .modal {
     background: white;
     padding: 20px;
     border-radius: 5px;
-    z-index: 1000; /* Ensure the modal is above other elements */
+    z-index: 1000; 
   }
   

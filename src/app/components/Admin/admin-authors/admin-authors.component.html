@@ -5,22 +5,7 @@
 
   <ng-template #addAuthorModal let-modal>
     <div class="modal-body">
-      <!-- <label for="firstName">First Name:</label>
-      <input type="text" id="fullName" [(ngModel)]="newAuthor.fisrtname" class="form-control" />
-      <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" [(ngModel)]="newAuthor.lastname" class="form-control" />
-
-
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" [(ngModel)]="newAuthor.DOB" class="form-control" />
-
-      <label for="image">Image:</label>
-      <input type="file" id="image" (change)="handleImageUpload($event)" class="form-control" />
-
-      <label for="books">Books:</label>
-      <input type="text" id="books" [(ngModel)]="newAuthor.Books" class="form-control" />
-
-      <div *ngIf="newAuthorValidationMessage">{{ newAuthorValidationMessage }}</div> -->
+     
       <label for="fullName">First Name: <span class="required-field">*</span></label>
 <input type="text" id="fullName" [(ngModel)]="newAuthor.firstName" class="form-control" required />
 

@@ -61,4 +61,12 @@ export class AdminloginComponent implements OnInit {
 
         return !!control?.hasError("invalid") && (control?.touched || this.formSubmitted);
     }
+    isAuthenticated(): boolean {
+        return this.authService.isAuthenticated();
+    }
+    onLogout() {
+        this.authService.logout();
+        // Redirect to the login page or any other page after logout if needed
+        this.router.navigate(['/login']);
+    }
 }

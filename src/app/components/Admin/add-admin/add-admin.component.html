@@ -1,0 +1,28 @@
+
+   <div>
+    <h2>Admin Registration</h2>
+    <form #registrationForm="ngForm" (ngSubmit)="register()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" [(ngModel)]="username" name="username" required minlength="5" pattern="^[a-zA-Z0-9_.-]+$">
+      <div *ngIf="registrationForm.controls['username']?.hasError('pattern')">Invalid username format. Please check the requirements.</div>
+      <div *ngIf="registrationForm.controls['username']?.hasError('minlength')">Username must be at least 5 characters long.</div>
+  
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=?/.]).*$">
+      <div *ngIf="registrationForm.controls['password']?.hasError('pattern')">Invalid password format. Please check the requirements.</div>
+      <div *ngIf="registrationForm.controls['password']?.hasError('minlength')">Password must be at least 8 characters long.</div>
+  
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+      <div *ngIf="!passwordsMatch()">Passwords do not match.</div>
+
+
+      <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+    </form>
+  
+    <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+  
+    <div *ngIf="successMessage" style="color: green;">{{ successMessage }}</div>
+  </div>
+  
+  
