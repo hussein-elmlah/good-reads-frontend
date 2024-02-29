@@ -109,6 +109,10 @@ export class AuthorsDetailsComponent implements OnInit {
     }
 
     onStatusChange(bookId: string, status: string) {
+        if (!bookId) {
+            this.authorsServ.
+            return;
+        }
         this.authorsServ.updateBookStatus(bookId, status).subscribe(
             (response: any) => {},
             (error: any) => {}
