@@ -30,7 +30,9 @@ span {
       background-color: #ebe9dd;
   }
 }
-  
+  .cardBook{
+    height: 400px;
+  }
   .cardBook img{
     height: 300px;
   }
