@@ -1,11 +1,13 @@
 import { CommonModule } from "@angular/common";
 import { HttpErrorResponse } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 
 import { Author } from "../../interfaces/author";
 import { AuthorsService } from "../../services/authors.service";
+import { BookService } from "../../services/book.service";
+import { TokenService } from "../../services/token.service";
 import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
 
 @Component({
@@ -15,14 +17,28 @@ import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
     templateUrl: "./authors-details.component.html",
     styleUrls: ["./authors-details.component.css"]
 })
-export class AuthorsDetailsComponent {
-    _id:any;
-    author:Author | undefined;
+export class AuthorsDetailsComponent implements OnInit {
+    _id: any;
+    author: Author | undefined;
     authorBooks: any[] = [];
-    constructor(private authorsServ:AuthorsService, private _activateRoute:ActivatedRoute, private _router:Router) {
+    userBooks: any[] = [];
+    displayedBooks: any[] = [];
+
+    constructor(
+        private authorsServ: AuthorsService,
+        private tokenService: TokenService,
+        private bookService: BookService,
+        private _activateRoute: ActivatedRoute,
+        private _router: Router
+    ) {}
+
+    ngOnInit() {
         this._id = this._activateRoute.snapshot.params["authorId"];
         this.fetchData();
+        this.fetchUserBooks(); // Add this line
     }
+
+    userId = this.tokenService.getUserIdFromToken();
 
     fetchData() {
         this.authorsServ.getAuthorById(this._id).subscribe(
@@ -58,6 +74,7 @@ export class AuthorsDetailsComponent {
                         this.authorBooks[i].emptyStarsArray.push({});
                     }
                 }
+                this.updateDisplayedBooks();
             },
             (error) => {
                 console.error("Error fetching author books:", error);
@@ -65,17 +82,40 @@ export class AuthorsDetailsComponent {
         );
     }
 
-    onStatusChange(bookId: string, status: string) {
-        // Call the service function to update the book status
-        this.authorsServ.updateBookStatus(bookId, status).subscribe(
-            (response: any) => {
-            // Handle success response
-                console.log("Book status updated successfully:", response);
+    fetchUserBooks() {
+        this.bookService.getAllUserBooks(this.userId).subscribe(
+            (userBooks) => {
+                this.userBooks = userBooks;
+                this.updateDisplayedBooks();
             },
-            (error: any) => {
-            // Handle error response
-                console.error("Error updating book status:", error);
+            (error) => {
+                console.error("Error fetching user books:", error);
             }
+        );
+    }
+
+    updateDisplayedBooks() {
+        this.displayedBooks = this.authorBooks.map((book) => ({ ...book }));
+        this.updateBookStatus();
+    }
+
+    updateBookStatus() {
+        this.displayedBooks.forEach((book) => {
+            const userBook = this.userBooks.find((userBook) => userBook._id === book._id);
+            if (userBook) {
+                book.book_status = userBook.book_status;
+            }
+        });
+    }
+
+    onStatusChange(bookId: string, status: string) {
+        if (!bookId) {
+            this.authorsServ.
+            return;
+        }
+        this.authorsServ.updateBookStatus(bookId, status).subscribe(
+            (response: any) => {},
+            (error: any) => {}
         );
     }
 }
