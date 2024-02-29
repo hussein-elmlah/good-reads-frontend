@@ -12,4 +12,7 @@ export class CategoriesDataService {
     getCategories(): Observable<any> {
         return this.http.get("http://localhost:3000/categories");
     }
+   getPopularCategories(): Observable<any> {
+    return this.http.get("http://localhost:3000/categories/popular");
+  }
 }
