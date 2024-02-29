@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
-import { Category } from "../../interfaces/category.model";
+import { Category } from "../../interfaces/category";
 import { CategoriesDataService } from "../../services/categories.service";
 import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
 
@@ -12,15 +13,18 @@ import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
     styleUrl: "./categories.component.css"
 })
 export class CategoriesComponent {
-    categories?: Array<Category>;
+    categories: Array<Category> = [];
 
-    constructor(private dataService: CategoriesDataService) {
-    //     this.categories = ["Economics", "Fiction", "Adventure", "Science", "Sci-Fi", "Action", "Thriller", "Horror"];
+    constructor(private dataService: CategoriesDataService, private router: Router) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.dataService.getCategories().subscribe((data) => {
             this.categories = data;
         });
+    }
+
+    viewCategory(categoryId: number): void {
+        this.router.navigate(["/categories", categoryId]);
     }
 }
