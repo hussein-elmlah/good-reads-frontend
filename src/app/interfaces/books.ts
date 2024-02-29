@@ -1,4 +1,5 @@
 import { Author } from "./author";
+import { Category } from "./category";
 
 // export interface Book {
 //     id?: number;
@@ -14,7 +15,9 @@ export interface Book {
     name: string;
     author_id?: string;
     author?: any;
-    category_id?: string | number; // Allow both string and number
+    category_id?: string | number; 
     category?: any;
+    // category?: Category[]; 
+
   }
   

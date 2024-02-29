@@ -56,39 +56,9 @@ export class AdminAuthorsComponent implements OnInit {
         };
         this.modalService.open(this.addAuthorModal, { centered: true });
     }
-    // saveAuthor(): void {
-    //   if (
-    //     this.newAuthor.fisrtname.trim() !== '' &&
-    //     this.newAuthor.lastname.trim() !== '' &&
-    //     this.newAuthor.Books.trim() !== '' &&
-    //     // this.newAuthor.DOB !== null
-    //     (this.newAuthor.DOB?.toString().trim() !== null && this.newAuthor.DOB?.toString().trim() !== '')
-
-    //   ) {
-    //     this.authorService.addAuthor(this.newAuthor).subscribe(
-    //       response => {
-    //         console.log('Author saved successfully:', response);
-    //         this.loadAuthors();
-    //         this.modalService.dismissAll();
-    //       },
-    //       error => {
-    //         console.error('Error saving author:', error);
-    //         this.newAuthorValidationMessage = 'Error saving author. Please try again.';
-    //       }
-    //     );
-    //   } else {
-    //     // Set validation message if any of the required fields are empty
-    //     this.newAuthorValidationMessage = 'Please fill in all the required fields.';
-    //   }
-    // }
-
+    
     saveAuthor(): void {
-    // if (
-    //   this.newAuthor.fisrtname.trim() !== '' &&
-    //   this.newAuthor.lastname.trim() !== '' &&
-    //   this.newAuthor.Books.trim() !== '' &&
-    //   this.newAuthor.DOB !== null && this.newAuthor.DOB.trim() !== ''
-    // )
+    
         if (
             this.isNameValid(this.newAuthor.firstName)
       && this.isNameValid(this.newAuthor.lastName)
@@ -107,31 +77,16 @@ export class AdminAuthorsComponent implements OnInit {
                 }
             );
         } else {
-            // Handle the case where the date is not a valid Date object
-            // this.newAuthorValidationMessage = 'Please select a valid Date of Birth.';
+            
             this.newAuthorValidationMessage = "Please fill in all the required fields with valid names.";
         }
     }
 
     public formattedDOB: string = "";
 
-    // openUpdateAuthorModal(content: any, author: Author): void {
-    //   this.selectedAuthor = { ...author };
-    //   this.formattedDOB = this.selectedAuthor.DOB ? new Date(this.selectedAuthor.DOB).toISOString().split('T')[0] : '';
-    //   this.modalService.open(content, { centered: true });
-    // }
-
+    
     updateAuthor(): void {
-        // this.selectedAuthor.DOB = this.formattedDOB ? new Date(this.formattedDOB) : new Date();
-
-        // if (this.selectedAuthor.fisrtname.trim() !== ''&&this.selectedAuthor.lastname.trim() !== '' && this.selectedAuthor.DOB !== null)
-        // if (
-        //   this.selectedAuthor.fisrtname.trim() !== '' &&
-        //   this.selectedAuthor.lastname.trim() !== '' &&
-        //   this.selectedAuthor.Books != null && // Check for null or undefined
-        //   this.selectedAuthor.Books.trim() !== '' &&
-        //   this.selectedAuthor.DOB !== null && this.selectedAuthor.DOB.trim() !== ''
-        // )
+       
         if (
             this.isNameValid(this.selectedAuthor.firstName)
         && this.isNameValid(this.selectedAuthor.lastName)
@@ -150,51 +105,11 @@ export class AdminAuthorsComponent implements OnInit {
                 }
             );
         } else {
-        // this.updateAuthorValidationMessage = 'Updated Full Name, Books, and Date of Birth are required.';
             this.updateAuthorValidationMessage = "Updated First Name, Last Name, Books, and Date of Birth are required with no speacial characters .";
         }
     }
 
-    // saveAuthor(): void {
-    //   this.authorService.addAuthor(this.newAuthor).subscribe(
-    //     response => {
-    //       console.log('Author saved successfully:', response);
-    //       this.loadAuthors();
-    //       this.modalService.dismissAll();
-    //     },
-    //     error => {
-    //       console.error('Error saving author:', error);
-    //       this.newAuthorValidationMessage = 'Error saving author. Please try again.';
-    //     }
-    //   );
-    // }
-
-    // saveAuthor(): void {
-    //   if (
-    //     this.newAuthor.fisrtname.trim() !== '' &&
-    //     this.newAuthor.lastname.trim() !== '' &&
-    //     this.newAuthor.Books.trim() !== '' &&
-    //     this.newAuthor.DOB !== null
-    //   ) {
-    //     this.authorService.addAuthor(this.newAuthor).subscribe(
-    //       response => {
-    //         console.log('Author saved successfully:', response);
-    //         this.loadAuthors();
-    //         this.modalService.dismissAll();
-    //       },
-    //       error => {
-    //         console.error('Error saving author:', error);
-    //         this.newAuthorValidationMessage = 'Error saving author. Please try again.';
-    //       }
-    //     );
-    //   } else {
-    //     // Set validation message if any of the required fields are empty
-    //     this.newAuthorValidationMessage = 'Please fill in all the required fields.';
-    //   }
-    // }
-
-    // public formattedDOB: string = '';
-
+    
     openUpdateAuthorModal(content: any, author: Author): void {
         this.selectedAuthor = { ...author };
         this.formattedDOB = this.selectedAuthor.dob ? new Date(this.selectedAuthor.dob).toISOString().split("T")[0] : "";

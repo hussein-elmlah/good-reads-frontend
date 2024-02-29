@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from "./components/User/page-not-found/page-not
 import { RegisterComponent } from "./components/User/register/register.component";
 import { WelcomLoginComponent } from "./components/User/welcom-login/welcom-login.component";
 import { authGuard } from "./guards/auth.guard";
+import { AddAdminComponent } from "./components/Admin/add-admin/add-admin.component";
 
 export const routes:Routes = [
 
@@ -72,6 +73,7 @@ export const routes:Routes = [
             { path: "categories", component: AdminCategoriesComponent },
             { path: "authors", component: AdminAuthorsComponent },
             { path: "", redirectTo: "categories", pathMatch: "full" },
+            {path:"addAdmin" , component: AddAdminComponent},
         ],
 
     },

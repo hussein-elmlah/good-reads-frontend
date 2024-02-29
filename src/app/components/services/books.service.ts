@@ -23,7 +23,7 @@ export class BokksService {
         return this.http.get<Author[]>(this.authorsUrl);
     }
 
-    getCategories(): Observable<Category[]> { // Ensure the correct return type
+    getCategories(): Observable<Category[]> { 
         return this.http.get<Category[]>(this.categoriesUrl);
     }
     // addBook(book: Book): Observable<any> {
