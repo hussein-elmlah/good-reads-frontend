@@ -16,7 +16,9 @@ import { jwtDecode } from "jwt-decode";
 export class NavBarComponent  {
     searchQuery: string = "";
     searchResults: any[] = [];
-    userid: any;
+    username: any;
+    userimg: any;
+    
     constructor(private _Router: Router, private _bookService: BookService, private _auth: AuthService) { }
 
     ngOnInit(): void {
@@ -25,7 +27,8 @@ export class NavBarComponent  {
         // Check if token is present and it's a string
         if (token && typeof token === "string") {
             const decode: any = jwtDecode(token);
-            this.userid = decode.id;
+            this.username = decode.username;
+           
         }}
 
 

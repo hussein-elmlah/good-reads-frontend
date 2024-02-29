@@ -34,7 +34,8 @@
       <a class="nav-link m-2 mb-2"  routerLink="/register" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}">Register</a>
       
      
-      <i class="fa-solid fa-circle-user fa-lg  mt-2 cursor-pointer" style="color: brown;" routerLink="" routerLinkActive="active-route text-success"style="color: brown;" [routerLinkActiveOptions]="{exact: true}" ></i>
+      <i class="fa-solid fa-circle-user fa-lg fs-3 mt-2 cursor-pointer" style="color: brown;" routerLink="" routerLinkActive="active-route text-success"style="color: brown;" [routerLinkActiveOptions]="{exact: true}" ></i>
+      <span style="color: brown;" class="fs-6 mt-2 ms-1">{{username}}</span>
           <i (click)="signOut()"  class="fa-solid fa-right-from-bracket fa-lg  mt-2 ms-2  " style="color: brown;cursor: pointer;" routerLink="" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}" ></i>
           
     </div>
