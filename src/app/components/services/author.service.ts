@@ -18,47 +18,47 @@ export class AuthorService {
     }
 
     addAuthor(author: Author): Observable<any> {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         console.log("Token:", token);
-    
+
         if (!token) {
-            console.error('Token not found in local storage.');
-            return throwError('Token not found in local storage.');
+            console.error("Token not found in local storage.");
+            return throwError("Token not found in local storage.");
         }
         const headers = new HttpHeaders({
-            'authorization': token,
+            authorization: token,
         });
-        return this.http.post<any>(this.apiUrl, author , {headers});
+        return this.http.post<any>(this.apiUrl, author, { headers });
     }
     updateAuthor(updatedAuthor: Author): Observable<any> {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         console.log("Token:", token);
-    
+
         if (!token) {
-            console.error('Token not found in local storage.');
-            return throwError('Token not found in local storage.');
+            console.error("Token not found in local storage.");
+            return throwError("Token not found in local storage.");
         }
         const headers = new HttpHeaders({
-            'authorization': token,
+            authorization: token,
         });
         const url = `${this.apiUrl}/${updatedAuthor._id}`;
         const { _id, ...authorWithoutId } = updatedAuthor;
 
-        return this.http.put<any>(url, authorWithoutId,{headers});
+        return this.http.put<any>(url, authorWithoutId, { headers });
     }
 
     deleteAuthor(authorId: number): Observable<any> {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         console.log("Token:", token);
-    
+
         if (!token) {
-            console.error('Token not found in local storage.');
-            return throwError('Token not found in local storage.');
+            console.error("Token not found in local storage.");
+            return throwError("Token not found in local storage.");
         }
         const headers = new HttpHeaders({
-            'authorization': token,
+            authorization: token,
         });
         const url = `${this.apiUrl}/${authorId}`;
-        return this.http.delete<any>(url,{headers});
+        return this.http.delete<any>(url, { headers });
     }
 }
