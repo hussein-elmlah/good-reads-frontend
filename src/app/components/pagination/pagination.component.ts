@@ -12,18 +12,18 @@ import {
 })
 
 export class PaginationComponent {
-    @Input() currentPage!: number;
-    @Input() itemsPerPage!: number;
-    @Input() totalItems!: number;
+    @Input() currentPage: number = 0;
+    @Input() itemsPerPage: number = 0;
+    @Input() totalItems: number = 0;
 
     @Output() pageChange = new EventEmitter<number>();
 
-    totalPages!: number;
-
-    constructor() { }
+    totalPages: number = 0;
+    empty: boolean = false;
 
     ngOnChanges(): void {
         this.calculateTotalPages();
+        this.empty = !this.totalPages;
     }
 
     calculateTotalPages(): void {
