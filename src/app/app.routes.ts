@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 
+import { AddAdminComponent } from "./components/Admin/add-admin/add-admin.component";
 import { AdminAuthorsComponent } from "./components/Admin/admin-authors/admin-authors.component";
 import { AdminBooksComponent } from "./components/Admin/admin-books/admin-books.component";
 import { AdminCategoriesComponent } from "./components/Admin/admin-categories/admin-categories.component";
@@ -18,47 +19,52 @@ import { PageNotFoundComponent } from "./components/User/page-not-found/page-not
 import { RegisterComponent } from "./components/User/register/register.component";
 import { WelcomLoginComponent } from "./components/User/welcom-login/welcom-login.component";
 import { authGuard } from "./guards/auth.guard";
-import { AddAdminComponent } from "./components/Admin/add-admin/add-admin.component";
 
 export const routes:Routes = [
-
     {
-        path: '',
+        path: "",
         component: WelcomLoginComponent
     },
     {
-        path: 'home',canActivate:[authGuard],
+        path: "home",
+        canActivate: [authGuard],
         component: HomeComponent
     },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent},
     {
-        path: 'categories',canActivate:[authGuard],
+        path: "login",
+        component: LoginComponent
+    },
+    {
+        path: "register",
+        component: RegisterComponent
+    },
+    {
+        path: "categories",
         component: CategoriesComponent
     },
     {
-        path: 'categories/:categoryId',canActivate:[authGuard],
+        path: "categories/:categoryId",
+        canActivate: [authGuard],
         component: CategoryDetailsComponent
     },
     {
-        path: 'books',canActivate:[authGuard],
+        path: "books",
         component: BooksComponent
     },
     {
-        path: 'books/:bookId',canActivate:[authGuard],
+        path: "books/:bookId",
+        canActivate: [authGuard],
         component: BooksDetailsComponent
-    }
-    ,
+    },
     {
-        path: 'authors',canActivate:[authGuard],
+        path: "authors",
         component: AuthorsComponent
-    }
-    ,
+    },
     {
-        path: 'authors/:authorId',canActivate:[authGuard],
+        path: "authors/:authorId",
+        canActivate: [authGuard],
         component: AuthorsDetailsComponent
     },
-
     {
         path: "admin",
         component: AdminloginComponent
@@ -73,7 +79,7 @@ export const routes:Routes = [
             { path: "categories", component: AdminCategoriesComponent },
             { path: "authors", component: AdminAuthorsComponent },
             { path: "", redirectTo: "categories", pathMatch: "full" },
-            {path:"addAdmin" , component: AddAdminComponent},
+            { path: "addAdmin", component: AddAdminComponent },
         ],
 
     },
@@ -81,5 +87,4 @@ export const routes:Routes = [
         path: "**",
         component: PageNotFoundComponent
     }
-
 ];
