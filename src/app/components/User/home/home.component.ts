@@ -28,10 +28,16 @@ export class HomeComponent {
     constructor(private _bookService: BookService, private _router: Router, private httpclient: HttpClient) {}
 
     ngOnInit(): void {
+        
+        this._bookService.getAllBooks().subscribe((books: Array<any>) => {
+            this.books = books;
+        });
+    
         const token: any = localStorage.getItem("token");
 
         // Check if token is present and it's a string
         if (token && typeof token === "string") {
+            
             const decode: any = jwtDecode(token);
             this.userid = decode.id;
 
@@ -100,11 +106,12 @@ export class HomeComponent {
         this.displayedBooks = this.books.slice(startIndex, endIndex);
     }
 
-    redirectToBook(bookId: string): void {
+    viewBookDetails(bookId: number): void {
         this._router.navigate(["/books", bookId]);
     }
 
-    redirectToAuthor(authorId: number): void {
+
+    viewAuthor(authorId: number): void {
         this._router.navigate(["/authors", authorId]);
     }
 }
