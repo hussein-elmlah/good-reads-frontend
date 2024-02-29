@@ -6,10 +6,17 @@ import { Observable } from "rxjs";
     providedIn: "root"
 })
 export class CategoriesDataService {
-    constructor(private http: HttpClient) {
-    }
+    constructor(private http: HttpClient) { }
 
     getCategories(): Observable<any> {
         return this.http.get("http://localhost:3000/categories");
+    }
+
+    getPopularCategories(): Observable<any> {
+        return this.http.get("http://localhost:3000/categories/popular");
+    }
+
+    getCategoryById(id: number): Observable<any> {
+        return this.http.get(`http://localhost:3000/categories/${id}`);
     }
 }

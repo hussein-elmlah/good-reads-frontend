@@ -25,6 +25,7 @@ export class WelcomLoginComponent implements OnInit {
     categories:any[] = [];
 
     ngOnInit(): void {
+        
         this._BookService.getAllBooks().subscribe({
             next: (response) => {
                 console.log("Response:", response);
@@ -67,7 +68,7 @@ export class WelcomLoginComponent implements OnInit {
             this.categories = this.categories.slice(0, 6);
         });
 
-        this._author.getAuthors().subscribe((data: any) => {
+        this._author.getPopularAuthors().subscribe((data: any) => {
             this.authors = data; // Assign to this.categories
             console.log(data);
             this.authors = this.authors.slice(0, 6);
