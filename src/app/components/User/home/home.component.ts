@@ -43,6 +43,7 @@ export class HomeComponent {
 
             this.httpclient.get(`http://localhost:3000/user/${this.userid}/books`, { headers }).subscribe(
                 (response: any) => {
+                    console.log(response);
                     this.selectBooks(this.userid, "all");
                 },
                 (error: any) => {
@@ -62,7 +63,6 @@ export class HomeComponent {
             // If status is "all", fetch all books for the user
             this._bookService.getAllUserBooks(userId).subscribe((data: any) => {
                 this.books = data;
-                console.log(this.books);
                 this.updateDisplayedBooks();
             });
         } else {
