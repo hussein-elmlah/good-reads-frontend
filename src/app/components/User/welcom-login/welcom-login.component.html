@@ -42,7 +42,7 @@
         <div class="row">
          
           <div *ngFor="let book of books; " class="col-md-3 mb-3 flex-nowrap" >
-            <div class="card" style="width: 15rem;">
+            <div class="card cardBook" style="width: 15rem;">
               <img [src]="book.img" class="card-img-top" alt="{{ book.name }}">
               <div class="card-body">
                 <h5 class="card-title">{{ book.name }}</h5>
