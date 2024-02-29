@@ -50,7 +50,7 @@ export class WelcomLoginComponent implements OnInit {
                     this.books = booksWithAvgRating.sort((a, b) => b.avgRating - a.avgRating);
 
                     // Get the top 6 highest-rated books
-                    this.books = this.books.slice(0, 6);
+                    this.books = this.books.slice(0, 8);
 
                     console.log("Sorted Books:", this.books);
                 } else {
@@ -65,13 +65,13 @@ export class WelcomLoginComponent implements OnInit {
         this._category.getPopularCategories().subscribe((data: any) => {
             this.categories = data; // Assign to this.categories
             console.log(data);
-            this.categories = this.categories.slice(0, 6);
+            this.categories = this.categories.slice(0, 8);
         });
 
         this._author.getPopularAuthors().subscribe((data: any) => {
             this.authors = data; // Assign to this.categories
             console.log(data);
-            this.authors = this.authors.slice(0, 6);
+            this.authors = this.authors.slice(0, 8);
         });
     }
 
