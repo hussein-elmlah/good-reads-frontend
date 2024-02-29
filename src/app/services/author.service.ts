@@ -1,16 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: "root"
 })
 export class AuthorService {
-  constructor(private _HttpClient:HttpClient) { }
-  getAllauthor():Observable<any>{
-    return this._HttpClient.get("http://localhost:3000/authors");
-  }
-  getAuthorDetails(id:string):Observable<any>{
-    return this._HttpClient.get(`http://localhost:3000/authors/${id}`);
-  }
+    constructor(private _HttpClient:HttpClient) { }
+    getAllauthor():Observable<any> {
+        return this._HttpClient.get("http://localhost:3000/authors");
+    }
+    getAuthorDetails(id:string):Observable<any> {
+        return this._HttpClient.get(`http://localhost:3000/authors/${id}`);
+    }
+    getPopularAuthors():Observable<any> {
+        return this._HttpClient.get("http://localhost:3000/authors/popular");
+    }
 }

@@ -4,6 +4,7 @@ import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 
 import { BookService } from "../../../services/book.service";
 import { AuthService } from "../../services/auth.service";
+import { jwtDecode } from "jwt-decode";
 
 @Component({
     selector: "app-nav-bar",
@@ -12,11 +13,21 @@ import { AuthService } from "../../services/auth.service";
     templateUrl: "./nav-bar.component.html",
     styleUrl: "./nav-bar.component.css"
 })
-export class NavBarComponent {
+export class NavBarComponent  {
     searchQuery: string = "";
     searchResults: any[] = [];
-
+    userid: any;
     constructor(private _Router: Router, private _bookService: BookService, private _auth: AuthService) { }
+
+    ngOnInit(): void {
+        const token: any = localStorage.getItem("token");
+
+        // Check if token is present and it's a string
+        if (token && typeof token === "string") {
+            const decode: any = jwtDecode(token);
+            this.userid = decode.id;
+        }}
+
 
     SearchBooks(): void {
         if (this.searchQuery.trim() !== "") {

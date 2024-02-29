@@ -8,6 +8,7 @@ import { Author } from "../../interfaces/author";
     providedIn: "root"
 })
 export class AuthorService {
+    [x: string]: any;
     private apiUrl = "http://localhost:3000/authors";
 
     constructor(private http: HttpClient) {}
