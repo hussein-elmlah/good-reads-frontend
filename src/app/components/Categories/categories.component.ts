@@ -15,8 +15,7 @@ import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
 export class CategoriesComponent {
     categories: Array<Category> = [];
 
-    constructor(private dataService: CategoriesDataService, private router: Router) {
-    }
+    constructor(private dataService: CategoriesDataService, private router: Router) {}
 
     ngOnInit(): void {
         this.dataService.getCategories().subscribe((data) => {

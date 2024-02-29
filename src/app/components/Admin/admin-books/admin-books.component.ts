@@ -23,17 +23,21 @@ export class AdminBooksComponent {
     categories: Category[] = [];
 
     newBook: Book = {
+        _id: 1,
         name: "",
-        //   category_id: "",
+        category_id: 2,
         category: [],
+        author_id: 1,
         author: [],
         img: "",
     };
 
     selectedBook: Book = {
+        _id: 1,
         name: "",
-        //   category_id: "",
+        category_id: 2,
         category: [],
+        author_id: 1,
         author: [],
         img: "",
     };
@@ -86,8 +90,11 @@ export class AdminBooksComponent {
 
     openAddBookModal(): void {
         this.newBook = {
+            _id: 1,
             name: "",
+            category_id: 1,
             category: [],
+            author_id: 1,
             author: [],
             img: "",
         };

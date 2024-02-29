@@ -1,2 +1,18 @@
 <app-nav-bar></app-nav-bar>
-<p>category-details works!</p>
+<h1 class="my-5 text-center">{{ category.name }}</h1>
+<div class="container row m-auto w-75">
+    @for (book of getPaginatedBooks(); track book._id) {
+    <div class="col-md-3 px-4 my-4">
+        <div class="card h-100" (click)="viewBookDetails(book._id)">
+            <img class="card-img-top" [src]="book.img" alt="Book Photo">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.name }}</h5>
+                <p class="card-text" (click)="viewAuthor(book.author_id)">{{ book.author }}</p>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+<app-pagination [currentPage]="currentPage" [itemsPerPage]="itemsPerPage" [totalItems]="books.length"
+    (pageChange)="onPageChange($event)">
+</app-pagination>

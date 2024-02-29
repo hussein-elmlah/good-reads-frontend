@@ -49,11 +49,11 @@ export class BooksComponent {
         this.currentPage = page;
     }
 
-    viewBookDetails(bookId?: number): void {
+    viewBookDetails(bookId: number): void {
         this.router.navigate(["/books", bookId]);
     }
 
-    viewAuthor(authorId?: number): void {
+    viewAuthor(authorId: number): void {
         this.router.navigate(["/authors", authorId]);
     }
 }
