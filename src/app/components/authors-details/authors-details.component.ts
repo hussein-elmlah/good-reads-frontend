@@ -1,17 +1,17 @@
 import { CommonModule } from "@angular/common";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { FormsModule } from '@angular/forms'; 
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 
+import { Author } from "../../interfaces/author";
 import { AuthorsService } from "../../services/authors.service";
 import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
-import { Author } from "../../interfaces/author";
-import { Book } from "../../interfaces/books";
 
 @Component({
     selector: "app-author-details",
     standalone: true,
-    imports: [CommonModule, NavBarComponent],
+    imports: [CommonModule, RouterLink, FormsModule, NavBarComponent],
     templateUrl: "./authors-details.component.html",
     styleUrls: ["./authors-details.component.css"]
 })
@@ -42,45 +42,40 @@ export class AuthorsDetailsComponent {
         this.authorsServ.getAuthorBooks(this._id).subscribe(
             (data) => {
                 this.authorBooks = data;
-                for(let i = 0; i < this.authorBooks.length; i++)
-                {
+                for (let i = 0; i < this.authorBooks.length; i++) {
                     this.authorBooks[i].avgRating = 0;
                     this.authorBooks[i].starsArray = [];
                     this.authorBooks[i].emptyStarsArray = [];
-                    let j=0,k=0;
-                    for(j; j < this.authorBooks[i].reviews.length; j++)
-                    {
+                    let j = 0; let k = 0;
+                    for (j; j < this.authorBooks[i].reviews.length; j++) {
                         this.authorBooks[i].avgRating += this.authorBooks[i].reviews[j].rate;
                     }
                     this.authorBooks[i].avgRating /= j;
-                    for( k = 0; k < this.authorBooks[i].avgRating; k++)
-                    {
+                    for (k = 0; k < this.authorBooks[i].avgRating; k++) {
                         this.authorBooks[i].starsArray.push({});
                     }
-                    for( k ; k < 5; k++)
-                    {
+                    for (k; k < 5; k++) {
                         this.authorBooks[i].emptyStarsArray.push({});
                     }
                 }
             },
             (error) => {
-                console.error('Error fetching author books:', error);
+                console.error("Error fetching author books:", error);
             }
         );
     }
 
-    onStatusChange(status: string, bookId: string) {
+    onStatusChange( bookId: string, status: string) {
         // Call the service function to update the book status
-        this.authorsServ.updateBookStatus(status, bookId).subscribe(
+        this.authorsServ.updateBookStatus(bookId, status).subscribe(
             (response: any) => {
             // Handle success response
-            console.log('Book status updated successfully:', response);
-          },
-          (error: any) => {
+                console.log("Book status updated successfully:", response);
+            },
+            (error: any) => {
             // Handle error response
-            console.error('Error updating book status:', error);
-          }
+                console.error("Error updating book status:", error);
+            }
         );
-      }
-
+    }
 }

@@ -1,8 +1,9 @@
 import { CommonModule } from "@angular/common";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { jwtDecode } from "jwt-decode";
+import { forkJoin } from "rxjs";
 
 import { BookService } from "../../../services/book.service";
 import { PaginationComponent } from "../../pagination/pagination.component";
@@ -17,23 +18,36 @@ import { NavBarComponent } from "../nav-bar/nav-bar.component";
 })
 export class HomeComponent {
     books: any[] = [];
-    userID: any;
+    userid: any;
     itemsPerPage: number = 4; // Number of items to display per page
     currentPage: number = 1; // Current page
     totalPages: number[] = []; // Array to store total page numbers
     displayedBooks: any[] = []; // Array to store books to display on the current page
     booksToShow: any[] = [];
     selectedStatus: string = "all";
-    constructor(private _BookService: BookService, private _Router:Router, private httpclient:HttpClient) {}
+    constructor(private _bookService: BookService, private _router: Router, private httpclient: HttpClient) {}
 
     ngOnInit(): void {
-        const token: any = localStorage.getItem("userToken");
+        const token: any = localStorage.getItem("token");
 
         // Check if token is present and it's a string
         if (token && typeof token === "string") {
             const decode: any = jwtDecode(token);
-            this.userID = decode.user_id;
-            this.selectBooks(this.userID, "all");
+            this.userid = decode.id;
+
+            const headers = new HttpHeaders({
+                authorization: token,
+            });
+
+            this.httpclient.get(`http://localhost:3000/user/${this.userid}/books`, { headers }).subscribe(
+                (response: any) => {
+                    this.selectBooks(this.userid, "all");
+                },
+                (error: any) => {
+                    console.error("Failed to fetch books:", error);
+                    // Handle error here
+                }
+            );
         } else {
             // Handle the case when token is not present or not a string
             console.error("Invalid or missing token");
@@ -41,18 +55,36 @@ export class HomeComponent {
         }
     }
 
-    selectBooks(userId: string, status: string): void {
+    selectBooks(userId: number, status: string): void {
         if (status === "all") {
             // If status is "all", fetch all books for the user
-            this._BookService.getAllUserBooks(userId).subscribe((data: any) => {
-                this.books = data;
-                this.updateDisplayedBooks();
+            this._bookService.getAllUserBooks(userId).subscribe((userBooksInfo: any) => {
+                this.books = userBooksInfo;
+                // Create an array to store all observables for fetching book details
+                let observables = this.books.map((book: any) => this._bookService.getDetailsBook(book._id));
+                // Use forkJoin to wait for all the observables to complete
+                forkJoin(observables).subscribe((completeBooks: any) => {
+                    // Assign the complete book details to corresponding books
+                    completeBooks.forEach((completeBook: any, index: any) => {
+                        this.books[index] = completeBook;
+                    });
+                    this.updateDisplayedBooks();
+                });
             });
         } else {
             // If status is other than "all", fetch books based on the selected status
-            this._BookService.getUserBooksByStatus(userId, status).subscribe((data: any) => {
-                this.books = data;
-                this.updateDisplayedBooks();
+            this._bookService.getUserBooksByStatus(userId, status).subscribe((userBooksInfo: any) => {
+                this.books = userBooksInfo;
+                // Create an array to store all observables for fetching book details
+                const observables = this.books.map((book: any) => this._bookService.getDetailsBook(book._id));
+                // Use forkJoin to wait for all the observables to complete
+                forkJoin(observables).subscribe((completeBooks: any) => {
+                    // Assign the complete book details to corresponding books
+                    completeBooks.forEach((completeBook: any, index: any) => {
+                        this.books[index] = completeBook;
+                    });
+                    this.updateDisplayedBooks();
+                });
             });
         }
     }
@@ -69,10 +101,10 @@ export class HomeComponent {
     }
 
     redirectToBook(bookId: string): void {
-        this._Router.navigate(["/books", bookId]);
+        this._router.navigate(["/books", bookId]);
     }
 
     redirectToAuthor(authorId: number): void {
-        this._Router.navigate(["/authors", authorId]);
+        this._router.navigate(["/authors", authorId]);
     }
 }
