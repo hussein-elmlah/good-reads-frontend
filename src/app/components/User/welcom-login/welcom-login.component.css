@@ -29,19 +29,8 @@ span {
   &:hover {
       background-color: #ebe9dd;
   }
-<<<<<<< HEAD
+}
   
-  .welcome-message {
-    font-size: 18px;
-    color: #666;
-    line-height: 1.6;
-  }
-  .carousel-inner img{
-    height: 400px;
-  }
   .cardBook img{
     height: 300px;
   }
-=======
-}
->>>>>>> ef3045d3893a3bb42b1ecec235f30801a65c2ae6
