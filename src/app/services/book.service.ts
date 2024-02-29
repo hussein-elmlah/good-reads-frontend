@@ -14,10 +14,12 @@ export class BookService {
     getDetailsBook(id: string): Observable<any> {
         return this._HttpClient.get(`http://localhost:3000/books/${id}`);
     }
-    getAllUserBooks(id:string): Observable<any> {
+    getAllUserBooks(id:number): Observable<any> {
+       
         return this._HttpClient.get(`http://localhost:3000/user/${id}/books`);
+        
     }
-    getUserBooksByStatus(userId: string, status: string): Observable<any> {
+    getUserBooksByStatus(userId: number, status: string): Observable<any> {
         return this._HttpClient.get(`http://localhost:3000/user/${userId}/books?status=${status}`);
       }
     getBooksByStatus(status:String):Observable<any>{
