@@ -47,6 +47,6 @@ export class UserService {
 
         console.log(`update book status to : ${status}`);
 
-        return this.http.patch(`http://localhost:3000/user/${userId}/${bookId}${queryParams}`, requestBody);
+        return this.http.put(`http://localhost:3000/user/${userId}/${bookId}${queryParams}`, requestBody);
     }
 }
