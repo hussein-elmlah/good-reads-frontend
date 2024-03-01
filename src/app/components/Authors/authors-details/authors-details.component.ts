@@ -4,12 +4,12 @@ import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 
-import { Author } from "../../interfaces/author";
-import { AuthorsService } from "../../services/authors.service";
-import { BookService } from "../../services/book.service";
-import { TokenService } from "../../services/token.service";
-import { UserService } from "../../services/user.service";
-import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
+import { Author } from "../../../interfaces/author";
+import { AuthorsService } from "../../../services/authors.service";
+import { BookService } from "../../../services/book.service";
+import { TokenService } from "../../../services/token.service";
+import { UserService } from "../../../services/user.service";
+import { NavBarComponent } from "../../User/nav-bar/nav-bar.component";
 
 @Component({
     selector: "app-author-details",

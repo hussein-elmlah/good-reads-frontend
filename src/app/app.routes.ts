@@ -8,7 +8,7 @@ import { AdminloginComponent } from "./components/Admin/admin-login/admin-login.
 import { AdminProfileComponent } from "./components/Admin/admin-profile/admin-profile.component";
 import { AuthGuard } from "./components/Admin/guards/auth.guard";
 import { AuthorsComponent } from "./components/Authors/authors.component";
-import { AuthorsDetailsComponent } from "./components/authors-details/authors-details.component";
+import { AuthorsDetailsComponent } from "./components/Authors/authors-details/authors-details.component";
 import { BooksComponent } from "./components/Books/books.component";
 import { BooksDetailsComponent } from "./components/Books/books-details/books-details.component";
 import { CategoriesComponent } from "./components/Categories/categories.component";
