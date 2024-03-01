@@ -120,9 +120,7 @@ export class AuthorsDetailsComponent implements OnInit {
                     return;
                 }
                 userBooks = await this.userService.getUserBooks().toPromise();
-                console.log("userBooks before filtering: ", this.userBooks);
                 userBooks = userBooks.filter((book: { _id: number; }) => book._id === bookId);
-                console.log("userBooks after filtering: ", this.userBooks);
             } else {
                 userBooks = this.userBooks;
                 const newBook = { _id: bookId, book_status: status };
