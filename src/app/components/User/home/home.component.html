@@ -1,12 +1,11 @@
 <app-nav-bar></app-nav-bar>
-<div style="
-background-image: url(https://i.pinimg.com/564x/37/9d/b9/379db9aa1c987642bc89a8ce898e2fae.jpg);">
-    <br><br><br><br>
+<div>
+    <br>
 </div>
 
 
 
-<select [(ngModel)]="selectedStatus" (change)="selectBooks(userid, selectedStatus)" class="form-select">
+<select [(ngModel)]="selectedStatus" (change)="selectBooks(userid, selectedStatus)" class="form-select container">
   <option value="all" selected>All Books</option>
   <option value="Read">Read</option>
   <option value="Want to Read">Want to Read</option>
