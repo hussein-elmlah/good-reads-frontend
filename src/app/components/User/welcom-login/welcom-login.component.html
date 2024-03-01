@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 <div class="welcome container mt-5">
-  <div class="row">
+  <div class="row justify-content-center text-center align-items-center align-content-center m-auto">
     <!-- Welcome section -->
     <div class="col-md-12   ">
       <!-- Your welcome content here -->
@@ -37,11 +37,11 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>-->
-       
-        <h3 style="color: brown;" class="mt-4 text-center mb-3 fs-2">Popular Books</h3>
-        <div class="row">
+    <div class="my-5 shadow">
+        <h3 style="color: brown;" class="mt-4 text-center mb-3 fs-2 popular-title">Popular Books</h3>
+        <div class="row justify-content-center py-3">
          
-          <div *ngFor="let book of books; " class="col-md-3 mb-3 flex-nowrap" >
+          <div *ngFor="let book of books; " class="col-md-3 mb-3 flex-nowrap row justify-content-center" >
             <div class="card cardBook" style="width: 15rem;">
               <img [src]="book.img" class="card-img-top" alt="{{ book.name }}">
               <div class="card-body">
@@ -52,33 +52,39 @@
             </div>
           </div>
         </div>
-       
+    </div>
       
       
-    <div class="popular-categories mt-5">
+    <div class="popular-categories mt-5 shadow">
       <!-- Popular categories section -->
-      <h3 style="color: brown;" class="mt-4 text-center mb-3 fs-2">Popular categories</h3>
-      <div class="row ms-5">
-        <div *ngFor="let category of categories; " class="col-md-4 mb-3 flex-nowrap" >
+      <h3 style="color: brown;" class="mt-4 text-center mb-3 fs-2 popular-title">Popular categories</h3>
+      <div class="row justify-content-center">
+        <div *ngFor="let category of categories; " class="col-md-4 mb-3 flex-nowrap  row justify-content-center" >
           <div class="col-lg-3 my-4 text-center">
-            <span class="border border-success-subtle border-3 rounded-4 p-1 fs-1">{{ category }}</span>
+            <span class="border border-success-subtle border-3 rounded-4 p-1 fs-1 text-center m-auto translate-middle-x ms-5">{{ category }}</span>
         </div>
         </div>
       </div>
     </div>
-    <div class="popular-authors mt-5 mb-5">
+    <div class="popular-authors mt-5 mb-5 shadow">
       <!-- Popular authors section -->
-      <h3 style="color: brown;" class="mt-4 text-center mb-3 fs-2">Popular Authors</h3>
-      <div class="row">
-       
-        <div *ngFor="let author of authors; " class="col-md-3 mb-3 flex-nowrap" >
-          <div class="card" style="width: 15rem;">
-            <img [src]="author.photo" class="card-img-top" alt="{{ author.name }}">
-            <div class="card-body">
-              <h5 class="card-title">{{ author }} </h5>
+      <h3 style="color: brown;" class="mt-4 text-center mb-3 fs-2 popular-title">Popular Authors</h3>
+      <div class="row justify-content-center text-center align-items-center align-content-center m-auto pb-5 ">
+
+        <div class="container row m-auto w-100">
+          <div class="col-md-3 px-5 mt-4" *ngFor="let author of authors">
+            <div class="card h-100">
+              <img class="card-img-top" [src]="author.photo" alt="Author Photo" style="height: 250px; width: 100%; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">{{ author.firstName }} {{ author.lastName }}</h5>
+                <p class="card-text">{{author.dob.substring(0, 10)}}</p>
+              </div>
             </div>
           </div>
-        </div>
+
+      </div>
+
+
       </div>
     </div>
   
@@ -94,7 +100,7 @@
 
     <!-- Show login and register links -->
     <!-- <div class="container login-register-buttons mb-5">
-    <div class="row">
+    <div class="row justify-content-center text-center align-items-center align-content-center m-auto">
       <div class="col-md-12 d-flex  justify-content-end ">
         <button class="btn btn-primary mr-2 me-2 mt-0" (click)="showLogin = true; showRegister = false;">Login</button>
         <button class="btn btn-secondary" (click)="showRegister = true; showLogin = false;">Register</button>
