@@ -25,9 +25,9 @@ export class AdminBooksComponent {
     newBook: Book = {
         _id: 1,
         name: "",
-        category_id: 2,
+        category_id: 0,
         category: [],
-        author_id: 1,
+        author_id: 0,
         author: [],
         img: "",
     };
@@ -35,9 +35,9 @@ export class AdminBooksComponent {
     selectedBook: Book = {
         _id: 1,
         name: "",
-        category_id: 2,
+        category_id: 0,
         category: [],
-        author_id: 1,
+        author_id: 0,
         author: [],
         img: "",
     };
@@ -92,9 +92,9 @@ export class AdminBooksComponent {
         this.newBook = {
             _id: 1,
             name: "",
-            category_id: 1,
+            category_id: 0,
             category: [],
-            author_id: 1,
+            author_id: 0,
             author: [],
             img: "",
         };
@@ -105,6 +105,7 @@ export class AdminBooksComponent {
         console.log("Debug - newBook:", this.newBook);
         console.log("Debug - newBook.category:", this.newBook.category);
         this.newBook.category = [this.newBook.category];
+
 
         if (
             this.newBook.name.trim() !== ""
@@ -124,11 +125,11 @@ export class AdminBooksComponent {
                     if (error instanceof HttpErrorResponse) {
                         console.error("Server returned:", error.error);
                     }
-                    this.newBookValidationMessage = "Error saving book. Please try again.";
+                    this.newBookValidationMessage = "Please fill in all fields again.";
                 }
             );
         } else {
-            this.newBookValidationMessage = "Book Name, Category, and Authors are required.";
+            this.newBookValidationMessage = "Book Name, Category, Authors and Image are required.";
         }
     }
 

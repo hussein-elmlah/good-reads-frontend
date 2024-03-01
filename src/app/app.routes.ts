@@ -79,7 +79,7 @@ export const routes:Routes = [
             { path: "categories", component: AdminCategoriesComponent },
             { path: "authors", component: AdminAuthorsComponent },
             { path: "", redirectTo: "categories", pathMatch: "full" },
-            { path: "addAdmin", component: AddAdminComponent },
+            { path: "admin", component: AddAdminComponent },
         ],
 
     },
