@@ -61,7 +61,10 @@ export class HomeComponent {
         }
         this.selectBooks(this.userid, this.selectedStatus);
     }
-
+    onPageChange(page: number): void {
+        this.currentPage = page;
+        this.updateDisplayedBooks();
+    }
     selectBooks(userId: number, status: string): void {
         if (status === "all") {
             // If status is "all", fetch all books for the user
@@ -96,10 +99,7 @@ export class HomeComponent {
         }
     }
 
-    onPageChange(page: number): void {
-        this.currentPage = page;
-        this.updateDisplayedBooks();
-    }
+ 
 
     updateDisplayedBooks(): void {
         const startIndex = (this.currentPage - 1) * this.itemsPerPage;
