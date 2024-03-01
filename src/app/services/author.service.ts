@@ -7,15 +7,16 @@ import { Observable } from "rxjs";
 })
 export class AuthorService {
     constructor(private http:HttpClient) { }
-    getAllauthor():Observable<any> {
+
+    getAllauthor(): Observable<any> {
         return this.http.get("http://localhost:3000/authors");
     }
 
-    getPopularAuthors():Observable<any> {
+    getPopularAuthors(): Observable<any> {
         return this.http.get("http://localhost:3000/authors/popular");
     }
 
-    getAuthorDetails(id:string):Observable<any> {
+    getAuthorDetails(id:string): Observable<any> {
         return this.http.get(`http://localhost:3000/authors/${id}`);
     }
 }

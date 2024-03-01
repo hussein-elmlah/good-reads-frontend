@@ -32,7 +32,6 @@ export class AuthorsDetailsComponent implements OnInit {
         private userService: UserService,
         private _activateRoute: ActivatedRoute,
         private _router: Router,
-        private userService: UserService,
     ) {}
 
     userId = this.tokenService.getUserIdFromToken();
@@ -122,7 +121,7 @@ export class AuthorsDetailsComponent implements OnInit {
                 }
                 userBooks = await this.userService.getUserBooks().toPromise();
                 console.log("userBooks before filtering: ", this.userBooks);
-                userBooks = userBooks.filter((book: { _id: string; }) => book._id === bookId);
+                userBooks = userBooks.filter((book: { _id: number; }) => book._id === bookId);
                 console.log("userBooks after filtering: ", this.userBooks);
             } else {
                 userBooks = this.userBooks;
