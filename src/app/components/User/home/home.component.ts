@@ -95,6 +95,8 @@ export class HomeComponent {
         }
     }
 
+
+
     onPageChange(page: number): void {
         this.currentPage = page;
         this.updateDisplayedBooks();
@@ -105,6 +107,7 @@ export class HomeComponent {
         const endIndex = startIndex + this.itemsPerPage;
         this.displayedBooks = this.books.slice(startIndex, endIndex);
     }
+
 
     viewBookDetails(bookId: number): void {
         this._router.navigate(["/books", bookId]);

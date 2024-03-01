@@ -18,18 +18,12 @@
       </form>
       
       </ul>
-      <input type="text" class="form-control w-50 form-control-sm" placeholder="Search...">
+      <input type="text" class="form-control w-50 form-control-sm" placeholder="Search..." [(ngModel)]="term">
       <!--<div>
         <input type="text" (ngModel)="searchQuery" (input)="SearchBooks()">
       </div>-->
       
-      <div *ngIf="searchResults.length > 0">
-        <div *ngFor="let book of searchResults">
-          <h2>{{ book.title }}</h2>
-          <p>Author: {{ book.author }}</p>
-          <!-- Add other book details here -->
-        </div>
-      </div>
+      
       <a class="nav-link m-2 mb-2 "  routerLink="/login" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}">Login</a>
       <a class="nav-link m-2 mb-2"  routerLink="/register" routerLinkActive="active-route text-success" [routerLinkActiveOptions]="{exact: true}">Register</a>
       
@@ -41,3 +35,19 @@
     </div>
   </div>
 </nav>
+
+<div class="container">
+  <div class="row" *ngIf="term">
+    <div class="col-md-3 px-4 my-4" *ngFor="let book of books | search : term " >
+      <div class="card h-100" (click)="viewBookDetails(book._id)">
+          <img class="card-img-top" [src]="book.img" alt="Book Photo">
+          <div class="card-body">
+              <h5 class="card-title" style="cursor: pointer;">{{ book.name }}</h5>
+              <p class="card-text" style="cursor: pointer;" (click)="viewAuthor(book.author_id)">{{ book.author }}</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
