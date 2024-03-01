@@ -24,6 +24,7 @@ export class WelcomLoginComponent implements OnInit {
     books:any[] = [];
     authors: any[] = [];
     categories:any[] = [];
+    book:any=[]
 
     ngOnInit(): void {
         this._BookService.getPopularBooks().subscribe({
@@ -57,6 +58,8 @@ export class WelcomLoginComponent implements OnInit {
             this.authors = this.authors.slice(0, 8);
         });
     }
+    
+  
 
     showLogin: boolean = false;
     showRegister: boolean = false;
