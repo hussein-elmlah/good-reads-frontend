@@ -3,6 +3,7 @@ import { jwtDecode, JwtPayload } from "jwt-decode";
 
 interface DecodedToken extends JwtPayload {
     id: number;
+    username: string;
 }
 
 @Injectable({

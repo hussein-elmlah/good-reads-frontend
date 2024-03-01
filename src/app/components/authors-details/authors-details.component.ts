@@ -31,16 +31,17 @@ export class AuthorsDetailsComponent implements OnInit {
         private bookService: BookService,
         private userService: UserService,
         private _activateRoute: ActivatedRoute,
-        private _router: Router
+        private _router: Router,
+        private userService: UserService,
     ) {}
+
+    userId = this.tokenService.getUserIdFromToken();
 
     ngOnInit() {
         this._id = this._activateRoute.snapshot.params["authorId"];
         this.fetchData();
         this.fetchUserBooks(); // Add this line
     }
-
-    userId = this.tokenService.getUserIdFromToken();
 
     fetchData() {
         this.authorsServ.getAuthorById(this._id).subscribe(
@@ -85,7 +86,7 @@ export class AuthorsDetailsComponent implements OnInit {
     }
 
     fetchUserBooks() {
-        this.bookService.getAllUserBooks(this.userId).subscribe(
+        this.userService.getUserBooks().subscribe(
             (userBooks) => {
                 this.userBooks = userBooks;
                 this.updateDisplayedBooks();
@@ -110,10 +111,27 @@ export class AuthorsDetailsComponent implements OnInit {
         });
     }
 
-    onStatusChange(bookId: number, status: string) {
-        this.userService.updateBookStatus(bookId, status).subscribe(
-            (response: any) => {},
-            (error: any) => {}
-        );
+    async onStatusChange(bookId: number, status: string) {
+        const userBooksIds = this.userBooks.map((book) => book._id);
+        let userBooks;
+        try {
+            if (userBooksIds.includes(bookId)) {
+                if (["reading", "toRead", "read"].includes(status)) {
+                    await this.userService.updateBookStatus(bookId, status).toPromise();
+                    return;
+                }
+                userBooks = await this.userService.getUserBooks().toPromise();
+                console.log("userBooks before filtering: ", this.userBooks);
+                userBooks = userBooks.filter((book: { _id: string; }) => book._id === bookId);
+                console.log("userBooks after filtering: ", this.userBooks);
+            } else {
+                userBooks = this.userBooks;
+                const newBook = { _id: bookId, book_status: status };
+                userBooks.push(newBook);
+            }
+            await this.userService.updateUserBooks(userBooks).toPromise();
+        } catch (error) {
+            console.error("Error updating userBook:", error);
+        }
     }
 }

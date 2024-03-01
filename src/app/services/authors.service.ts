@@ -3,7 +3,6 @@ import { Injectable } from "@angular/core";
 import { map, Observable } from "rxjs";
 
 import { Book } from "../interfaces/books";
-import { TokenService } from "./token.service";
 
 @Injectable({
     providedIn: "any"
@@ -23,11 +22,11 @@ export class AuthorsService {
 
     limit = 8;
     currentPage = 1;
-    getAuthors():Observable<any> {
+    getAuthors(): Observable<any> {
         return this.http.get(`${this.baseURL}/authors/?page=${this.currentPage}&limit=${this.limit}`);
     }
 
-    getAuthorById(id:number):Observable<any> {
+    getAuthorById(id:number): Observable<any> {
         return this.http.get(`${this.baseURL}/authors/${id}`);
     }
 }

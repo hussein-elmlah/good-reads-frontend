@@ -8,11 +8,12 @@ import { forkJoin } from "rxjs";
 import { BookService } from "../../../services/book.service";
 import { PaginationComponent } from "../../pagination/pagination.component";
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
+import { FormsModule } from "@angular/forms";
 
 @Component({
     selector: "app-home",
     standalone: true,
-    imports: [HttpClientModule, NavBarComponent, CommonModule, PaginationComponent],
+    imports: [HttpClientModule, NavBarComponent, CommonModule, PaginationComponent,FormsModule],
     templateUrl: "./home.component.html",
     styleUrl: "./home.component.css"
 })
@@ -63,37 +64,40 @@ export class HomeComponent {
 
     selectBooks(userId: number, status: string): void {
         if (status === "all") {
-            // If status is "all", fetch all books for the user
-            this._bookService.getAllUserBooks(userId).subscribe((userBooksInfo: any) => {
-                this.books = userBooksInfo;
-                // Create an array to store all observables for fetching book details
-                let observables = this.books.map((book: any) => this._bookService.getDetailsBook(book._id));
-                // Use forkJoin to wait for all the observables to complete
-                forkJoin(observables).subscribe((completeBooks: any) => {
-                    // Assign the complete book details to corresponding books
-                    completeBooks.forEach((completeBook: any, index: any) => {
-                        this.books[index] = completeBook;
-                    });
-                    this.updateDisplayedBooks();
-                });
+          // If status is "all", fetch all books for the user
+          this._bookService.getAllUserBooks(userId).subscribe((userBooksInfo: any) => {
+            this.books = userBooksInfo;
+            // Create an array to store all observables for fetching book details
+            let observables = this.books.map((book: any) => this._bookService.getDetailsBook(book._id));
+            // Use forkJoin to wait for all the observables to complete
+            forkJoin(observables).subscribe((completeBooks: any) => {
+              // Assign the complete book details to corresponding books
+              completeBooks.forEach((completeBook: any, index: any) => {
+                this.books[index] = completeBook;
+              });
+              this.updateDisplayedBooks(); // Update the displayed books
             });
+          });
         } else {
-            // If status is other than "all", fetch books based on the selected status
-            this._bookService.getUserBooksByStatus(userId, status).subscribe((userBooksInfo: any) => {
-                this.books = userBooksInfo;
-                // Create an array to store all observables for fetching book details
-                const observables = this.books.map((book: any) => this._bookService.getDetailsBook(book._id));
-                // Use forkJoin to wait for all the observables to complete
-                forkJoin(observables).subscribe((completeBooks: any) => {
-                    // Assign the complete book details to corresponding books
-                    completeBooks.forEach((completeBook: any, index: any) => {
-                        this.books[index] = completeBook;
-                    });
-                    this.updateDisplayedBooks();
-                });
+          // If status is other than "all", fetch books based on the selected status
+          this._bookService.getUserBooksByStatus(userId, status).subscribe((userBooksInfo: any) => {
+            this.books = userBooksInfo;
+            // Create an array to store all observables for fetching book details
+            const observables = this.books.map((book: any) => this._bookService.getDetailsBook(book._id));
+            // Use forkJoin to wait for all the observables to complete
+            forkJoin(observables).subscribe((completeBooks: any) => {
+              // Assign the complete book details to corresponding books
+              completeBooks.forEach((completeBook: any, index: any) => {
+                this.books[index] = completeBook;
+              });
+              this.updateDisplayedBooks(); // Update the displayed books
             });
+          });
         }
-    }
+      }
+      
+
+
 
     onPageChange(page: number): void {
         this.currentPage = page;
@@ -104,7 +108,8 @@ export class HomeComponent {
         const startIndex = (this.currentPage - 1) * this.itemsPerPage;
         const endIndex = startIndex + this.itemsPerPage;
         this.displayedBooks = this.books.slice(startIndex, endIndex);
-    }
+      }
+
 
     viewBookDetails(bookId: number): void {
         this._router.navigate(["/books", bookId]);
