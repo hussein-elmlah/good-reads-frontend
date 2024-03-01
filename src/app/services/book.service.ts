@@ -12,7 +12,7 @@ export class BookService {
         return this.http.get("http://localhost:3000/books");
     }
 
-    getDetailsBook(id: number | string): Observable<any> {
+    getDetailsBook(id: number): Observable<any> {
         return this.http.get(`http://localhost:3000/books/${id}`);
     }
 
