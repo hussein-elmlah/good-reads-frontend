@@ -6,4 +6,5 @@ export interface Book {
     author: any;
     category_id: number;
     category: any;
+    rating?: number;
 }
