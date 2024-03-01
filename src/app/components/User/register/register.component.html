@@ -8,9 +8,10 @@
 </div>
 
 <div *ngIf="registerForm.get('firstName')?.errors && registerForm.get('firstName')?.touched" class="alert alert-danger p-1">
-  <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('required')">firstName is required</p>
-  <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('minlength')">firstName minLength 3</p>
-  <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('maxlength')">firstName maxLength 20</p>
+  <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('required')">First Name is required</p>
+            <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('minlength')">First Name must be at least 3 characters</p>
+            <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('maxlength')">First Name cannot exceed 15 characters</p>
+            <p class="mb-0" *ngIf="registerForm.get('firstName')?.getError('pattern')">First Name can only contain alphabetical characters</p>
 </div>
 <div class="form-item">
   <label for="lastName">lastName</label>
@@ -18,9 +19,10 @@
 </div>
 
 <div *ngIf="registerForm.get('lastName')?.errors && registerForm.get('lastName')?.touched" class="alert alert-danger p-1">
-  <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('required')">lastName is required</p>
-  <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('minlength')">lastName minLength 3</p>
-  <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('maxlength')">lastName maxLength 20</p>
+  <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('required')">Last Name is required</p>
+            <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('minlength')">Last Name must be at least 3 characters</p>
+            <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('maxlength')">Last Name cannot exceed 15 characters</p>
+            <p class="mb-0" *ngIf="registerForm.get('lastName')?.getError('pattern')">Last Name can only contain alphabetical characters</p>
 </div>
 <div class="form-item">
   <label for="username">username</label>
@@ -28,13 +30,15 @@
 </div>
 
 <div *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched" class="alert alert-danger p-1">
-  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('required')">username is required</p>
-  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('minlength')">username minLength 3</p>
-  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('maxlength')">username maxLength 20</p>
+  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('required')">Username is required</p>
+  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('minlength')">Username must be at least 3 characters</p>
+  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('maxlength')">Username cannot exceed 20 characters</p>
+  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('pattern')">Username can only contain alphanumeric characters,'_', hyphen, and ''.'</p>
+  <p class="mb-0" *ngIf="registerForm.get('username')?.getError('unique')">Username is not unique</p>
 </div>
 <div class="form-item">
   <label for="email">email</label>
-  <input type="email" formControlName="email" name="" id="email" class="form-control" >
+  <input type="email" formControlName="email" name="" placeholder="name@example.com" id="email" class="form-control" >
 </div>
 
 <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="alert alert-danger p-1">

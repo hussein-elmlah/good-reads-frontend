@@ -1,9 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Component } from "@angular/core";
-import {
-    FormBuilder, FormGroup, ReactiveFormsModule, Validators
-} from "@angular/forms";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 
 import { AuthService } from "../../../services/auth.service";
@@ -26,11 +24,11 @@ export class RegisterComponent {
         this.registerForm = this.fb.group({
             firstName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z]+$/)]],
             lastName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z]+$/)]],
-            username: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9_.-]+$/)]],
+            username: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z0-9_.-]+$/)]],
             image: [null, [Validators.required]],
-            email: ["", [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
-            password: ["", [Validators.required, Validators.pattern(/^[a-zA-Z0-9_@#$%^&+=?/.]{8,30}$/)]],
-            rePassword: [""]
+            email: ["", [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(100), Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
+            password: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(30), Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=?/.]).*$/)]],
+            rePassword: ["", [Validators.required]]
         }, { validators: [this.confirmPassword] });
     }
 
