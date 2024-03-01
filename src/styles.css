@@ -10,12 +10,13 @@
 html, body { height: 100%; }
 body { 
     margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-family: 'Alegreya', serif;
     /* background: linear-gradient(135deg, #1e2a3f, #3b1c50); */
     /* background-color: #252525; */
     /* background: linear-gradient(135deg, #dbdad6, #F4F1EA); */
     /* background-color: #f8f9fa; */
-    background-color: white;
+    /* background-color: white; */
+    background-color: #F4F4F3;
 
     /* background-image: url('./assets/images/undraw1.png');
     background-size: cover;
@@ -23,4 +24,8 @@ body {
 }
 
 *{
+}
+
+.text-with-shadow {
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
 }

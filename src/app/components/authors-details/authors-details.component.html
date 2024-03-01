@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row mt-4">
     
-    <div class="col-lg-3 mb-4">
+    <div class="col-lg-3 mb-4 pe-2">
       <div class="card">
         <div class="card-body text-center">
           <img [src]="author?.photo" alt="Author Photo" class="img-fluid rounded-circle mb-3">
@@ -17,14 +17,16 @@
     </div>
 
     <div class="col-lg-9">
-      <ul class="nav nav-tabs">
+      <ul class="nav ">
         <li class="nav-item">
-          <a class="nav-link active fw-medium" data-toggle="tab" href="#profile-books">Author Books</a>
+          <!-- <a class="nav-link active fw-medium" data-toggle="tab" href="#profile-books">Author Books</a> -->
+          <h4 class="mt-2">Author Books</h4>
         </li>
       </ul>
+      <hr class="m-0">
       <div class="tab-content">
         <div class="tab-pane fade show active" id="profile-books">
-          <h4 class="mt-3"></h4>
+          <h4 class="mt-0"></h4>
           <div *ngFor="let book of displayedBooks" class="card mb-3">
             <div class="card-body">
               <div class="row align-items-center">
