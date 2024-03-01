@@ -1,2 +1,56 @@
 <app-nav-bar></app-nav-bar>
-<p>books-details works!</p>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <img [src]="book.img" alt="Book cover" class="img-fluid rounded mb-3">
+          <h3 class="card-title my-3">{{ book.name }}</h3>
+          <h5 class="card-text my-3 book-category">{{ book.category }}</h5>
+          <h5 class="card-text text-secondary my-2">{{ book.author }}</h5>
+        </div>
+        <div class="text-center mb-4">
+          @for (star of getStars(); track $index) {
+            <i class="fa fa-star"></i>
+          }
+          <span class="mx-3">{{ book.rating }} stars rating</span>
+        </div>
+        <div class="status-select">
+          <select class="form-select" [(ngModel)]="book.book_status" (change)="onStatusChange(book._id, book.book_status)">
+            <option value="none">No Status</option>
+            <option value="reading">Currently Reading</option>
+            <option value="toRead">Want to Read</option>
+            <option value="read">Read</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active fw-medium" data-toggle="tab">Reviews</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="profile-books">
+          @for (review of book.reviews; track $index) {
+            <div class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title my-3">{{ review.comment }}</h5>
+                <span class="card-text d-flex justify-content-between">
+                  <span>
+                    @for (star of getStars(review.rating); track $index) {
+                      <i class="fa fa-star"></i>
+                    }
+                    {{ review.rating }} star rating
+                  </span>
+                  <p class="d-inline">User#{{ review.user_id }}</p>
+                </span>
+              </div>
+            </div>
+            }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

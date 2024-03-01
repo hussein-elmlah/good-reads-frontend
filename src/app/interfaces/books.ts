@@ -6,5 +6,7 @@ export interface Book {
     author: any;
     category_id: number;
     category: any;
+    reviews?: Array<any>;
     rating?: number;
+    book_status?: any;
 }

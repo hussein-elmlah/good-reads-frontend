@@ -1,0 +1,27 @@
+.img-fluid {
+  max-height: 500px;
+}
+
+.book-category {
+  color: brown;
+}
+
+.fa-star {
+  color: green;
+}
+
+.status-select {
+  width: 100%;
+  text-align: center;
+}
+
+.form-select {
+  width: 60%;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+span.card-text {
+  display: inline-block;
+  width: 100%;
+}
