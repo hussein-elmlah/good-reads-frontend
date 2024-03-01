@@ -39,4 +39,7 @@ export class BookService {
     SearchBooks(query: string) {
         return this.http.get<any[]>(`http://localhost:3000/books/search?query=${query}`);
     }
+    getPopularBooks() {
+        return this.http.get<any[]>(`http://localhost:3000/books/popular`);
+    }
 }

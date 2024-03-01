@@ -20,6 +20,7 @@ import { RegisterComponent } from "../register/register.component";
 })
 export class WelcomLoginComponent implements OnInit {
     constructor(private _BookService:BookService, private categoryService:CategoriesDataService, private authorService:AuthorService) {}
+    
     books:any[] = [];
     authors: any[] = [];
     categories:any[] = [];
@@ -30,29 +31,12 @@ export class WelcomLoginComponent implements OnInit {
                 console.log("Response:", response);
                 if (response && Array.isArray(response)) {
                     console.log("Books:", response);
-
-                    // Calculate average rating for each book
-                    const booksWithAvgRating = response.map((book) => {
-                        // Check if 'reviews' array exists and is not empty
-                        const totalRating = book.reviews && book.reviews.length > 0
-                            ? book.reviews.reduce((acc: number, curr: { rate: number }) => acc + curr.rate, 0)
-                            : 0;
-                        const avgRating = book.reviews && book.reviews.length > 0
-                            ? totalRating / book.reviews.length
-                            : 0;
-
-                        // Return the modified book object with avgRating added
-                        return { ...book, avgRating };
-                    });
-
-                    // Sort books by avgRating in descending order
-                    this.books = booksWithAvgRating.sort((a, b) => b.avgRating - a.avgRating);
-
-                    // Get the top 6 highest-rated books
+                    this.books=response;
+                  
+                    
                     this.books = this.books.slice(0, 8);
-
-                    console.log("Sorted Books:", this.books);
-                } else {
+                }
+                 else {
                     console.error("Invalid response or missing books array.");
                 }
             },

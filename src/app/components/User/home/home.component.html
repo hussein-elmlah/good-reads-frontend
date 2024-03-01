@@ -21,24 +21,13 @@ background-image: url(https://i.pinimg.com/564x/37/9d/b9/379db9aa1c987642bc89a8c
         <div class="card-body">
           <h5 class="card-title" style="cursor: pointer;" (click)="viewBookDetails(book._id)">{{ book.name }}</h5>
           <p class="card-text" style="cursor: pointer;" (click)="viewAuthor(book.author_id)">Author: {{ book.author }}</p>
-          <div class="starrating risingstar d-flex justify-content-end flex-row-reverse">
-            <span class="rating">                   
-              <div class="starrating d-flex ali">
-                <ng-container *ngFor="let star of book.starsArray">
-                  <input type="radio" [id]="'star' + star" name="rating{{ book._id }}" class="checked" [checked]="star <= book.avgRating" />
-                  <label class="" [for]="'star' + star" [title]="star + ' star'"></label>
-                </ng-container>
-                <ng-container *ngFor="let star of book.emptyStarsArray">
-                  <input type="radio" [id]="'star' + star" name="rating{{ book._id }}" class="unchecked" [checked]="star <= 5 - book.avgRating" />
-                  <label [for]="'star' + star" [title]="star + ' star'"></label>
-                </ng-container>
-                <span class="ms-2 pt-1">{{ book.avgRating ? book.avgRating :0}} stars</span>
-                <span class="ms-2 pt-1">-</span>
-                <span class="ms-2 pt-1">{{ book.reviews?.length }} ratings</span>
-              </div>
-            </span>                    
-          </div>
-          <!-- Add other book information as needed -->
+         
+          <span *ngFor="let star of getStars(book.rating)">
+            <i class="fa-solid fa-star text-warning " [ngClass]="{'fa-star': star === 'filled', 'fa-star-empty': star === 'empty'}"></i>
+        </span>
+        <!-- Display the book's rating -->
+        <span class="mx-3">{{ book.rating }} stars rating</span>
+          
         </div>
       </div>
     </div>
