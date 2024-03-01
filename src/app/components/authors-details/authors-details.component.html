@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-sm-3">
                   <select class="form-select" [(ngModel)]="book.book_status" (change)="onStatusChange(book._id, book.book_status)">
-                    <option value="none">No Status</option>
+                    <option value="none" selected disabled hidden >No Status</option>
                     <option value="reading">Currently Read</option>
                     <option value="toRead">Want to Read</option>
                     <option value="read">Read</option>

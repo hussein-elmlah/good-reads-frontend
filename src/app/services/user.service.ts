@@ -33,6 +33,7 @@ export class UserService {
 
     updateBookStatus(bookId: number, status: string): Observable<any> {
         const userId = this.tokenService.getUserIdFromToken();
+        const headers = new HttpHeaders().set("Authorization", this.token);
 
         const statusValues = ["read", "toRead", "reading"];
         if (!statusValues.includes(status)) {
@@ -47,6 +48,6 @@ export class UserService {
 
         console.log(`update book status to : ${status}`);
 
-        return this.http.put(`http://localhost:3000/user/${userId}/${bookId}${queryParams}`, requestBody);
+        return this.http.put(`http://localhost:3000/user/${userId}/${bookId}${queryParams}`, requestBody, { headers });
     }
 }
