@@ -26,7 +26,7 @@ export class WelcomLoginComponent implements OnInit {
     categories:any[] = [];
 
     ngOnInit(): void {
-        this._BookService.getAllBooks().subscribe({
+        this._BookService.getPopularBooks().subscribe({
             next: (response) => {
                 console.log("Response:", response);
                 if (response && Array.isArray(response)) {
