@@ -8,6 +8,7 @@ import { Author } from "../../interfaces/author";
 import { AuthorsService } from "../../services/authors.service";
 import { BookService } from "../../services/book.service";
 import { TokenService } from "../../services/token.service";
+import { UserService } from "../../services/user.service";
 import { NavBarComponent } from "../User/nav-bar/nav-bar.component";
 
 @Component({
@@ -28,6 +29,7 @@ export class AuthorsDetailsComponent implements OnInit {
         private authorsServ: AuthorsService,
         private tokenService: TokenService,
         private bookService: BookService,
+        private userService: UserService,
         private _activateRoute: ActivatedRoute,
         private _router: Router
     ) {}
@@ -108,8 +110,8 @@ export class AuthorsDetailsComponent implements OnInit {
         });
     }
 
-    onStatusChange(bookId: string, status: string) {
-        this.authorsServ.updateBookStatus(bookId, status).subscribe(
+    onStatusChange(bookId: number, status: string) {
+        this.userService.updateBookStatus(bookId, status).subscribe(
             (response: any) => {},
             (error: any) => {}
         );
