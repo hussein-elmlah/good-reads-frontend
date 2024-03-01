@@ -29,7 +29,7 @@ export class RegisterComponent {
             username: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9_.-]+$/)]],
             image: [null, [Validators.required]],
             email: ["", [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
-            password: ["", [Validators.required, Validators.pattern(/^[a-zA-Z0-9_@]{8,30}$/)]],
+            password: ["", [Validators.required, Validators.pattern(/^[a-zA-Z0-9_@#$%^&+=?/.]{8,30}$/)]],
             rePassword: [""]
         }, { validators: [this.confirmPassword] });
     }
