@@ -8,10 +8,6 @@ nav{
     box-shadow: 0 2px 4px rgba(74, 99, 95, 0.1);
 }
 
-/* .navbar-nav .nav-link {
-    color: white !important;
+.fa-circle-user {
+    cursor: pointer;
 }
-
-.navbar-nav .nav-link.active {
-    color: orange !important;
-} */
