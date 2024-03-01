@@ -1,9 +1,18 @@
 .welcome-section {
   text-align: center;
-  padding: 50px 20px;
-  background-color: antiquewhite;
-  background: linear-gradient(to right, rgba(77, 192, 181, 0.9), rgba(52, 144, 220, 0.7));
+  padding: 30px 20px;
+  background: 
+  linear-gradient(to right, rgba(77, 192, 181, 0.5), rgba(52, 144, 220, 0.5)),
+  url('../../../../assets/images/bookrow.jpg') center/cover no-repeat;
   border-radius: 10px;
+}
+
+.popular-title {
+  text-align: center;
+  /* padding: 50px 20px; */
+  margin: 0;
+  background: linear-gradient(to right, rgba(77, 192, 181, 0.3), rgba(52, 144, 220, 0.3));
+  /* border-radius: 10px; */
 }
 
 .welcome-title {
