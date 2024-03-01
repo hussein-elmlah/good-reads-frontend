@@ -20,3 +20,9 @@
 .starrating .unchecked ~ label{
     color: #222222 ;
 }
+.cardBook {
+  height: 500px;
+}
+.cardBook img {
+  height: 350px;
+}
