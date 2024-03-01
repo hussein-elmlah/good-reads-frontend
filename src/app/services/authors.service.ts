@@ -1,21 +1,17 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { jwtDecode, JwtPayload } from "jwt-decode";
 import { map, Observable, throwError } from "rxjs";
 
 import { Book } from "../interfaces/books";
 import { TokenService } from "./token.service";
 
-interface DecodedToken extends JwtPayload {
-    id: number;
-}
 @Injectable({
     providedIn: "any"
 })
 export class AuthorsService {
     baseURL = "http://localhost:3000";
 
-    constructor(private _HttpClient:HttpClient, private tokenService: TokenService) { }
+    constructor(private _HttpClient: HttpClient, private tokenService: TokenService) { }
 
     getAuthorBooks(authorId: any): Observable<Book[]> {
         authorId = Number(authorId);
@@ -27,27 +23,20 @@ export class AuthorsService {
 
     limit = 8;
     currentPage = 1;
-    getAuthors():Observable<any> {
+    getAuthors(): Observable<any> {
         return this._HttpClient.get(`${this.baseURL}/authors/?page=${this.currentPage}&limit=${this.limit}`);
-    // return this.dummyData();
     }
 
-    getAuthorById(id:number):Observable<any> {
+    getAuthorById(id: number): Observable<any> {
         return this._HttpClient.get(`${this.baseURL}/authors/${id}`);
-    // const dummyAuthors = this.dummyData();
-    // return dummyAuthors.pipe( map((authors: any[]) => authors[1]) );
     }
-
-    // getPopularAuthors(options:any): Observable<any>{
-    //   return this._HttpClient.get(`${this.baseURL}/authors/all/popular`, options)
-    // }
 
     updateBookStatus(bookId: string, status: string): Observable<any> {
+        const token = localStorage.getItem("token");
         const userId = this.tokenService.getUserIdFromToken();
 
         const statusValues = ["read", "toRead", "reading"];
         if (!statusValues.includes(status)) {
-            console.log(status);
             return throwError("Invalid status value.");
         }
 
@@ -57,8 +46,7 @@ export class AuthorsService {
 
         const queryParams = `?status=${status}`;
 
-        console.log(`update book status to : ${status}`);
-
-        return this._HttpClient.put(`${this.baseURL}/user/${userId}/${bookId}${queryParams}`, requestBody);
+        const headers = new HttpHeaders().set('Authorization', token || ''); // Ensure token is not null
+        return this._HttpClient.put(`${this.baseURL}/user/${userId}/${bookId}${queryParams}`, requestBody, { headers });
     }
 }
