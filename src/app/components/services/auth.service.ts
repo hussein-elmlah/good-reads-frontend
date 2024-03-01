@@ -7,8 +7,8 @@ import { catchError, map } from "rxjs/operators";
     providedIn: "root",
 })
 export class AuthService {
-    private apiUrl = "http://localhost:3000/admin/login";
-    private signUpurl = "http://localhost:3000/admin/register"
+    private apiUrl = "https://good-reads-backend.onrender.com/admin/login";
+    private signUpurl = "https://good-reads-backend.onrender.com/admin/register"
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
     isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
 

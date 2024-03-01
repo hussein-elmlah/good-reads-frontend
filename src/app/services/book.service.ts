@@ -9,11 +9,11 @@ export class BookService {
     constructor(private http: HttpClient) { }
 
     getAllBooks(): Observable<any> {
-        return this.http.get("http://localhost:3000/books");
+        return this.http.get("https://good-reads-backend.onrender.com/books");
     }
 
     getDetailsBook(id: number): Observable<any> {
-        return this.http.get(`http://localhost:3000/books/${id}`);
+        return this.http.get(`https://good-reads-backend.onrender.com/books/${id}`);
     }
 
     getAllUserBooks(userId:number): Observable<any> {
@@ -21,7 +21,7 @@ export class BookService {
         const headers = new HttpHeaders({
             authorization: token,
         });
-        return this.http.get(`http://localhost:3000/user/${userId}/books`, { headers });
+        return this.http.get(`https://good-reads-backend.onrender.com/user/${userId}/books`, { headers });
     }
 
     getUserBooksByStatus(userId: number, status: string): Observable<any> {
@@ -29,17 +29,17 @@ export class BookService {
         const headers = new HttpHeaders({
             authorization: token,
         });
-        return this.http.get(`http://localhost:3000/user/${userId}/books?status=${status}`, { headers });
+        return this.http.get(`https://good-reads-backend.onrender.com/user/${userId}/books?status=${status}`, { headers });
     }
 
     getBooksByStatus(status:string):Observable<any> {
-        return this.http.get(`http://localhost:3000/books?status=${status}`);
+        return this.http.get(`https://good-reads-backend.onrender.com/books?status=${status}`);
     }
 
     SearchBooks(query: string) {
-        return this.http.get<any[]>(`http://localhost:3000/books/search?query=${query}`);
+        return this.http.get<any[]>(`https://good-reads-backend.onrender.com/books/search?query=${query}`);
     }
     getPopularBooks() {
-        return this.http.get<any[]>(`http://localhost:3000/books/popular`);
+        return this.http.get<any[]>(`https://good-reads-backend.onrender.com/books/popular`);
     }
 }

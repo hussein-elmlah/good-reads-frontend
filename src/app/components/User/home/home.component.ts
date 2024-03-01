@@ -45,7 +45,7 @@ export class HomeComponent {
                 authorization: token,
             });
 
-            this.httpclient.get(`http://localhost:3000/user/${this.userid}/books`, { headers }).subscribe(
+            this.httpclient.get(`https://good-reads-backend.onrender.com/user/${this.userid}/books`, { headers }).subscribe(
                 (response: any) => {
                     this.selectBooks(this.userid, "all");
                 },

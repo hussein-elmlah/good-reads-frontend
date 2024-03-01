@@ -13,7 +13,7 @@ export class AuthService  {
 
   userInfo:any;
   
-  baseUrl:string =`http://localhost:3000/`;
+  baseUrl:string =`https://good-reads-backend.onrender.com/`;
 
     register(userData:Object):Observable<any>{
       return this._HttpClient.post(this.baseUrl + 'user/register',userData)

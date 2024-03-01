@@ -1,6 +1,6 @@
 {
     "/api": {
-      "target": "http://localhost:3000",
+      "target": "https://good-reads-backend.onrender.com",
       "secure": false
     }
   }

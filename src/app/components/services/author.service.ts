@@ -9,7 +9,7 @@ import { Author } from "../../interfaces/author";
 })
 export class AuthorService {
     [x: string]: any;
-    private apiUrl = "http://localhost:3000/authors";
+    private apiUrl = "https://good-reads-backend.onrender.com/authors";
 
     constructor(private http: HttpClient) {}
 

@@ -10,9 +10,9 @@ import { Category } from "../../interfaces/category";
     providedIn: "root"
 })
 export class BokksService {
-    private apiUrl = "http://localhost:3000/books";
-    private authorsUrl = "http://localhost:3000/authors";
-    private categoriesUrl = "http://localhost:3000/categories";
+    private apiUrl = "https://good-reads-backend.onrender.com/books";
+    private authorsUrl = "https://good-reads-backend.onrender.com/authors";
+    private categoriesUrl = "https://good-reads-backend.onrender.com/categories";
 
     constructor(private http: HttpClient) {}
     getBooks(): Observable<Book[]> {

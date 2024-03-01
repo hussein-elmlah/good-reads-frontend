@@ -7,7 +7,7 @@ import { Observable, throwError } from "rxjs";
     providedIn: "root"
 })
 export class CategoryService {
-    private apiUrl = "http://localhost:3000/categories";
+    private apiUrl = "https://good-reads-backend.onrender.com/categories";
 
     constructor(private http: HttpClient) { }
     

@@ -8,7 +8,7 @@ import { Book } from "../interfaces/books";
     providedIn: "any"
 })
 export class AuthorsService {
-    baseURL = "http://localhost:3000";
+    baseURL = "https://good-reads-backend.onrender.com";
 
     constructor(private http: HttpClient) { }
 

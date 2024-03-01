@@ -9,14 +9,14 @@ export class CategoriesDataService {
     constructor(private http: HttpClient) { }
 
     getCategories(): Observable<any> {
-        return this.http.get("http://localhost:3000/categories");
+        return this.http.get("https://good-reads-backend.onrender.com/categories");
     }
 
     getPopularCategories(): Observable<any> {
-        return this.http.get("http://localhost:3000/categories/popular");
+        return this.http.get("https://good-reads-backend.onrender.com/categories/popular");
     }
 
     getCategoryById(id: number): Observable<any> {
-        return this.http.get(`http://localhost:3000/categories/${id}`);
+        return this.http.get(`https://good-reads-backend.onrender.com/categories/${id}`);
     }
 }

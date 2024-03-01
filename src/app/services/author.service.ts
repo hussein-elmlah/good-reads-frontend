@@ -9,14 +9,14 @@ export class AuthorService {
     constructor(private http:HttpClient) { }
 
     getAllauthor(): Observable<any> {
-        return this.http.get("http://localhost:3000/authors");
+        return this.http.get("https://good-reads-backend.onrender.com/authors");
     }
 
     getPopularAuthors(): Observable<any> {
-        return this.http.get("http://localhost:3000/authors/popular");
+        return this.http.get("https://good-reads-backend.onrender.com/authors/popular");
     }
 
     getAuthorDetails(id:string): Observable<any> {
-        return this.http.get(`http://localhost:3000/authors/${id}`);
+        return this.http.get(`https://good-reads-backend.onrender.com/authors/${id}`);
     }
 }
