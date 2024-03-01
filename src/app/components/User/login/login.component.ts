@@ -25,7 +25,7 @@ export class LoginComponent {
     loginForm:FormGroup = this._FormBuilder.group({
         username: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
 
-        password: ["", [Validators.required, Validators.pattern(/^[a-zA-Z0-9_@]{8,30}$/)]]
+        password: ["", [Validators.required, Validators.pattern(/^[a-zA-Z0-9_@#$%^&+=?/.]{8,30}$/)]]
     },);
 
     handleForm():void {
