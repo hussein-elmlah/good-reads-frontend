@@ -4,9 +4,9 @@ import { Component, OnInit } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 
+import { AuthorService } from "../../../services/author.service";
 import { BookService } from "../../../services/book.service";
 import { CategoriesDataService } from "../../../services/categories.service";
-import { AuthorService } from "../../../services/author.service";
 import { LoginComponent } from "../login/login.component";
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { RegisterComponent } from "../register/register.component";
@@ -19,13 +19,12 @@ import { RegisterComponent } from "../register/register.component";
     styleUrl: "./welcom-login.component.css"
 })
 export class WelcomLoginComponent implements OnInit {
-    constructor(private _BookService:BookService, private _category:CategoriesDataService, private _author:AuthorService) {}
+    constructor(private _BookService:BookService, private categoryService:CategoriesDataService, private authorService:AuthorService) {}
     books:any[] = [];
     authors: any[] = [];
     categories:any[] = [];
 
     ngOnInit(): void {
-        
         this._BookService.getAllBooks().subscribe({
             next: (response) => {
                 console.log("Response:", response);
@@ -62,13 +61,13 @@ export class WelcomLoginComponent implements OnInit {
             }
         });
 
-        this._category.getPopularCategories().subscribe((data: any) => {
+        this.categoryService.getPopularCategories().subscribe((data: any) => {
             this.categories = data; // Assign to this.categories
             console.log(data);
             this.categories = this.categories.slice(0, 8);
         });
 
-        this._author.getPopularAuthors().subscribe((data: any) => {
+        this.authorService.getPopularAuthors().subscribe((data: any) => {
             this.authors = data; // Assign to this.categories
             console.log(data);
             this.authors = this.authors.slice(0, 8);

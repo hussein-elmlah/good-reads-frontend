@@ -1,0 +1,28 @@
+.starrating > input {display: none;}
+
+.starrating > label:before { 
+  content: "\f005";
+  margin: 2px;
+  font-size: 1em;
+  font-family: FontAwesome;
+  display: inline-block; 
+}
+
+.starrating > label
+{
+  color: #222222;
+}
+
+.starrating .checked ~ label{
+    color: #ffca08 ;
+}
+
+.starrating .unchecked ~ label{
+    color: #222222 ;
+}
+.cardBook {
+  height: 500px;
+}
+.cardBook img {
+  height: 350px;
+}
