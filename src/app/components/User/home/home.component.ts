@@ -59,6 +59,7 @@ export class HomeComponent {
             console.error("Invalid or missing token");
             // You can handle this case by redirecting the user to login or any other appropriate action
         }
+        this.selectBooks(this.userid, this.selectedStatus);
     }
 
     selectBooks(userId: number, status: string): void {
